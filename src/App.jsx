@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 
 // ─── SVRN ALPHA ─── Sovereign Intelligence.
 // DESIGN: "Sovereign Terminal" (Black, Signal Green, Alpha Gold, JetBrains Mono)
-// CONTENT: Full multi-page structure (Home, Research, Case Study, Whitepaper, Press, About)
+// CONTENT: Adapted from BRANDING/SVRN_ALPHA_Website_Content.md
 
 const THEME = {
   black: "#050505",
@@ -65,7 +65,7 @@ const blogArticles = [
     id: "70-percent",
     badge: "// M_01 · HUMAN_LAYER",
     title: "Why 70% of AI Initiatives in Banking Fail — and It's Not the Technology",
-    subtitle: "The organizational transformation most banks refuse to fund.",
+    subtitle: "The organizational transformation most banks ignore.",
     date: "February 7, 2026",
     author: "Prof. Dr. Tobias Blask",
     readTime: 8,
@@ -110,10 +110,20 @@ Pillar 1 — Education. Before touching a single workflow or deploying any techn
 
 Pillar 2 — Processes. With the right mental model in place, we restructure workflows. The capacity flip — from 70% routine to 70% strategic — happens here. We map every analyst workflow, identify where AI creates genuine leverage, and redesign the process around human-AI collaboration. Human-in-the-Loop isn't a feature we add; it's the architecture we design around.
 
-Pillar 3 — Technology. Only after Education and Processes are in place do we deploy infrastructure. And when we do, it's sovereign: private cloud, EU-hosted, vendor-agnostic, fully auditable. The technology serves the transformation, not the other way around.
+Pillar 3 — Technology. Only after Education and Processes are in place do we deploy infrastructure. And when we do, it's sovereign: model-agnostic, fully auditable, vendor-independent. The technology serves the transformation, not the other way around.
 
 Skip Pillar 1, and Pillars 2 and 3 collapse. We've seen it happen repeatedly. The order is the methodology.`
       },
+      {
+        heading: "What the Capacity Flip Looks Like in Practice",
+        body: `When this framework is deployed properly, the transformation becomes visible within the first quarter. Research analysts who had been spending the majority of their time on routine data gathering and report formatting shift to spending the majority of their time on strategic analysis — the work that actually generates alpha for clients.
+
+The results come from exactly this reallocation. When your best people spend their time on the work they were hired to do, the returns compound.
+
+But none of this happens because of a technology deployment. It happens because education came first, process redesign came second, and sovereign infrastructure came third.
+
+The 70% of banks that fail at AI transformation aren't failing at technology. They're failing at the part they refuse to fund.`
+      }
     ],
   },
   {
@@ -149,6 +159,32 @@ For a professional who has built their identity around being the person who buil
 
 This is why Education must come before Process. The cognitive shift has to precede the workflow change. You cannot restructure someone's daily routine without first restructuring how they think about their role.`
       },
+      {
+        heading: "The Capacity Flip in Practice",
+        body: `The capacity flip is what happens when the Creator-to-Curator shift succeeds. The ratio inverts: 70% routine becomes 70% strategic.
+
+In practical terms, this means an analyst who currently spends Monday through Wednesday afternoon on data gathering and report formatting now completes that work by Monday lunchtime — with AI handling the routine extraction, population, and formatting. From Monday afternoon onward, they're doing the work that generates alpha: deep analysis, client conversations, strategic thinking, creative problem-solving.
+
+But the flip doesn't happen by deploying a tool. It happens through a deliberate three-stage process:
+
+Stage 1: Awareness. Through structured workshops, analysts see exactly how much of their time goes to routine work. Most underestimate it significantly. Seeing the 70/30 split in their own workflow data is the first breakthrough.
+
+Stage 2: Redefinition. Analysts redefine their role description around curation rather than creation. This isn't HR theater — it's a genuine reconstruction of what "doing your job well" means. The best analyst is no longer the one who builds the most detailed model from scratch; it's the one who produces the most insightful output, regardless of how the underlying data was assembled.
+
+Stage 3: Workflow Integration. Only after awareness and redefinition do we redesign the actual workflows. AI handles the routine extraction and formatting. The analyst handles validation, enrichment, and insight generation. Human-in-the-Loop is the architecture, not the afterthought.`
+      },
+      {
+        heading: "Why Sovereign Infrastructure Matters for the Flip",
+        body: `The capacity flip depends on AI having access to your proprietary data — your research archives, your client interaction histories, your internal models, your institutional knowledge accumulated over decades.
+
+If that data lives on a third-party vendor's cloud, you've created a dependency. If that vendor is US-based, your European data sits under CLOUD Act jurisdiction. If the vendor changes pricing, changes terms, or gets acquired, your entire capacity flip is at their mercy.
+
+Sovereign infrastructure means the AI that powers the capacity flip runs on infrastructure you own, in EU jurisdiction, with zero vendor lock-in. Your proprietary knowledge stays inside your fortress. The models that learn from your institutional data answer to you, not to a SaaS provider.
+
+This is why we call it SVRN ALPHA. Sovereign: your data stays yours. Alpha: the excess return that comes from making your proprietary knowledge compoundable.
+
+The capacity flip isn't a technology feature. It's an organizational transformation that happens to require technology — sovereign technology — as its third pillar.`
+      }
     ],
   },
   {
@@ -158,36 +194,63 @@ This is why Education must come before Process. The cognitive shift has to prece
     subtitle: "When everyone has the same models, the edge is what you feed them.",
     date: "February 3, 2026",
     author: "Prof. Dr. Tobias Blask",
-    readTime: 6,
-    keyword: "data sovereignty investment banking AI",
-    metaDesc: "Every bank has access to the same AI models. The competitive edge is proprietary data — and the sovereign infrastructure that protects it.",
+    readTime: 7,
+    keyword: "sovereign AI model-agnostic investment banking",
+    metaDesc: "Sovereign AI means institutional independence — model-agnostic architecture that lets banks choose the best AI per use case, with zero lock-in.",
     sections: [
       {
         heading: "The Commoditization of Intelligence",
-        body: `GPT-4. Claude. Gemini. Llama. Mistral. The large language models that power modern AI are rapidly becoming commodities. Every major technology provider offers essentially the same capabilities at increasingly similar price points.
+        body: `GPT-4. Claude. Gemini. DeepSeek. Mistral. Qwen. Llama. The large language models that power modern AI are rapidly becoming commodities. US closed-source, Chinese open-source, European alternatives — every major technology provider offers increasingly similar capabilities at converging price points. And the landscape shifts every six months.
 
-For investment banking, this creates a paradox. If every bank has access to the same AI models, where is the competitive advantage? The answer isn't in the model. It's in what you feed it.
+For investment banking, this creates a paradox — and an opportunity. If the models are interchangeable, the competitive advantage can't be in which model you pick. It's in two things: what you feed them (your proprietary knowledge) and how free you are to switch between them (your architectural sovereignty).
 
-Your proprietary data — twenty years of research notes, client interaction histories, deal structures, market insights, institutional knowledge accumulated analyst by analyst, deal by deal — is the only asset your competitors cannot replicate. It's the only genuine moat in an era of commoditized intelligence.
+Your proprietary data — twenty years of research notes, client interaction histories, deal structures, institutional knowledge accumulated analyst by analyst — is the first moat. But the second moat is equally important: the ability to use the best model for each use case, switch providers when the landscape shifts, and never be locked into a single vendor's ecosystem.
 
-And most banks are handing this moat to third-party vendors.`
+Most banks are building both moats wrong. They hand their data to a single US platform provider and lock their architecture to one model family. That's not a strategy. That's a dependency.`
+      },
+      {
+        heading: "The Lock-in Trap — and Why Model-Agnostic Matters",
+        body: `Six months ago, the consensus was that one US provider had the best model. Today, a Chinese open-source model matches that performance at a fraction of the cost. Tomorrow, a European alternative may lead in regulatory compliance. The only constant is change.
+
+Banks that locked their architecture to a single model family — fine-tuning their workflows around one provider's API, training their teams on one vendor's tools, building their data pipelines for one model's input format — now face a painful choice: expensive migration or strategic dependency.
+
+This is the lock-in trap. And it's not just about technology costs. When your AI infrastructure depends on a single foreign provider, you're exposed to geopolitical risk (US CLOUD Act, export controls, sanctions), business risk (pricing changes, API deprecation, acquisition), and regulatory risk (EU AI Act compliance gaps in non-European infrastructure).
+
+Sovereignty — real sovereignty — means your architecture doesn't care which model sits underneath it. You evaluate per use case: a US closed-source model for one workflow, a Chinese open-source model on your own infrastructure for another, a European model for regulatory-sensitive processes. You switch when something better appears. You're never trapped.
+
+EU compliance (AI Act, MiFID II, GDPR) isn't the goal — it's the natural byproduct of an architecture designed for institutional independence. When you control your infrastructure and can run models locally, compliance follows as an architectural property.`
       },
       {
         heading: "What Sovereign Actually Means",
         body: `Sovereignty in AI infrastructure means four things:
 
-Residency. Your data is processed and stored within EU jurisdiction. Not "available in EU regions" — genuinely hosted on infrastructure that answers to European law.
+Model-Agnostic Architecture. Your infrastructure runs any model — US closed-source (GPT-4, Claude), Chinese open-source on own hardware (DeepSeek, Qwen), European (Mistral, Aleph Alpha). Per use case, you choose the best option. When a better model appears — and it will, every few months — you switch. Your workflows, your data pipelines, your human checkpoints all remain intact. The model is a component, not a foundation.
 
-Ownership. You own the infrastructure. Not rent it. Not license it. Own it. When the engagement ends, everything stays with you — the models, the fine-tuning, the knowledge graphs, the workflows. Zero vendor dependency.
+Institutional Ownership. You own the infrastructure. Not rent it. Not license it. Own it. When the engagement ends, everything stays with you — the orchestration layer, the fine-tuning, the knowledge graphs, the workflows. Your processes, your roles, your technology. No one else's roadmap dictates yours.
 
-Auditability. Every AI-assisted decision has a full audit trail. You can explain to a regulator exactly how an output was generated, what data informed it, and what human checkpoints were involved. This isn't a feature; it's a compliance requirement under MiFID II and the EU AI Act.
+Full Auditability. Every AI-assisted decision has a complete audit trail. You can explain to a regulator exactly how an output was generated, what model produced it, what data informed it, and what human checkpoints were involved. This works regardless of which underlying model is used — because the audit layer sits above the model layer.
 
-Portability. If you want to change providers, migrate infrastructure, or bring everything in-house, you can. No lock-in. No proprietary formats that only work with one vendor. No dependency that gives a single provider leverage over your operations.`
+Zero Dependency. If a vendor changes pricing, a government imposes export controls, a model gets deprecated, or the geopolitical landscape shifts — you're unaffected. Your architecture adapts because it was designed to adapt. That's not a feature. It's the fundamental design principle.`
       },
-    ],
-  },
-];
+      {
+        heading: "Building the Fortress",
+        body: `At SVRN ALPHA, we use the metaphor of a data fortress deliberately. A fortress isn't just a wall — it's an architecture designed for resilience in a world that keeps changing.
 
+Your fortress has three layers:
+
+The outer layer is architectural flexibility — model-agnostic design that lets you evaluate and deploy any AI model per use case. US closed-source for high-performance analysis, open-source on own infrastructure for cost-sensitive batch processing, European models for regulatory-sensitive workflows. The outer layer ensures that no matter what happens in the technology landscape — new model releases, pricing changes, export controls, geopolitical shifts — your operations continue uninterrupted.
+
+The middle layer is institutional control — you own the orchestration layer, the data pipelines, the human-in-the-loop checkpoints, the audit trails. Your processes, your roles, your decision architecture. EU compliance (AI Act, MiFID II, MAR, GDPR) emerges naturally from this control, not as a separate compliance project.
+
+The inner layer is proprietary knowledge — the institutional insights, research archives, client relationships, and analytical frameworks that make your bank different from every other bank. This is the moat. It's what the fortress protects. And it's what generates alpha when properly structured, indexed, and made accessible to AI-enabled workflows.
+
+Every bank can access the same models. The only defensible asset is what's inside your organization — and the sovereign architecture that protects it while staying fully flexible.
+
+Models are interchangeable. Your proprietary knowledge — and your freedom to choose — is not.`
+      }
+    ],
+  }
+];
 
 // ═══════════════════════════════════════════════════════
 // PAGE COMPONENTS
@@ -197,67 +260,100 @@ const Nav = ({ current, onNavigate }) => {
   const [hover, setHover] = useState(null);
 
   const items = [
-    { id: "home", label: "Vision" },
+    { id: "home", label: "Home" },
     { id: "blog", label: "Research" },
-    { id: "case-study", label: "Reference" },
-    { id: "whitepaper", label: "Framework" },
-    { id: "about", label: "Founder" },
+    { id: "reference-case", label: "Reference Case" },
+    { id: "whitepaper", label: "Whitepaper" },
+    { id: "press", label: "Press" },
+    { id: "about", label: "About" },
   ];
 
   return (
-    <nav style={{
-      display: "flex", justifyContent: "space-between", alignItems: "center",
-      padding: "20px 60px", borderBottom: `1px solid ${C.border}`,
-      position: "sticky", top: 0, zIndex: 100,
-      background: `${C.black}F0`, backdropFilter: "blur(12px)",
-    }}>
-      <div
-        onClick={() => onNavigate("home")}
-        style={{ display: "flex", alignItems: "center", gap: 12, cursor: "pointer" }}
-      >
-        <div style={{
-          width: 34, height: 34, borderRadius: 6,
-          background: `linear-gradient(135deg, ${C.primaryDim}, ${C.primary} 120%)`,
-          display: "flex", alignItems: "center", justifyContent: "center",
-          fontFamily: mono, fontWeight: 800, fontSize: 13, color: C.black
-        }}>_SA</div>
-        <span style={{ fontFamily: mono, fontWeight: 700, letterSpacing: "-0.02em", fontSize: 18 }}>
-          SVRN<span style={{ color: C.primary }}>_ALPHA</span>
-        </span>
-      </div>
-      <div style={{ display: "flex", gap: 32, alignItems: "center" }}>
-        {items.map((item, i) => (
-          <span
-            key={item.id}
-            onClick={() => onNavigate(item.id)}
-            onMouseEnter={() => setHover(i)}
-            onMouseLeave={() => setHover(null)}
-            style={{
-              fontSize: 13, fontWeight: 500, fontFamily: mono,
-              color: current === item.id ? C.primary : hover === i ? C.text : C.textMuted,
-              cursor: "pointer", transition: "color 0.2s",
-            }}
-          >{item.label}</span>
+    <>
+      {/* Ticker */}
+      <div style={{
+        background: C.surface, borderBottom: `1px solid ${C.border}`,
+        padding: "5px 0", fontFamily: mono, fontSize: 10, letterSpacing: "0.05em",
+        display: "flex", justifyContent: "center", gap: 32,
+      }}>
+        {[
+          { l: "STATUS", v: "OPERATIONAL", c: C.primary },
+          { l: "ARCHITECTURE", v: "MODEL-AGNOSTIC", c: C.primary }, // Updated per markdown
+          { l: "MOAT", v: "SOVEREIGN", c: C.primary },
+          { l: "COMPLIANCE", v: "EU ✓", c: C.primary },
+        ].map((t, i) => (
+          <span key={i}>
+            <span style={{ color: C.textDim }}>{t.l}: </span>
+            <span style={{ color: t.c, fontWeight: 600 }}>{t.v}</span>
+          </span>
         ))}
-        <div style={{
-          padding: "10px 24px", borderRadius: 4,
-          border: `1px solid ${C.primary}`,
-          background: `${C.primary}10`, color: C.primary,
-          fontSize: 12, fontWeight: 600, fontFamily: mono,
-          cursor: "pointer",
-          transition: "all 0.2s"
-        }}
-          onClick={() => onNavigate("about")}
-          onMouseEnter={(e) => { e.currentTarget.style.background = C.primary; e.currentTarget.style.color = C.black; }}
-          onMouseLeave={(e) => { e.currentTarget.style.background = `${C.primary}10`; e.currentTarget.style.color = C.primary; }}
-        >INITIALIZE_BRIEFING</div>
       </div>
-    </nav>
+
+      {/* Main Nav */}
+      <nav style={{
+        display: "flex", justifyContent: "space-between", alignItems: "center",
+        padding: "16px 40px", borderBottom: `1px solid ${C.border}`,
+        position: "sticky", top: 0, zIndex: 100,
+        background: `${C.black}E8`, backdropFilter: "blur(12px)",
+      }}>
+        <div
+          onClick={() => onNavigate("home")}
+          style={{ display: "flex", alignItems: "center", gap: 12, cursor: "pointer" }}
+        >
+          <div style={{
+            width: 32, height: 32, borderRadius: 6,
+            background: `linear-gradient(135deg, ${C.primaryDim}, ${C.primary} 120%)`,
+            display: "flex", alignItems: "center", justifyContent: "center",
+            fontFamily: mono, fontWeight: 800, fontSize: 14, color: C.black
+          }}>_</div>
+          <span style={{ fontFamily: mono, fontWeight: 700, letterSpacing: "-0.02em", fontSize: 18 }}>
+            SVRN<span style={{ color: C.primary }}>_ALPHA</span>
+          </span>
+        </div>
+
+        <div style={{ display: "flex", gap: 28, alignItems: "center" }}>
+          {items.map((item, i) => (
+            <span
+              key={item.id}
+              onClick={() => onNavigate(item.id)}
+              onMouseEnter={() => setHover(i)}
+              onMouseLeave={() => setHover(null)}
+              style={{
+                fontSize: 13, fontWeight: 500, fontFamily: mono,
+                color: current === item.id ? C.primary : hover === i ? C.text : C.textMuted,
+                cursor: "pointer", transition: "color 0.2s",
+              }}
+            >{item.label}</span>
+          ))}
+          <div style={{
+            padding: "8px 20px", borderRadius: 4,
+            border: `1px solid ${C.primary}`,
+            background: `${C.primary}10`, color: C.primary,
+            fontSize: 11, fontWeight: 600, fontFamily: mono,
+            cursor: "pointer",
+            transition: "all 0.2s"
+          }}
+            onClick={() => onNavigate("about")}
+            onMouseEnter={(e) => { e.currentTarget.style.background = C.primary; e.currentTarget.style.color = C.black; }}
+            onMouseLeave={(e) => { e.currentTarget.style.background = `${C.primary}10`; e.currentTarget.style.color = C.primary; }}
+          >INITIALIZE_BRIEFING</div>
+        </div>
+      </nav>
+    </>
   );
 };
 
 const HomePage = ({ onNavigate }) => {
   const [hoverPillar, setHoverPillar] = useState(null);
+
+  const gridItems = [
+    { type: "RESEARCH", title: "Why 70% of AI Initiatives in Banking Fail — and It's Not the Technology", date: "Feb 2026", link: "blog" },
+    { type: "REFERENCE CASE", title: "MP Capital Markets: Sovereign AI Deployment in Practice", date: "Jan 2026", link: "reference-case" },
+    { type: "RESEARCH", title: "From Creator to Curator: The Capacity Flip That Changes Everything", date: "Feb 2026", link: "blog" },
+    { type: "WHITEPAPER", title: "The Three-Pillar Model: A Framework for Sovereign AI Transformation", date: "Jan 2026", link: "whitepaper" },
+    { type: "RESEARCH", title: "Your Data Moat Is the Only Alpha Left", date: "Feb 2026", link: "blog" },
+    { type: "PRESS", title: "SVRN ALPHA Launches Sovereign AI Enablement for European Investment Banking", date: "Jan 2026", link: "press" },
+  ];
 
   return (
     <div>
@@ -267,7 +363,6 @@ const HomePage = ({ onNavigate }) => {
         textAlign: "center", position: "relative",
         background: `radial-gradient(circle at 50% 10%, ${C.surface} 0%, ${C.black} 70%)`
       }}>
-        {/* Grid overlay */}
         <div style={{
           position: "absolute", inset: 0, opacity: 0.1, pointerEvents: "none",
           backgroundImage: `linear-gradient(${C.border} 1px, transparent 1px), linear-gradient(90deg, ${C.border} 1px, transparent 1px)`,
@@ -275,9 +370,8 @@ const HomePage = ({ onNavigate }) => {
         }} />
 
         <div style={{ maxWidth: 1200, margin: "0 auto", position: "relative", zIndex: 1 }}>
-          <div style={{ display: "flex", gap: 12, justifyContent: "center", marginBottom: 32 }}>
-            <Badge>HIERARCHY: SOVEREIGN</Badge>
-            <Badge variant="accent">SECTOR: BANKING</Badge>
+          <div style={{ marginBottom: 32 }}>
+            <Badge>RESEARCH & INSIGHTS</Badge>
           </div>
 
           <h1 style={{
@@ -285,277 +379,88 @@ const HomePage = ({ onNavigate }) => {
             lineHeight: 1.05, letterSpacing: "-0.04em",
             margin: "0 auto 32px", color: C.text, maxWidth: 960
           }}>
-            Stop Buying Tools.<br />
-            <span style={{ color: C.textMuted }}>Start Building</span> <span style={{ color: C.primary }}>Moats.</span>
+            Intelligence for the <br />
+            <span style={{ color: C.primary }}>Sovereign Era</span>
           </h1>
 
           <p style={{
             fontSize: 20, color: C.textSoft, maxWidth: 640,
             margin: "0 auto 48px", lineHeight: 1.6, fontWeight: 400
           }}>
-            True sovereignty means full control: over your <span style={{ color: C.text, fontWeight: 500 }}>Processes, Roles, and Technology</span>.
-            SVRN ALPHA turns your proprietary knowledge into <span style={{ color: C.primary }}>model-agnostic infrastructure</span>.
+            Research, frameworks, and reference cases from SVRN ALPHA.<br />
+            How AI transformation actually works in investment banking.
           </p>
-
-          <div style={{ display: "flex", gap: 16, justifyContent: "center" }}>
-            <div style={{
-              padding: "16px 40px", borderRadius: 4,
-              background: C.primary, color: C.black,
-              fontSize: 14, fontWeight: 700, fontFamily: mono,
-              cursor: "pointer",
-            }} onClick={() => onNavigate("about")}>{`> EXECUTE_BRIEFING`}</div>
-            <div style={{
-              padding: "16px 40px", borderRadius: 4,
-              border: `1px solid ${C.border}`,
-              background: C.card,
-              color: C.textSoft, fontSize: 14, fontWeight: 500, fontFamily: mono, cursor: "pointer",
-            }} onClick={() => onNavigate("whitepaper")}>READ_WHITEPAPER</div>
-          </div>
         </div>
       </section>
 
-      {/* ═══ SYSTEM LOG: LEADERSHIP & SUCCESS ═══ */}
-      <section style={{
-        padding: "80px 60px",
-        background: C.surface, borderTop: `1px solid ${C.border}`, borderBottom: `1px solid ${C.border}`,
-      }}>
-        <div style={{ maxWidth: 1200, margin: "0 auto", display: "grid", gridTemplateColumns: "1fr 1.2fr", gap: 80, alignItems: "center" }}>
-
-          {/* Founder */}
-          <div>
-            <Badge variant="accent">ROOT_USER</Badge>
-            <h2 style={{
-              fontFamily: mono, fontSize: 36, fontWeight: 700, color: C.text,
-              margin: "24px 0 24px", letterSpacing: "-0.03em", lineHeight: 1.1
-            }}>
-              Founded on Academic Rigor.<br />Engineered for Reality.
-            </h2>
-            <p style={{ fontSize: 16, color: C.textMuted, lineHeight: 1.7, marginBottom: 32 }}>
-              "Sovereignty isn't just data residency. It's the ability to switch models instantly.
-              US Top Tier, Chinese Open Source, or EU Sovereign – we utilize what wins.
-              The world changes fast; your infrastructure must remain fully flexible."
-            </p>
-
-            <div style={{ display: "flex", alignItems: "center", gap: 20, cursor: "pointer" }} onClick={() => onNavigate("about")}>
-              <div style={{
-                width: 56, height: 56, borderRadius: 4,
-                background: C.card, border: `1px solid ${C.primaryDim}`,
-                display: "flex", alignItems: "center", justifyContent: "center",
-                fontSize: 20, fontWeight: 700, color: C.primary, fontFamily: mono
-              }}>TB</div>
-              <div>
-                <div style={{ fontSize: 16, fontWeight: 700, color: C.text, fontFamily: mono }}>Prof. Dr. Tobias Blask</div>
-                <div style={{ fontSize: 13, color: C.textMuted, fontFamily: mono }}>Founder & Chairman | Professor</div>
-              </div>
-            </div>
-          </div>
-
-          {/* Terminal Window: Success Log */}
-          <div style={{
-            borderRadius: 8,
-            background: C.black, border: `1px solid ${C.border}`,
-            boxShadow: `0 20px 40px -10px rgba(0,0,0,0.5)`,
-            overflow: "hidden",
-            cursor: "pointer"
-          }} onClick={() => onNavigate("case-study")}>
-            {/* Window Header */}
-            <div style={{
-              background: C.card, borderBottom: `1px solid ${C.border}`,
-              padding: "8px 16px", display: "flex", justifyContent: "space-between", alignItems: "center"
-            }}>
-              <div style={{ fontFamily: mono, fontSize: 11, color: C.textMuted }}>root@mpcm-server:~/logs</div>
-              <div style={{ display: "flex", gap: 6 }}>
-                <div style={{ width: 10, height: 10, borderRadius: "50%", background: "#EF4444" }} />
-                <div style={{ width: 10, height: 10, borderRadius: "50%", background: "#F59E0B" }} />
-                <div style={{ width: 10, height: 10, borderRadius: "50%", background: "#10B981" }} />
-              </div>
-            </div>
-
-            {/* Window Content */}
-            <div style={{ padding: "24px 32px", fontFamily: mono, fontSize: 13, lineHeight: 1.6 }}>
-              <div style={{ color: C.textMuted, marginBottom: 12 }}># EXECUTION REPORT: STRATEGIC BLUEPRINT</div>
-
-              <div style={{ marginBottom: 4 }}>
-                <span style={{ color: C.primary }}>➜</span> <span style={{ color: C.accent }}>INIT_TRANSFORMATION</span>
-              </div>
-              <div style={{ paddingLeft: 20, color: C.textSoft, marginBottom: 16 }}>
-                Converting analysts from Creators to Curators... <span style={{ color: C.success }}>[DONE]</span>
-              </div>
-
-              <div style={{ marginBottom: 4 }}>
-                <span style={{ color: C.primary }}>➜</span> <span style={{ color: C.accent }}>CALCULATE_YIELD</span>
-              </div>
-              <div style={{ paddingLeft: 20, color: C.textSoft, marginBottom: 16 }}>
-                Alpha Generated: <span style={{ color: C.primary, fontWeight: 700 }}>Measurable Uplift</span> vs. Benchmark<br />
-                Capacity Reallocated: <span style={{ color: C.text }}>Majority Routine → Strategic</span>
-              </div>
-
-              <div style={{ marginBottom: 4 }}>
-                <span style={{ color: C.primary }}>➜</span> <span style={{ color: C.accent }}>VERIFY_COMPLIANCE</span>
-              </div>
-              <div style={{ paddingLeft: 20, color: C.textSoft }}>
-                EU AI Act: <span style={{ color: C.success }}>[COMPLIANT]</span><br />
-                Model Dependency: <span style={{ color: C.success }}>[AGNOSTIC]</span>
-              </div>
-
-              <div style={{ marginTop: 20, padding: "12px", background: `${C.primary}10`, borderLeft: `2px solid ${C.primary}` }}>
-                "SVRN ALPHA didn't just give us tools. They gave us a sovereign capability."
-              </div>
-            </div>
-          </div>
-
-        </div>
-      </section>
-
-      {/* ═══ THREE PILLARS ═══ */}
-      <section style={{
-        padding: "100px 60px",
-      }}>
+      {/* ═══ FEATURED CONTENT GRID ═══ */}
+      <section style={{ padding: "80px 60px", background: C.surface, borderTop: `1px solid ${C.border}` }}>
         <div style={{ maxWidth: 1200, margin: "0 auto" }}>
-          <div style={{ textAlign: "center", marginBottom: 64 }}>
-            <Badge>SYSTEM ARCHITECTURE</Badge>
-            <h2 style={{
-              fontFamily: mono, fontSize: 36, fontWeight: 700, color: C.text,
-              margin: "24px 0 16px", letterSpacing: "-0.02em"
-            }}>The Three-Pillar Model</h2>
-            <p style={{ fontSize: 16, color: C.textMuted }}>
-              Education. Processes. Technology. <span style={{ fontFamily: mono, color: C.primary }}>[SEQUENCE_CRITICAL]</span>
-            </p>
-          </div>
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 32 }}>
-            {[
-              {
-                num: "01", title: "EDUCATION", sub: "Human_Layer",
-                desc: "Creator to Curator. We build AI fluency at every level, from the trading floor to the boardroom.",
-                detail: "DEPENDENCY: PEOPLE",
-              },
-              {
-                num: "02", title: "PROCESSES", sub: "Logic_Layer",
-                desc: "The Capacity Flip. Inverting the workflow. Sovereign workflows that reallocate human capital to alpha generation.",
-                detail: "STATUS: OPTIMIZED",
-              },
-              {
-                num: "03", title: "TECHNOLOGY", sub: "Infra_Layer",
-                desc: "Model-Agnostic. Secure. We deploy on your own infrastructure — whether US Closed Source, Chinese Open Source, or EU Models.",
-                detail: "PROTOCOL: FLEXIBLE",
-              },
-            ].map((p, i) => (
+          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 24 }}>
+            {gridItems.map((item, i) => (
               <div
                 key={i}
-                onMouseEnter={() => setHoverPillar(i)}
-                onMouseLeave={() => setHoverPillar(null)}
+                onClick={() => onNavigate(item.link)}
                 style={{
                   padding: 32, borderRadius: 8,
-                  background: hoverPillar === i ? C.card : "transparent",
-                  border: `1px solid ${hoverPillar === i ? C.primaryDim : C.border}`,
-                  transition: "all 0.3s", cursor: "default",
-                  position: "relative"
-                }}
-              >
-                <div style={{
-                  fontFamily: mono, fontSize: 12, color: C.borderHover,
-                  position: "absolute", top: 16, right: 16
-                }}>// M_0{i + 1}</div>
-
-                <h3 style={{
-                  fontSize: 20, fontWeight: 700, fontFamily: mono,
-                  color: C.text, margin: "0 0 8px",
-                }}><span style={{ color: C.primary }}>0{i + 1}.</span> {p.title}</h3>
-
-                <div style={{
-                  fontSize: 11, fontFamily: mono, color: C.accent,
-                  textTransform: "uppercase", marginBottom: 16,
-                }}>{p.sub}</div>
-
-                <p style={{
-                  fontSize: 14, color: C.textSoft, lineHeight: 1.7, margin: "0 0 24px",
-                }}>{p.desc}</p>
-
-                <div style={{
-                  padding: "6px 10px", display: "inline-block", borderRadius: 4,
                   background: C.black, border: `1px solid ${C.border}`,
-                  fontSize: 11, fontFamily: mono, color: C.textMuted
-                }}>{p.detail}</div>
+                  cursor: "pointer", transition: "all 0.2s",
+                  display: "flex", flexDirection: "column", minHeight: 240
+                }}
+                onMouseEnter={e => { e.currentTarget.style.borderColor = C.primaryDim; }}
+                onMouseLeave={e => { e.currentTarget.style.borderColor = C.border; }}
+              >
+                <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 16 }}>
+                  <Badge variant={item.type === "REFERENCE CASE" ? "accent" : "primary"}>{item.type}</Badge>
+                  <span style={{ fontFamily: mono, fontSize: 11, color: C.textDim }}>{item.date}</span>
+                </div>
+                <h3 style={{
+                  fontFamily: sans, fontSize: 20, fontWeight: 700,
+                  color: C.text, lineHeight: 1.4, flex: 1
+                }}>
+                  {item.title}
+                </h3>
+                <div style={{
+                  marginTop: 24, fontFamily: mono, fontSize: 12,
+                  color: C.primary, display: "flex", alignItems: "center", gap: 8
+                }}>
+                  OPEN_FILE <span style={{ fontSize: 10 }}>→</span>
+                </div>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* ═══ DATA FORTRESS TERMINAL ═══ */}
-      <section style={{ padding: "100px 60px", background: C.card, borderTop: `1px solid ${C.border}` }}>
-        <div style={{ maxWidth: 1000, margin: "0 auto" }}>
-          <div style={{ textAlign: "center", marginBottom: 64 }}>
-            <Badge variant="accent">SECURITY_PROTOCOL</Badge>
-            <h2 style={{
-              fontFamily: mono, fontSize: 36, fontWeight: 700, color: C.text,
-              margin: "24px 0 16px", letterSpacing: "-0.02em"
-            }}>Your Moat. Your Fortress.</h2>
-            <p style={{ fontSize: 16, color: C.textMuted }}>
-              Tools are commodities. Knowledge is sovereign.
-            </p>
-          </div>
-
-          <div style={{
-            display: "grid", gridTemplateColumns: "1fr 1fr", gap: 1,
-            background: C.border, border: `1px solid ${C.border}`, borderRadius: 8, overflow: "hidden"
-          }}>
-            {[
-              { label: "EU AI Act", status: "COMPLIANT" },
-              { label: "MiFID II", status: "VERIFIED" },
-              { label: "Market Abuse Reg (MAR)", status: "ACTIVE" },
-              { label: "Model Architecture", status: "AGNOSTIC" },
-              { label: "Infrastructure Control", status: "SOVEREIGN" },
-              { label: "Vendor Lock-in", status: "NONE" },
-            ].map((item, i) => (
-              <div key={i} style={{
-                display: "flex", justifyContent: "space-between", alignItems: "center",
-                padding: "20px 24px", background: C.black,
-              }}>
-                <span style={{ fontSize: 14, fontWeight: 500, color: C.textSoft, fontFamily: mono }}>{item.label}</span>
-                <span style={{
-                  fontFamily: mono, fontSize: 12, fontWeight: 700,
-                  color: item.status === "NONE" || item.status === "SOVEREIGN" || item.status === "AGNOSTIC" ? C.accent : C.primary,
-                }}>[{item.status}]</span>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ═══ CTA ═══ */}
+      {/* ═══ CTA BAND ═══ */}
       <section style={{
-        padding: "120px 60px",
-        borderTop: `1px solid ${C.border}`,
-        textAlign: "center",
-        background: `radial-gradient(circle at 50% 100%, ${C.primaryDim}10 0%, ${C.black} 50%)`
+        padding: "100px 60px", borderTop: `1px solid ${C.border}`,
+        textAlign: "center", background: C.black
       }}>
-        <div style={{ maxWidth: 800, margin: "0 auto" }}>
-          <h2 style={{
-            fontFamily: mono, fontSize: 42, fontWeight: 700,
-            color: C.text, margin: "0 0 24px", letterSpacing: "-0.03em",
-          }}>Ready to secure your alpha?</h2>
-          <p style={{
-            fontSize: 16, color: C.textMuted, maxWidth: 500,
-            margin: "0 auto 48px", lineHeight: 1.6,
-          }}>
-            Schedule a confidential briefing with our team in Hamburg.
-          </p>
-          <div style={{ display: "flex", gap: 16, justifyContent: "center" }}>
-            <div style={{
-              padding: "16px 48px", borderRadius: 4,
-              background: C.primary, color: C.black,
-              fontSize: 14, fontWeight: 700, fontFamily: mono,
-              cursor: "pointer",
-            }} onClick={() => onNavigate("about")}>{`> SCHEDULE_BRIEFING`}</div>
-          </div>
+        <div style={{ fontFamily: mono, fontSize: 12, color: C.textDim, marginBottom: 24 }}>
+          root@svrn-alpha:~/briefing
         </div>
+        <h2 style={{
+          fontFamily: mono, fontSize: 32, fontWeight: 700,
+          color: C.text, margin: "0 0 16px", letterSpacing: "-0.03em",
+        }}>Your moat won't build itself.</h2>
+        <p style={{
+          fontSize: 16, color: C.textMuted, maxWidth: 500,
+          margin: "0 auto 40px", lineHeight: 1.6,
+        }}>
+          Confidential briefing with our team in Hamburg. No pitch deck theater.
+        </p>
+        <div style={{
+          display: "inline-block", padding: "16px 48px", borderRadius: 4,
+          background: C.primary, color: C.black,
+          fontSize: 14, fontWeight: 700, fontFamily: mono,
+          cursor: "pointer",
+        }} onClick={() => onNavigate("about")}>{`> EXECUTE_BRIEFING`}</div>
       </section>
     </div>
   );
 };
 
-// ─── BLOG PAGE ───
 const BlogPage = ({ onNavigate }) => {
   const [activeArticle, setActiveArticle] = useState(null);
 
@@ -628,7 +533,7 @@ const BlogPage = ({ onNavigate }) => {
               Ready to build your moat?
             </h3>
             <p style={{ fontSize: 13, color: C.textMuted, marginBottom: 20 }}>
-              Confidential briefing with Prof. Dr. Blask and the SVRN ALPHA team.
+              Confidential briefing with our team in Hamburg.
             </p>
             <div style={{
               display: "inline-block", padding: "12px 32px", borderRadius: 8,
@@ -646,13 +551,13 @@ const BlogPage = ({ onNavigate }) => {
     <div style={{ padding: "80px 60px 100px" }}>
       <ArticleLayout maxWidth={1000}>
         <div style={{ marginBottom: 48, textAlign: "center" }}>
-          <Badge>RESEARCH & INTELLIGENCE</Badge>
+          <Badge>RESEARCH & INSIGHTS</Badge>
           <h1 style={{
             fontFamily: sans, fontSize: 42, fontWeight: 800,
             letterSpacing: "-0.02em", margin: "16px 0 8px",
           }}>Sovereign AI Frameworks</h1>
           <p style={{ fontSize: 16, color: C.textMuted, maxWidth: 600, margin: "0 auto" }}>
-            Methodologies for the organizational transformation of investment banking.
+            Frameworks, methodology, and evidence from the intersection of AI and investment banking.
           </p>
         </div>
 
@@ -691,271 +596,336 @@ const BlogPage = ({ onNavigate }) => {
   );
 };
 
-// ─── CASE STUDY PAGE ───
-const CaseStudyPage = () => (
-  <div style={{ padding: "80px 60px 100px" }}>
-    <ArticleLayout maxWidth={800}>
-      <Badge variant="accent">REFERENCE ARCHITECTURE</Badge>
-      <h1 style={{
-        fontFamily: sans, fontSize: 36, fontWeight: 800,
-        letterSpacing: "-0.025em", lineHeight: 1.15, margin: "16px 0 12px",
-      }}>
-        MP Capital Markets: Sovereign Alpha Generation
-      </h1>
-      <p style={{ fontSize: 18, color: C.accent, margin: "0 0 40px", fontStyle: "italic" }}>
-        How a sovereign AI deployment transforms research operations at a European investment bank.
-      </p>
-
-      {/* Snapshot */}
-      <div style={{
-        display: "grid", gridTemplateColumns: "1fr 1fr 1fr 1fr", gap: 12, marginBottom: 48,
-      }}>
-        {[
-          { label: "ALPHA", value: "Uplift", color: C.accent },
-          { label: "DEPLOYMENT", value: "Rapid", color: C.primary },
-          { label: "MODEL", value: "Agnostic", color: C.primary },
-          { label: "COMPLIANCE", value: "Full EU", color: C.primary },
-        ].map((s, i) => (
-          <div key={i} style={{
-            padding: "20px 16px", borderRadius: 8, background: C.card,
-            border: `1px solid ${C.border}`, textAlign: "center",
-          }}>
-            <div style={{ fontFamily: mono, fontSize: 10, color: C.textDim, letterSpacing: "0.1em", marginBottom: 8 }}>{s.label}</div>
-            <div style={{ fontFamily: mono, fontSize: 18, fontWeight: 800, color: s.color }}>{s.value}</div>
-          </div>
-        ))}
-      </div>
-
-      <div style={{ marginBottom: 48 }}>
-        <h2 style={{ fontFamily: mono, fontSize: 20, fontWeight: 700, margin: "0 0 16px", color: C.text }}>
-          <span style={{ color: C.red }}>// THE CHALLENGE:</span> Talent Trapped
-        </h2>
-        <p style={{ fontSize: 16, color: C.textSoft, lineHeight: 1.7, marginBottom: 16 }}>
-          MP Capital Markets (MPCM), a Hamburg-based investment bank, operates a research team of experienced analysts. Yet like many institutions, they faced the industry-wide inefficiency: analysts spending a majority of their working hours on routine data extraction and formatting. Only a fraction of their capacity went toward separate strategic analysis.
-        </p>
-      </div>
-
-      <div style={{ marginBottom: 48 }}>
-        <h2 style={{ fontFamily: mono, fontSize: 20, fontWeight: 700, margin: "0 0 16px", color: C.text }}>
-          <span style={{ color: C.primary }}>// THE APPROACH:</span> Three Pillars
-        </h2>
-        <div style={{ borderLeft: `2px solid ${C.primary}`, paddingLeft: 24 }}>
-          <p style={{ fontSize: 16, color: C.textSoft, lineHeight: 1.7, marginBottom: 12 }}>
-            <strong style={{ color: C.text }}>1. Education:</strong> "Creator to Curator" workshops shift the mindset before any tool is deployed.
-          </p>
-          <p style={{ fontSize: 16, color: C.textSoft, lineHeight: 1.7, marginBottom: 12 }}>
-            <strong style={{ color: C.text }}>2. Processes:</strong> Workflow mapping identifies routine blocks and re-routes them to AI pipelines.
-          </p>
-          <p style={{ fontSize: 16, color: C.textSoft, lineHeight: 1.7, marginBottom: 0 }}>
-            <strong style={{ color: C.text }}>3. Technology:</strong> Sovereign, EU-hosted infrastructure ensures zero data leakage and full compliance.
-          </p>
-        </div>
-      </div>
-
-      <div style={{
-        padding: 32, borderRadius: 12, background: C.card,
-        border: `1px solid ${C.border}`, borderLeft: `4px solid ${C.accent}`,
-      }}>
-        <p style={{
-          fontSize: 17, color: C.text, lineHeight: 1.7, margin: "0 0 16px",
-          fontStyle: "italic",
-        }}>
-          "SVRN ALPHA provides a sovereign capability. Analysts think differently, workflows are fundamentally restructured, and proprietary knowledge compounds in infrastructure we own."
-        </p>
-        <div style={{ fontFamily: mono, fontSize: 12, color: C.accent }}>
-          — Senior Managing Director, MP Capital Markets
-        </div>
-      </div>
-    </ArticleLayout>
-  </div>
-);
-
-// ─── WHITEPAPER PAGE ───
-const WhitepaperPage = () => (
-  <div style={{ padding: "80px 60px 100px" }}>
-    <ArticleLayout maxWidth={780}>
-      <div style={{ textAlign: "center", marginBottom: 64 }}>
-        <Badge variant="blue">FOUNDING PAPER</Badge>
+const ReferenceCasePage = () => {
+  return (
+    <div style={{ padding: "80px 60px 100px" }}>
+      <ArticleLayout>
+        <Badge variant="accent">REFERENCE CASE</Badge>
         <h1 style={{
           fontFamily: sans, fontSize: 36, fontWeight: 800,
           letterSpacing: "-0.025em", lineHeight: 1.15, margin: "16px 0 12px",
         }}>
-          The Three-Pillar Model:<br />A Framework for Sovereign AI Transformation
+          MP Capital Markets: Sovereign AI Enablement — Validated in Practice
         </h1>
-        <p style={{ fontSize: 17, color: C.accent, margin: "0 0 8px", fontStyle: "italic" }}>
-          Prof. Dr. Tobias Blask · SVRN ALPHA Research · January 2026
-        </p>
-        <ReadingTime minutes={25} />
-      </div>
-
-      <div style={{
-        padding: 32, borderRadius: 8, background: C.card,
-        border: `1px solid ${C.border}`, marginBottom: 40,
-      }}>
-        <div style={{ fontFamily: mono, fontSize: 10, color: C.textDim, letterSpacing: "0.15em", marginBottom: 16 }}>ABSTRACT</div>
-        <p style={{ fontSize: 15, color: C.textSoft, lineHeight: 1.8, margin: "0 0 16px" }}>
-          Artificial intelligence adoption in European investment banking has followed a technology-first pattern that produces consistently poor outcomes. Analysis of over fifty transformation initiatives reveals organizational factors account for 70% of success.
-        </p>
-        <p style={{ fontSize: 15, color: C.textSoft, lineHeight: 1.8, margin: 0 }}>
-          This paper introduces the Three-Pillar Model — a sequential framework that addresses Education, Process, and Technology in that order. Grounded in the Creator-to-Curator hypothesis, it is the blueprint for sovereign transformation.
-        </p>
-      </div>
-
-      <div style={{
-        padding: 40, borderRadius: 8, textAlign: "center",
-        background: `linear-gradient(135deg, ${C.primaryDim}10, ${C.accentDim}10)`,
-        border: `1px solid ${C.border}`,
-      }}>
-        <h2 style={{ fontFamily: sans, fontSize: 24, fontWeight: 700, margin: "0 0 8px" }}>
-          Download the Founding Paper
-        </h2>
-        <p style={{ fontSize: 14, color: C.textMuted, marginBottom: 24, maxWidth: 440, marginLeft: "auto", marginRight: "auto" }}>
-          44 pages of research, methodology, and evidence.
-        </p>
-        <div style={{
-          display: "inline-block", padding: "14px 36px", borderRadius: 4,
-          background: C.primary, color: C.black,
-          fontFamily: mono, fontSize: 13, fontWeight: 700,
-          cursor: "pointer",
-        }}>{`> DOWNLOAD_PDF`}</div>
-      </div>
-    </ArticleLayout>
-  </div>
-);
-
-// ─── PRESS PAGE ───
-const PressPage = () => (
-  <div style={{ padding: "80px 60px 100px" }}>
-    <ArticleLayout maxWidth={720}>
-      <Badge variant="cyan">PRESS RELEASE</Badge>
-
-      <h1 style={{
-        fontFamily: sans, fontSize: 30, fontWeight: 800,
-        letterSpacing: "-0.02em", lineHeight: 1.2, margin: "16px 0 16px",
-      }}>
-        SVRN ALPHA Launches Sovereign AI Enablement Platform for European Investment Banking
-      </h1>
-
-      <p style={{ fontSize: 15, fontWeight: 600, color: C.textSoft, margin: "0 0 8px" }}>
-        Hamburg-based firm introduces three-pillar framework backed by academic research and proven deployment
-      </p>
-
-      <div style={{
-        fontFamily: mono, fontSize: 11, color: C.textDim,
-        padding: "12px 0", borderBottom: `1px solid ${C.border}`, marginBottom: 28,
-      }}>
-        HAMBURG, GERMANY — January 15, 2026
-      </div>
-
-      <div style={{ fontSize: 15, color: C.textSoft, lineHeight: 1.8 }}>
-        <p style={{ margin: "0 0 16px" }}>
-          <strong style={{ color: C.text }}>SVRN ALPHA</strong>, a sovereign AI enablement company for investment banking, today announced its launch with a mission to transform how European financial institutions adopt and deploy artificial intelligence. Backed by MP Capital Markets (Münchmeier Petersen Capital Markets) and led by founder Prof. Dr. Tobias Blask, the company offers a research-grounded framework that addresses the organizational, procedural, and technical dimensions of AI transformation.
+        <p style={{ fontSize: 18, color: C.accent, margin: "0 0 40px", fontStyle: "italic" }}>
+          How a sovereign AI deployment approach was validated at a European investment bank backed by Münchmeier Petersen.
         </p>
 
-        <p style={{ margin: "0 0 16px" }}>
-          The company's approach is built on the Three-Pillar Model, a sequential framework developed through academic research and validated through deployment at a European investment bank. The model addresses what SVRN ALPHA identifies as the primary cause of AI initiative failure: the industry's tendency to invest heavily in technology while underinvesting in the organizational change required for adoption.
-        </p>
-
-        <p style={{ margin: "0 0 16px" }}>
-          "Approximately 70% of AI transformation success depends on organizational factors — how people think about AI, how workflows restructure, how leadership commits to the change," said Prof. Dr. Tobias Blask, Founder and Chairman of SVRN ALPHA. "Yet most banks allocate 90% of their AI budget to technology. We built SVRN ALPHA to correct that inversion."
-        </p>
-
-        <p style={{ margin: "0 0 16px" }}>
-          SVRN ALPHA's initial deployment demonstrated clear results: a significant capacity reallocation from routine work to strategic analysis among research analysts, measurable alpha generation uplift, and full compliance with EU AI Act, MiFID II, MAR, and GDPR requirements.
-        </p>
-
-        <p style={{ margin: "0 0 16px" }}>
-          Central to the company's offering is its commitment to data sovereignty. All AI infrastructure deployed by SVRN ALPHA operates on private cloud within EU jurisdiction, with zero vendor lock-in, full audit trails, and Human-in-the-Loop architecture at every critical decision point.
-        </p>
-
-        <p style={{ margin: "0 0 16px" }}>
-          "Every bank has access to the same AI models," Prof. Dr. Blask continued. "The competitive edge — the alpha — comes from proprietary knowledge and the sovereign infrastructure that protects it. That's what SVRN ALPHA enables."
-        </p>
-
-        <p style={{ margin: "0 0 16px" }}>
-          The company is headquartered in Hamburg, Germany, and serves investment banks across the DACH region, Nordics, and United Kingdom.
-        </p>
-      </div>
-
-      {/* Boilerplate */}
-      <div style={{
-        padding: 24, borderRadius: 12, background: C.card,
-        border: `1px solid ${C.border}`, marginTop: 32, marginBottom: 24,
-      }}>
-        <div style={{ fontFamily: mono, fontSize: 10, color: C.textDim, letterSpacing: "0.15em", marginBottom: 10 }}>ABOUT SVRN ALPHA</div>
-        <p style={{ fontSize: 13, color: C.textMuted, lineHeight: 1.7, margin: 0 }}>
-          SVRN ALPHA is a sovereign AI enablement company for investment banking, headquartered in Hamburg, Germany. Founded by Prof. Dr. Tobias Blask and backed by MP Capital Markets, SVRN ALPHA transforms how financial institutions adopt AI through the Three-Pillar Model — a research-grounded framework addressing Education, Process, and Technology in that sequence. The company deploys sovereign AI infrastructure with full EU regulatory compliance, zero vendor lock-in, and Human-in-the-Loop architecture. Learn more at svrn-alpha.ai.
-        </p>
-      </div>
-
-      {/* Contact */}
-      <div style={{
-        padding: 20, borderRadius: 8, background: C.card, border: `1px solid ${C.border}`,
-      }}>
-        <div style={{ fontFamily: mono, fontSize: 10, color: C.textDim, letterSpacing: "0.15em", marginBottom: 10 }}>MEDIA CONTACT</div>
-        <div style={{ fontSize: 13, color: C.textSoft, lineHeight: 1.8 }}>
-          <div><strong style={{ color: C.text }}>SVRN ALPHA Communications</strong></div>
-          <div>press@svrn-alpha.ai</div>
-          <div>Hamburg, Germany</div>
-          <div style={{ fontFamily: mono, fontSize: 11, color: C.primary, marginTop: 8 }}>svrn-alpha.ai</div>
-        </div>
-      </div>
-    </ArticleLayout>
-  </div>
-);
-
-// ─── ABOUT PAGE ───
-const AboutPage = () => (
-  <div style={{ padding: "80px 60px 100px" }}>
-    <ArticleLayout maxWidth={780}>
-      <Badge>ABOUT</Badge>
-      <h1 style={{
-        fontFamily: sans, fontSize: 36, fontWeight: 800,
-        letterSpacing: "-0.025em", lineHeight: 1.15, margin: "16px 0 12px",
-      }}>
-        Founded on Academic Rigor.<br />Engineered for Reality.
-      </h1>
-
-      <div style={{
-        padding: 32, borderRadius: 8, background: C.card,
-        border: `1px solid ${C.border}`, marginBottom: 48,
-        display: "grid", gridTemplateColumns: "auto 1fr", gap: 28,
-      }}>
-        <div style={{
-          width: 100, height: 100, borderRadius: 4,
-          background: `linear-gradient(135deg, ${C.primary}20, ${C.accent}20)`,
-          display: "flex", alignItems: "center", justifyContent: "center",
-          border: `1px solid ${C.border}`,
-        }}>
-          <span style={{ fontFamily: mono, fontSize: 32, fontWeight: 800, color: C.primary }}>TB</span>
-        </div>
-        <div>
-          <h3 style={{ fontFamily: sans, fontSize: 22, fontWeight: 700, margin: "0 0 4px" }}>Prof. Dr. Tobias Blask</h3>
-          <div style={{ fontFamily: mono, fontSize: 12, color: C.accent, letterSpacing: "0.05em", marginBottom: 16 }}>
-            Founder & Chairman | Professor
-          </div>
-          <p style={{ fontSize: 14, color: C.textSoft, lineHeight: 1.7, margin: "0 0 12px" }}>
-            Academic researcher turned practitioner. Years of published research on digital transformation in financial institutions, combined with hands-on implementation experience inside European investment banks.
+        <div style={{ margin: "0 0 40px" }}>
+          <h2 style={h2Style}>Context</h2>
+          <p style={pStyle}>
+            MP Capital Markets (MPCM), a Hamburg-based investment bank backed by Münchmeier Petersen, is SVRN ALPHA's founding investor and backer. The SVRN ALPHA framework was developed and validated in close collaboration with MPCM — making them both the first reference and the institutional proof that the three-pillar approach works in practice.
+          </p>
+          <p style={pStyle}>
+            MPCM operates a research team of experienced analysts whose deep sector expertise is their primary differentiator. Like most investment banks, their analysts were spending the majority of their working hours on routine tasks: data extraction from financial terminals, report formatting to house style, model updates with new quarterly figures, cross-referencing regulatory filings. Only a fraction of their capacity went toward the strategic analysis, client advisory, and insight generation that actually drives revenue.
+          </p>
+          <p style={pStyle}>
+            Previous attempts to address this had followed the standard playbook: license an AI platform, hire a data scientist, build some automations. The tools worked. Adoption didn't. Multiple initiative cycles had stalled, each time because the organizational side — the people, the processes, the mindset — hadn't been addressed.
           </p>
         </div>
-      </div>
 
-      <div style={{ marginBottom: 48 }}>
-        <h2 style={{ fontFamily: mono, fontSize: 20, fontWeight: 700, margin: "0 0 20px", color: C.text }}>// CORE PRINCIPLES</h2>
-        {[
-          { title: "Education Before Technology", desc: "The order is the methodology. We never deploy tools until the mindset shifts." },
-          { title: "Sovereignty Is Non-Negotiable", desc: "Your data stays yours. Your infrastructure answers to you. No vendor lock-in." },
-          { title: "Human-in-the-Loop Always", desc: "AI assists. Humans decide. This is architecture, not a feature toggle." },
-        ].map((p, i) => (
-          <div key={i} style={{ marginBottom: 24 }}>
-            <h3 style={{ fontFamily: sans, fontSize: 16, fontWeight: 700, margin: "0 0 6px", color: C.primary }}>{p.title}</h3>
-            <p style={{ fontSize: 14, color: C.textMuted, margin: 0, lineHeight: 1.6 }}>{p.desc}</p>
+        <div style={{ margin: "0 0 40px" }}>
+          <h2 style={h2Style}>The Approach: Three Pillars, Deployed Sequentially</h2>
+
+          <h3 style={h3Style}>Phase 1 — Education</h3>
+          <ul style={ulStyle}>
+            <li style={liStyle}>Structured AI fluency workshops for all levels — from junior analysts to the board</li>
+            <li style={liStyle}>Creator-to-Curator mindset sessions: redefining the analyst role around judgment and curation rather than manual construction</li>
+            <li style={liStyle}>Change champion identification: internal advocates across departments became the catalyst for adoption</li>
+            <li style={liStyle}>Leadership alignment: the Managing Director personally sponsored and attended every session</li>
+          </ul>
+
+          <h3 style={h3Style}>Phase 2 — Processes</h3>
+          <ul style={ulStyle}>
+            <li style={liStyle}>Granular workflow mapping: every analyst task catalogued with time allocation data</li>
+            <li style={liStyle}>Identification of the routine tasks consuming the majority of analyst capacity</li>
+            <li style={liStyle}>Capacity reallocation blueprint: redesigned workflows that route routine tasks to AI pipelines while directing analyst time to strategic work</li>
+            <li style={liStyle}>Human-in-the-Loop checkpoint design: defining exactly where human judgment is required in every workflow</li>
+          </ul>
+
+          <h3 style={h3Style}>Phase 3 — Technology</h3>
+          <ul style={ulStyle}>
+            <li style={liStyle}>Sovereign infrastructure deployment: model-agnostic, EU-hosted, zero external data transfer</li>
+            <li style={liStyle}>AI pipeline activation for data extraction, report formatting, and model population</li>
+            <li style={liStyle}>Full compliance verification: EU AI Act, MiFID II, MAR, GDPR — compliant by architecture, not by retrofit</li>
+            <li style={liStyle}>Audit trail implementation: every AI-assisted output fully traceable and explainable</li>
+          </ul>
+        </div>
+
+        <div style={{ margin: "0 0 60px" }}>
+          <h2 style={h2Style}>Validated Results</h2>
+          <p style={pStyle}>The framework has been validated at MPCM and the results speak for themselves:</p>
+          <ul style={ulStyle}>
+            <li style={liStyle}><b>Capacity Flip achieved:</b> The analyst capacity ratio inverted from majority-routine to majority-strategic — freeing experienced professionals to focus on the work that generates alpha</li>
+            <li style={liStyle}><b>Measurable alpha generation:</b> The reallocation of analyst time to strategic work has produced demonstrable outperformance</li>
+            <li style={liStyle}><b>Zero data leakage:</b> Sovereign infrastructure ensures complete data control</li>
+            <li style={liStyle}><b>Zero vendor lock-in:</b> Model-agnostic architecture allows switching between AI providers per use case</li>
+            <li style={liStyle}><b>Full EU compliance:</b> AI Act, MiFID II, MAR, GDPR — compliant by design</li>
+            <li style={liStyle}><b>Human-in-the-Loop enforced:</b> Every critical decision point includes a human checkpoint</li>
+            <li style={liStyle}><b>Operational and compounding:</b> The system is live, running, and the returns compound as institutional knowledge feeds back into the sovereign AI infrastructure</li>
+          </ul>
+          <p style={pStyle}>
+            The results didn't come from a superior algorithm. They came from freeing highly skilled analysts to do the work they were hired to do. When the majority of your best people's time shifts from data gathering to strategic analysis, the compounding effect is significant — and it accelerates over time as institutional knowledge feeds back into the sovereign AI infrastructure.
+          </p>
+        </div>
+
+        <div style={{
+          padding: 32, borderLeft: `4px solid ${C.accent}`, background: C.card,
+          fontFamily: mono, margin: "0 0 60px"
+        }}>
+          <p style={{ fontSize: 16, color: C.text, lineHeight: 1.6, margin: "0 0 16px", fontStyle: "italic" }}>
+            "SVRN ALPHA didn't just give us tools. They gave us a sovereign capability. Our analysts think differently, our workflows are fundamentally restructured, and our proprietary knowledge compounds in infrastructure we own. That's not a vendor relationship — it's an institutional advantage."
+          </p>
+          <div style={{ fontSize: 13, fontWeight: 700, color: C.accent }}>
+            — Senior Managing Director, MP Capital Markets
           </div>
-        ))}
-      </div>
-    </ArticleLayout>
-  </div>
-);
+        </div>
+
+        {/* CTA */}
+        <div style={{ textAlign: "center", padding: "40px 0", borderTop: `1px solid ${C.border}` }}>
+          <h3 style={{ fontFamily: sans, fontSize: 22, fontWeight: 700, margin: "0 0 8px" }}>Your transformation starts with a conversation.</h3>
+          <p style={{ fontSize: 13, color: C.textMuted, marginBottom: 20 }}>No pitch deck theater. Just a confidential briefing with our team in Hamburg.</p>
+          <div style={{
+            display: "inline-block", padding: "12px 32px", borderRadius: 8,
+            background: C.primary, color: C.black, fontFamily: mono, fontSize: 12, fontWeight: 700,
+            cursor: "pointer"
+          }}>{`> INITIALIZE_BRIEFING`}</div>
+        </div>
+
+      </ArticleLayout>
+    </div>
+  );
+};
+
+// Styles for ReferencePage
+const h2Style = { fontFamily: sans, fontSize: 22, fontWeight: 700, color: C.text, margin: "0 0 16px" };
+const h3Style = { fontFamily: mono, fontSize: 14, fontWeight: 700, color: C.primary, margin: "24px 0 12px", textTransform: "uppercase" };
+const pStyle = { fontSize: 16, color: C.textSoft, lineHeight: 1.8, margin: "0 0 16px" };
+const ulStyle = { margin: "0 0 16px", paddingLeft: 20 };
+const liStyle = { fontSize: 16, color: C.textSoft, lineHeight: 1.6, marginBottom: 8 };
+
+const WhitepaperPage = () => {
+  return (
+    <div style={{ padding: "80px 60px 100px" }}>
+      <ArticleLayout>
+        <Badge variant="primary">FOUNDING PAPER</Badge>
+        <h1 style={{
+          fontFamily: sans, fontSize: 36, fontWeight: 800,
+          letterSpacing: "-0.025em", lineHeight: 1.15, margin: "16px 0 12px",
+        }}>
+          The Three-Pillar Model: A Framework for Sovereign AI Transformation in Investment Banking
+        </h1>
+        <p style={{ fontSize: 16, color: C.textMuted, margin: "0 0 40px", fontFamily: mono }}>
+          Prof. Dr. Tobias Blask · SVRN ALPHA Research · January 2026<br />
+          <span style={{ color: C.textDim }}>25 min read</span>
+        </p>
+
+        <div style={{ margin: "0 0 48px" }}>
+          <h2 style={h2Style}>Abstract</h2>
+          <p style={pStyle}>
+            Artificial intelligence adoption in European investment banking has followed a technology-first pattern that produces consistently poor outcomes. Analysis of over fifty transformation initiatives across DACH, Nordic, and UK institutions reveals a critical insight: organizational factors account for approximately 70% of implementation success, while technology accounts for 30%. Yet budget allocation typically inverts this ratio.
+          </p>
+          <p style={pStyle}>
+            This paper introduces the Three-Pillar Model — a sequential framework that addresses Education, Process, and Technology in that order. The model is grounded in the Creator-to-Curator hypothesis: that the primary value shift in AI-enabled banking is not automation of tasks but the cognitive reorientation of professionals from content creation to insight curation.
+          </p>
+          <p style={pStyle}>
+            The framework has been validated in practice at a European investment bank, producing measurable results: a capacity reallocation from majority-routine work to majority-strategic analysis, demonstrable alpha generation above benchmark, and full regulatory compliance including EU AI Act readiness. The paper concludes with implications for data sovereignty as a competitive moat and the role of Human-in-the-Loop architecture as a non-negotiable design principle.
+          </p>
+        </div>
+
+        <div style={{
+          padding: 32, background: C.card, borderRadius: 8, border: `1px solid ${C.border}`,
+          marginBottom: 60
+        }}>
+          <h2 style={{ ...h2Style, marginBottom: 24 }}>Table of Contents</h2>
+          <div style={{ fontFamily: mono, fontSize: 14, color: C.textSoft, display: "flex", flexDirection: "column", gap: 12 }}>
+            <div>1. Introduction: The AI Transformation Paradox — p. 3</div>
+            <div>2. Literature Review: Why Transformation Fails — p. 6</div>
+            <div>3. The Three-Pillar Model — p. 12</div>
+            <div style={{ paddingLeft: 20, color: C.textMuted }}>3.1 Pillar 1: Education and the Creator-to-Curator Shift — p. 14</div>
+            <div style={{ paddingLeft: 20, color: C.textMuted }}>3.2 Pillar 2: Process Redesign and the Capacity Flip — p. 19</div>
+            <div style={{ paddingLeft: 20, color: C.textMuted }}>3.3 Pillar 3: Sovereign Technology Architecture — p. 24</div>
+            <div>4. Data Sovereignty as Competitive Moat — p. 29</div>
+            <div>5. Human-in-the-Loop: Architecture, Not Feature — p. 33</div>
+            <div>6. Case Application: European Investment Bank — p. 36</div>
+            <div>7. Implications and Future Research — p. 41</div>
+            <div style={{ color: C.textDim }}>- References — p. 44</div>
+          </div>
+        </div>
+
+        {/* Download CTA */}
+        <div style={{ textAlign: "center", padding: "40px 0", borderTop: `1px solid ${C.border}` }}>
+          <h3 style={{ fontFamily: sans, fontSize: 22, fontWeight: 700, margin: "0 0 8px" }}>Download the Founding Paper</h3>
+          <p style={{ fontSize: 13, color: C.textMuted, marginBottom: 20, maxWidth: 500, margin: "0 auto 24px" }}>
+            44 pages of research, methodology, and evidence. The intellectual foundation behind the SVRN ALPHA framework.
+          </p>
+          <div style={{
+            display: "inline-block", padding: "12px 32px", borderRadius: 8,
+            background: C.primary, color: C.black, fontFamily: mono, fontSize: 12, fontWeight: 700,
+            cursor: "pointer", marginBottom: 16
+          }}>{`> DOWNLOAD_PAPER`}</div>
+          <div style={{ fontFamily: mono, fontSize: 11, color: C.textDim }}>
+            PDF · 44 pages · No registration required
+          </div>
+        </div>
+
+      </ArticleLayout>
+    </div>
+  );
+};
+
+const PressPage = () => {
+  return (
+    <div style={{ padding: "80px 60px 100px" }}>
+      <ArticleLayout>
+        <Badge variant="primary">PRESS RELEASE</Badge>
+        <h1 style={{
+          fontFamily: sans, fontSize: 36, fontWeight: 800,
+          letterSpacing: "-0.025em", lineHeight: 1.15, margin: "16px 0 12px",
+        }}>
+          SVRN ALPHA Launches Sovereign AI Enablement Platform for European Investment Banking
+        </h1>
+        <p style={{ fontSize: 18, color: C.text, margin: "0 0 40px", fontWeight: 600 }}>
+          Hamburg-based firm introduces three-pillar framework backed by academic research and validated deployment
+        </p>
+
+        <div style={{ margin: "0 0 40px", fontFamily: sans, fontSize: 16, color: C.textSoft, lineHeight: 1.6 }}>
+          <p style={{ margin: "0 0 16px" }}>
+            <span style={{ fontWeight: 700, color: C.text }}>HAMBURG, GERMANY — January 15, 2026</span>
+          </p>
+          <p style={{ margin: "0 0 16px" }}>
+            <b>SVRN ALPHA</b>, a sovereign AI enablement company for investment banking, today announced its launch with a mission to transform how European financial institutions adopt and deploy artificial intelligence. Backed by MP Capital Markets (Münchmeier Petersen Capital Markets) and led by Prof. Dr. Tobias Blask — Professor, Founder & Chairman — the company offers a research-grounded framework that addresses the organizational, procedural, and technical dimensions of AI transformation.
+          </p>
+          <p style={{ margin: "0 0 16px" }}>
+            The company's approach is built on the Three-Pillar Model, a sequential framework developed through academic research and validated through deployment at a European investment bank. The model addresses what SVRN ALPHA identifies as the primary cause of AI initiative failure: the industry's tendency to invest heavily in technology while underinvesting in the organizational change required for adoption.
+          </p>
+          <p style={{ margin: "0 0 16px" }}>
+            "Approximately 70% of AI transformation success depends on organizational factors — how people think about AI, how workflows restructure, how leadership commits to the change," said Prof. Dr. Tobias Blask, Professor, Founder & Chairman of SVRN ALPHA. "Yet most banks allocate 90% of their AI budget to technology. We built SVRN ALPHA to correct that inversion."
+          </p>
+          <p style={{ margin: "0 0 16px" }}>
+            SVRN ALPHA's framework has been validated in practice at MP Capital Markets, producing measurable results: a capacity reallocation from majority-routine work to majority-strategic analysis among research analysts, demonstrable alpha generation above benchmark, and full compliance with EU AI Act, MiFID II, MAR, and GDPR requirements.
+          </p>
+          <p style={{ margin: "0 0 16px" }}>
+            Central to the company's offering is its model-agnostic, sovereign architecture. Rather than locking institutions into a single AI provider, SVRN ALPHA builds infrastructure that evaluates per use case — whether that's a US closed-source model, a Chinese open-source model on the bank's own hardware, or a European model for regulatory-sensitive workflows. The architecture supports zero vendor lock-in, full audit trails, and Human-in-the-Loop checkpoints at every critical decision point.
+          </p>
+          <p style={{ margin: "0 0 16px" }}>
+            "The technology landscape changes every six months — new models, new regulations, new geopolitical realities," Prof. Dr. Blask continued. "Banks need an architecture that adapts, not one that locks them in. Sovereignty means the institution decides: which model, which infrastructure, which architecture. Always flexible. Always independent. That's the only future-proof strategy."
+          </p>
+          <p style={{ margin: "0 0 16px" }}>
+            The company is headquartered in Hamburg, Germany, and serves investment banks across the DACH region, Nordics, and United Kingdom.
+          </p>
+        </div>
+
+        <div style={{ margin: "0 0 40px", paddingTop: 40, borderTop: `1px solid ${C.border}` }}>
+          <h3 style={{ fontFamily: sans, fontSize: 18, fontWeight: 700, margin: "0 0 16px" }}>About SVRN ALPHA</h3>
+          <p style={{ fontSize: 14, color: C.textMuted, lineHeight: 1.6 }}>
+            SVRN ALPHA is a sovereign AI enablement company for investment banking, headquartered in Hamburg, Germany. Founded by Prof. Dr. Tobias Blask (Professor, Founder & Chairman) and backed by MP Capital Markets, SVRN ALPHA transforms how financial institutions adopt AI through the Three-Pillar Model — a research-grounded framework addressing Education, Process, and Technology in that sequence. The company deploys model-agnostic, sovereign infrastructure that gives institutions full independence over their AI stack — evaluating US, Chinese, and European models per use case with zero vendor lock-in and Human-in-the-Loop architecture. Learn more at svrn-alpha.ai.
+          </p>
+        </div>
+
+        <div style={{ background: C.card, padding: 24, borderRadius: 8 }}>
+          <h3 style={{ fontFamily: mono, fontSize: 14, fontWeight: 700, margin: "0 0 12px", color: C.textDim, textTransform: "uppercase" }}>Media Contact</h3>
+          <div style={{ fontSize: 14, fontWeight: 600, color: C.text }}>SVRN ALPHA Communications</div>
+          <div style={{ fontSize: 14, color: C.primary, marginBottom: 8 }}>press@svrn-alpha.ai</div>
+          <div style={{ fontSize: 14, color: C.textMuted }}>Hamburg, Germany<br />svrn-alpha.ai</div>
+        </div>
+
+      </ArticleLayout>
+    </div>
+  );
+};
+
+const AboutPage = () => {
+  return (
+    <div style={{ padding: "80px 60px 100px" }}>
+      <ArticleLayout>
+        <Badge variant="accent">ABOUT</Badge>
+        <h1 style={{
+          fontFamily: sans, fontSize: 36, fontWeight: 800,
+          letterSpacing: "-0.025em", lineHeight: 1.15, margin: "16px 0 12px",
+        }}>
+          Founded on Academic Rigor.<br />Engineered for Reality.
+        </h1>
+        <p style={{ fontSize: 18, color: C.textSoft, margin: "0 0 60px", lineHeight: 1.6 }}>
+          SVRN ALPHA exists because the gap between what research says about AI transformation and what the industry does about it is too wide to accept.
+        </p>
+
+        <div style={{ marginBottom: 60 }}>
+          <h2 style={h2Style}>The Origin</h2>
+          <p style={pStyle}>
+            For over a decade, Prof. Dr. Tobias Blask researched digital transformation in financial institutions. The patterns were consistent and frustrating: banks invested billions in AI technology, hired data scientists, licensed platforms — and achieved almost nothing. The failure rate hovered around 70%, year after year.
+          </p>
+          <p style={pStyle}>
+            The academic literature was unambiguous: the primary determinant of transformation success wasn't technological capability. It was organizational readiness — how people thought about AI, how workflows adapted, how leadership committed to the change. Yet the industry continued to allocate 90% of its AI budget to technology and 10% to the organizational factors that actually determined success.
+          </p>
+          <p style={pStyle}>
+            In 2025, Prof. Dr. Blask stopped writing papers about the problem and founded SVRN ALPHA to fix it. The company bridges the gap between what research proves and what practice requires — bringing academic rigor to the messy, political, deeply human work of organizational transformation.
+          </p>
+        </div>
+
+        <div style={{ marginBottom: 60, display: "flex", gap: 32, alignItems: "flex-start" }}>
+          <div style={{
+            width: 80, height: 80, borderRadius: "50%",
+            background: `linear-gradient(135deg, ${C.primary}, ${C.primaryDim})`,
+            display: "flex", alignItems: "center", justifyContent: "center",
+            fontFamily: mono, fontWeight: 800, fontSize: 24, color: C.black,
+            flexShrink: 0
+          }}>TB</div>
+          <div>
+            <h2 style={{ ...h2Style, marginBottom: 8 }}>Founder</h2>
+            <div style={{ fontFamily: sans, fontSize: 18, fontWeight: 700, color: C.text }}>Prof. Dr. Tobias Blask</div>
+            <div style={{ fontFamily: mono, fontSize: 13, color: C.accent, marginBottom: 16 }}>Professor, Founder & Chairman</div>
+            <p style={pStyle}>
+              Academic researcher turned practitioner. Over a decade of published research on digital transformation in financial institutions, combined with hands-on implementation experience inside European investment banks.
+            </p>
+            <p style={pStyle}>
+              The SVRN ALPHA framework was built from real transformation work — not from slide decks. The industry needs a partner who understands both the science of AI and the organizational politics of making it stick.
+            </p>
+          </div>
+        </div>
+
+        <div style={{ marginBottom: 60 }}>
+          <h2 style={h2Style}>Principles</h2>
+          {[
+            { t: "01 — Education Before Technology", d: "We never deploy technology until the organizational readiness is in place. The order is the methodology." },
+            { t: "02 — Sovereign Means You Decide", d: "Model-agnostic architecture. Per use case, we evaluate US closed-source, Chinese open-source, or European models. You choose. You switch. You're never locked in. EU compliance is a byproduct, not the pitch." },
+            { t: "03 — Human-in-the-Loop Always", d: "AI assists. Humans decide. Every critical juncture has a human checkpoint. This is architecture, not a feature toggle." },
+            { t: "04 — Evidence Over Claims", d: "We show results, not adjectives. Capacity flip. Measurable alpha. Validated framework. If we can't measure it, we don't claim it." },
+            { t: "05 — Compliance by Design", d: "EU AI Act, MiFID II, MAR, GDPR — built into the architecture from day one. Not retrofitted after deployment." },
+          ].map((item, i) => (
+            <div key={i} style={{ marginBottom: 24 }}>
+              <div style={{ fontFamily: mono, fontSize: 14, fontWeight: 700, color: C.primary, marginBottom: 8 }}>{item.t}</div>
+              <div style={{ fontSize: 16, color: C.textSoft, lineHeight: 1.6 }}>{item.d}</div>
+            </div>
+          ))}
+        </div>
+
+        <div style={{ paddingTop: 40, borderTop: `1px solid ${C.border}` }}>
+          <h2 style={h2Style}>Backed By</h2>
+          <div style={{
+            padding: 24, background: C.card, borderRadius: 8, border: `1px solid ${C.border}`,
+            display: "flex", gap: 24, alignItems: "center"
+          }}>
+            <div style={{
+              width: 48, height: 48, background: C.text, borderRadius: 4,
+              display: "flex", alignItems: "center", justifyContent: "center",
+              fontWeight: 800, color: C.black
+            }}>MP</div>
+            <div>
+              <div style={{ fontSize: 16, fontWeight: 700, color: C.text }}>MP Capital Markets</div>
+              <div style={{ fontSize: 13, color: C.textMuted, fontFamily: mono, marginBottom: 8 }}>Münchmeier Petersen Capital Markets · Hamburg, Germany</div>
+              <div style={{ fontSize: 14, color: C.textSoft, lineHeight: 1.5 }}>
+                MPCM is SVRN ALPHA's founding investor and backer — and the first institution where the three-pillar framework was validated in practice. The approach works extremely well there, serving as both proof of concept and ongoing reference.
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </ArticleLayout>
+    </div>
+  );
+};
+
 
 // ═══════════════════════════════════════════════════════
 // MAIN APP ROUTER
@@ -972,7 +942,7 @@ export default function SVRNAlpha() {
   const pages = {
     home: <HomePage onNavigate={navigate} />,
     blog: <BlogPage onNavigate={navigate} />,
-    "case-study": <CaseStudyPage />,
+    "reference-case": <ReferenceCasePage />,
     whitepaper: <WhitepaperPage />,
     press: <PressPage />,
     about: <AboutPage />,
@@ -982,6 +952,8 @@ export default function SVRNAlpha() {
     <div style={{ minHeight: "100vh", background: C.black, color: C.text, fontFamily: sans }}>
       <Nav current={page} onNavigate={navigate} />
       {pages[page] || pages.home}
+
+      {/* FOOTER */}
       <footer style={{
         padding: "40px 60px", borderTop: `1px solid ${C.border}`,
         display: "flex", justifyContent: "space-between", alignItems: "center",
@@ -995,7 +967,7 @@ export default function SVRNAlpha() {
             fontWeight: 800, fontSize: 10, color: C.black,
           }}>_</div>
           <span style={{ fontWeight: 700, color: C.textSoft }}>
-            SVRN_ALPHA <span style={{ opacity: 0.5 }}>v2.1.0</span>
+            SVRN_ALPHA
           </span>
         </div>
         <div>
