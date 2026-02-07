@@ -379,8 +379,8 @@ const HomePage = ({ onNavigate }) => {
             lineHeight: 1.05, letterSpacing: "-0.04em",
             margin: "0 auto 32px", color: C.text, maxWidth: 960
           }}>
-            Intelligence for the <br />
-            <span style={{ color: C.primary }}>Sovereign Era</span>
+            Stop Buying Tools.<br />
+            <span style={{ color: C.textMuted }}>Start Building</span> <span style={{ color: C.primary }}>Moats.</span>
           </h1>
 
           <p style={{
