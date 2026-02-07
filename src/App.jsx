@@ -319,60 +319,114 @@ const Nav = () => {
   const items = [
     { id: "/", label: "HOME" },
     { id: "/research", label: "RESEARCH" },
-    { id: "/reference-case", label: "REF_CASE" }, // Shortened for mobile
+    { id: "/reference-case", label: isMobile ? "REF_CASE" : "REFERENCE_CASE" },
     { id: "/whitepaper", label: "WHITEPAPER" },
     { id: "/press", label: "PRESS" },
     { id: "/about", label: "ABOUT" },
   ];
 
-  return (
-    <nav style={{
-      position: "fixed", top: 0, left: 0, right: 0, zIndex: 100,
-      padding: isMobile ? "16px 20px" : "20px 60px",
-      background: scrolled ? "rgba(5, 5, 5, 0.9)" : "transparent",
-      backdropFilter: scrolled ? "blur(10px)" : "none",
-      borderBottom: scrolled ? `1px solid ${C.border}` : "none",
-      display: "flex", justifyContent: "space-between", alignItems: "center",
-      transition: "all 0.3s"
-    }}>
-      <Link to="/" style={{ textDecoration: "none", display: "flex", alignItems: "center", gap: 12 }}>
-        <div style={{
-          width: 32, height: 32, borderRadius: 4,
-          background: C.primary,
-          display: "flex", alignItems: "center", justifyContent: "center",
-          fontFamily: mono, fontWeight: 800, fontSize: 18, color: C.black
-        }}>S</div>
-        <div style={{ fontFamily: sans, fontWeight: 800, fontSize: 18, letterSpacing: "-0.02em", color: C.text }}>
-          SVRN_ALPHA
-        </div>
-      </Link>
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
-      <div style={{ display: isMobile ? "none" : "flex", gap: 32 }}>
-        {items.map((item, i) => {
-          const isActive = location.pathname === item.id || (item.id !== "/" && location.pathname.startsWith(item.id));
-          return (
+  // Lock body scroll when menu is open
+  useEffect(() => {
+    if (mobileMenuOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
+  }, [mobileMenuOpen]);
+
+  return (
+    <>
+      <nav style={{
+        position: "fixed", top: 0, left: 0, right: 0, zIndex: 100,
+        padding: isMobile ? "16px 20px" : "20px 60px",
+        background: scrolled || mobileMenuOpen ? "rgba(5, 5, 5, 0.9)" : "transparent",
+        backdropFilter: scrolled || mobileMenuOpen ? "blur(10px)" : "none",
+        borderBottom: scrolled ? `1px solid ${C.border}` : "none",
+        display: "flex", justifyContent: "space-between", alignItems: "center",
+        transition: "all 0.3s"
+      }}>
+        <Link to="/" style={{ textDecoration: "none", display: "flex", alignItems: "center", gap: 12 }}>
+          <div style={{
+            width: 32, height: 32, borderRadius: 4,
+            background: C.primary,
+            display: "flex", alignItems: "center", justifyContent: "center",
+            fontFamily: mono, fontWeight: 800, fontSize: 18, color: C.black
+          }}>S</div>
+          <div style={{ fontFamily: sans, fontWeight: 800, fontSize: 18, letterSpacing: "-0.02em", color: C.text }}>
+            SVRN_ALPHA
+          </div>
+        </Link>
+
+        <div style={{ display: isMobile ? "none" : "flex", gap: 32 }}>
+          {items.map((item, i) => {
+            const isActive = location.pathname === item.id || (item.id !== "/" && location.pathname.startsWith(item.id));
+            return (
+              <Link
+                key={item.id}
+                to={item.id}
+                onMouseEnter={() => setHover(i)}
+                onMouseLeave={() => setHover(null)}
+                style={{
+                  fontSize: 13, fontWeight: 500, fontFamily: mono,
+                  color: isActive ? C.primary : hover === i ? C.text : C.textMuted,
+                  cursor: "pointer", transition: "color 0.2s",
+                  textDecoration: "none"
+                }}
+              >{item.label}</Link>
+            );
+          })}
+        </div>
+
+        {!isMobile && (
+          <div style={{ display: "flex", gap: 16, alignItems: "center" }}>
+            <TickerItem label="MODEL-AGNOSTIC" />
+            <div style={{ width: 1, height: 12, background: C.border }} />
+            <TickerItem label="EU COMPLIANCE" />
+          </div>
+        )}
+
+        {/* Mobile Hamburger */}
+        {isMobile && (
+          <div onClick={() => setMobileMenuOpen(!mobileMenuOpen)} style={{ cursor: "pointer", padding: 8 }}>
+            <div style={{ width: 24, height: 2, background: C.text, marginBottom: 6, transition: "0.3s", transform: mobileMenuOpen ? "rotate(45deg) translate(5px, 6px)" : "none" }}></div>
+            <div style={{ width: 24, height: 2, background: C.text, marginBottom: 6, opacity: mobileMenuOpen ? 0 : 1, transition: "0.3s" }}></div>
+            <div style={{ width: 24, height: 2, background: C.text, transition: "0.3s", transform: mobileMenuOpen ? "rotate(-45deg) translate(5px, -6px)" : "none" }}></div>
+          </div>
+        )}
+      </nav>
+
+      {/* Mobile Menu Overlay */}
+      {isMobile && mobileMenuOpen && (
+        <div style={{
+          position: "fixed", top: 0, left: 0, right: 0, bottom: 0,
+          background: C.black, zIndex: 90, paddingTop: 100, paddingLeft: 20, paddingRight: 20,
+          display: "flex", flexDirection: "column", gap: 32
+        }}>
+          {items.map((item) => (
             <Link
               key={item.id}
               to={item.id}
-              onMouseEnter={() => setHover(i)}
-              onMouseLeave={() => setHover(null)}
+              onClick={() => setMobileMenuOpen(false)}
               style={{
-                fontSize: 13, fontWeight: 500, fontFamily: mono,
-                color: isActive ? C.primary : hover === i ? C.text : C.textMuted,
-                cursor: "pointer", transition: "color 0.2s",
-                textDecoration: "none"
+                fontFamily: mono, fontSize: 24, fontWeight: 700,
+                color: location.pathname === item.id ? C.primary : C.text,
+                textDecoration: "none", borderBottom: `1px solid ${C.border}`, paddingBottom: 16
               }}
-            >{item.label}</Link>
-          );
-        })}
-      </div>
-
-      <div style={{ display: "flex", gap: 16, alignItems: "center" }}>
-        <TickerItem label="MODEL-AGNOSTIC" />
-        <div style={{ width: 1, height: 12, background: C.border }} />
-        <TickerItem label="EU COMPLIANCE" />
-      </div>
-    </nav>
+            >
+              {item.label}
+            </Link>
+          ))}
+          <div style={{ marginTop: "auto", paddingBottom: 40, fontFamily: mono, fontSize: 12, color: C.textDim }}>
+            <div>STATUS: OPERATIONAL</div>
+            <div>ARCHITECTURE: MODEL-AGNOSTIC</div>
+            <div>MOAT: SOVEREIGN</div>
+            <div>COMPLIANCE: EU ✓</div>
+          </div>
+        </div>
+      )}
+    </>
   );
 };
 
@@ -393,15 +447,17 @@ const HomePage = () => {
         {/* Grid overlay */}
         <div style={{
           position: "absolute", inset: 0, opacity: 0.1, pointerEvents: "none",
-          backgroundImage: `linear-gradient(${C.border} 1px, transparent 1px), linear-gradient(90deg, ${C.border} 1px, transparent 1px)`,
+          backgroundImage: `linear - gradient(${C.border} 1px, transparent 1px), linear - gradient(90deg, ${C.border} 1px, transparent 1px)`,
           backgroundSize: "40px 40px"
         }} />
 
         <div style={{ maxWidth: 1200, margin: "0 auto", position: "relative", zIndex: 1 }}>
-          <div style={{ display: "flex", gap: 12, justifyContent: "center", marginBottom: 32 }}>
-            <Badge>HIERARCHY: SOVEREIGN</Badge>
-            <Badge variant="accent">SECTOR: BANKING</Badge>
-          </div>
+          {!isMobile && (
+            <div style={{ display: "flex", gap: 12, justifyContent: "center", marginBottom: 32 }}>
+              <Badge>HIERARCHY: SOVEREIGN</Badge>
+              <Badge variant="accent">SECTOR: BANKING</Badge>
+            </div>
+          )}
 
           <h1 style={{
             fontFamily: mono, fontSize: isMobile ? 36 : 64, fontWeight: 800,
@@ -429,7 +485,7 @@ const HomePage = () => {
             }} onClick={() => navigate("/about")}>{`> EXECUTE_BRIEFING`}</div>
             <div style={{
               padding: "16px 40px", borderRadius: 4,
-              border: `1px solid ${C.border}`,
+              border: `1px solid ${C.border} `,
               background: C.card,
               color: C.textSoft, fontSize: 14, fontWeight: 500, fontFamily: mono, cursor: "pointer",
             }} onClick={() => navigate("/whitepaper")}>READ_WHITEPAPER</div>
@@ -440,7 +496,7 @@ const HomePage = () => {
       {/* ═══ SYSTEM LOG: LEADERSHIP & SUCCESS ═══ */}
       <section style={{
         padding: isMobile ? "60px 20px" : "80px 60px",
-        background: C.surface, borderTop: `1px solid ${C.border}`, borderBottom: `1px solid ${C.border}`,
+        background: C.surface, borderTop: `1px solid ${C.border} `, borderBottom: `1px solid ${C.border} `,
       }}>
         <div style={{ maxWidth: 1200, margin: "0 auto", display: "grid", gridTemplateColumns: isMobile ? "1fr" : "1fr 1.2fr", gap: isMobile ? 40 : 80, alignItems: "center" }}>
 
@@ -462,7 +518,7 @@ const HomePage = () => {
             <div style={{ display: "flex", alignItems: "center", gap: 20, cursor: "pointer" }} onClick={() => navigate("/about")}>
               <div style={{
                 width: 56, height: 56, borderRadius: 4,
-                background: C.card, border: `1px solid ${C.primaryDim}`,
+                background: C.card, border: `1px solid ${C.primaryDim} `,
                 display: "flex", alignItems: "center", justifyContent: "center",
                 fontSize: 20, fontWeight: 700, color: C.primary, fontFamily: mono
               }}>TB</div>
@@ -476,13 +532,13 @@ const HomePage = () => {
           {/* Terminal Window: Success Log */}
           <div style={{
             borderRadius: 8,
-            background: C.black, border: `1px solid ${C.border}`,
-            boxShadow: `0 20px 40px -10px rgba(0,0,0,0.5)`,
+            background: C.black, border: `1px solid ${C.border} `,
+            boxShadow: `0 20px 40px - 10px rgba(0, 0, 0, 0.5)`,
             overflow: "hidden",
           }} onClick={() => navigate("/reference-case")}>
             {/* Window Header */}
             <div style={{
-              background: C.card, borderBottom: `1px solid ${C.border}`,
+              background: C.card, borderBottom: `1px solid ${C.border} `,
               padding: "8px 16px", display: "flex", justifyContent: "space-between", alignItems: "center"
             }}>
               <div style={{ fontFamily: mono, fontSize: 11, color: C.textMuted }}>root@mpcm-server:~/logs</div>
@@ -520,7 +576,7 @@ const HomePage = () => {
                 Model Dependency: <span style={{ color: C.success }}>[AGNOSTIC]</span>
               </div>
 
-              <div style={{ marginTop: 20, padding: "12px", background: `${C.primary}10`, borderLeft: `2px solid ${C.primary}` }}>
+              <div style={{ marginTop: 20, padding: "12px", background: `${C.primary} 10`, borderLeft: `2px solid ${C.primary} ` }}>
                 "SVRN ALPHA didn't just give us tools. They gave us a sovereign capability."
               </div>
             </div>
@@ -569,7 +625,7 @@ const HomePage = () => {
                 style={{
                   padding: 32, borderRadius: 8,
                   background: hoverPillar === i ? C.card : "transparent",
-                  border: `1px solid ${hoverPillar === i ? C.primaryDim : C.border}`,
+                  border: `1px solid ${hoverPillar === i ? C.primaryDim : C.border} `,
                   transition: "all 0.3s", cursor: "default",
                   position: "relative"
                 }}
@@ -595,7 +651,7 @@ const HomePage = () => {
 
                 <div style={{
                   padding: "6px 10px", display: "inline-block", borderRadius: 4,
-                  background: C.black, border: `1px solid ${C.border}`,
+                  background: C.black, border: `1px solid ${C.border} `,
                   fontSize: 11, fontFamily: mono, color: C.textMuted
                 }}>{p.detail}</div>
               </div>
@@ -605,7 +661,7 @@ const HomePage = () => {
       </section >
 
       {/* ═══ DATA FORTRESS TERMINAL ═══ */}
-      < section style={{ padding: isMobile ? "60px 20px" : "100px 60px", background: C.card, borderTop: `1px solid ${C.border}` }}>
+      < section style={{ padding: isMobile ? "60px 20px" : "100px 60px", background: C.card, borderTop: `1px solid ${C.border} ` }}>
         <div style={{ maxWidth: 1000, margin: "0 auto" }}>
           <div style={{ textAlign: "center", marginBottom: 64 }}>
             <Badge variant="accent">SECURITY_PROTOCOL</Badge>
@@ -620,7 +676,7 @@ const HomePage = () => {
 
           <div style={{
             display: "grid", gridTemplateColumns: isMobile ? "1fr" : "1fr 1fr", gap: 1,
-            background: C.border, border: `1px solid ${C.border}`, borderRadius: 8, overflow: "hidden"
+            background: C.border, border: `1px solid ${C.border} `, borderRadius: 8, overflow: "hidden"
           }}>
             {[
               { label: "EU AI Act", status: "COMPLIANT" },
@@ -648,9 +704,9 @@ const HomePage = () => {
       {/* ═══ CTA ═══ */}
       < section style={{
         padding: isMobile ? "80px 20px" : "120px 60px",
-        borderTop: `1px solid ${C.border}`,
+        borderTop: `1px solid ${C.border} `,
         textAlign: "center",
-        background: `radial-gradient(circle at 50% 100%, ${C.primaryDim}10 0%, ${C.black} 50%)`
+        background: `radial - gradient(circle at 50 % 100 %, ${C.primaryDim}10 0 %, ${C.black} 50 %)`
       }}>
         <div style={{ maxWidth: 800, margin: "0 auto" }}>
           <h2 style={{
@@ -707,7 +763,7 @@ const BlogPage = () => {
             <span>{article.author}</span>
           </div>
 
-          <div style={{ borderTop: `1px solid ${C.border}`, paddingTop: 40 }}>
+          <div style={{ borderTop: `1px solid ${C.border} `, paddingTop: 40 }}>
             {article.sections.map((section, i) => (
               <div key={i} style={{ marginBottom: 48 }}>
                 <h2 style={{ ...TYPO.h2, fontSize: isMobile ? 24 : 32 }}>{section.heading}</h2>
@@ -721,7 +777,7 @@ const BlogPage = () => {
           {/* Article CTA */}
           <div style={{
             padding: 32, borderRadius: 12, background: C.card,
-            border: `1px solid ${C.border}`, textAlign: "center",
+            border: `1px solid ${C.border} `, textAlign: "center",
             margin: "48px 0 64px",
           }}>
             <div style={{ fontFamily: mono, fontSize: 10, color: C.textDim, letterSpacing: "0.1em", marginBottom: 8 }}>
@@ -761,11 +817,11 @@ const BlogPage = () => {
           {blogArticles.map((article, i) => (
             <div
               key={i}
-              onClick={() => navigate(`/research/${article.id}`)}
+              onClick={() => navigate(`/ research / ${article.id} `)}
               style={{
                 padding: 24, borderRadius: 8,
                 background: "transparent",
-                border: `1px solid ${C.border}`, cursor: "pointer",
+                border: `1px solid ${C.border} `, cursor: "pointer",
                 transition: "all 0.2s", display: "flex", flexDirection: "column"
               }}
               onMouseEnter={e => { e.currentTarget.style.background = C.card; e.currentTarget.style.borderColor = C.borderHover; }}
@@ -867,7 +923,7 @@ const ReferenceCasePage = () => {
         </div>
 
         <div style={{
-          padding: 32, borderLeft: `4px solid ${C.accent}`, background: C.card,
+          padding: 32, borderLeft: `4px solid ${C.accent} `, background: C.card,
           fontFamily: mono, margin: "0 0 60px"
         }}>
           <p style={{ fontSize: 16, color: C.text, lineHeight: 1.6, margin: "0 0 16px", fontStyle: "italic" }}>
@@ -879,7 +935,7 @@ const ReferenceCasePage = () => {
         </div>
 
         {/* CTA */}
-        <div style={{ textAlign: "center", padding: "40px 0", borderTop: `1px solid ${C.border}` }}>
+        <div style={{ textAlign: "center", padding: "40px 0", borderTop: `1px solid ${C.border} ` }}>
           <h3 style={{ fontFamily: sans, fontSize: 22, fontWeight: 700, margin: "0 0 8px" }}>Your transformation starts with a conversation.</h3>
           <p style={{ fontSize: 13, color: C.textMuted, marginBottom: 20 }}>No pitch deck theater. Just a confidential briefing with our team in Hamburg.</p>
           <div style={{
@@ -903,7 +959,7 @@ const WhitepaperPage = () => {
     <div style={{ padding: isMobile ? "60px 20px 80px" : "80px 60px 100px" }}>
       <ArticleLayout>
 
-        <div style={{ padding: "32px", background: C.card, borderRadius: 8, border: `1px solid ${C.border}`, marginBottom: 64 }}>
+        <div style={{ padding: "32px", background: C.card, borderRadius: 8, border: `1px solid ${C.border} `, marginBottom: 64 }}>
           <div style={{ fontFamily: mono, fontSize: 14, color: C.primary, marginBottom: 16 }}>// ABSTRACT</div>
           <p style={{ ...TYPO.body, fontSize: isMobile ? 16 : 18, marginBottom: 0 }}>
             This whitepaper details the proprietary methodology SVRN ALPHA uses to transform financial institutions. It argues that the failure of most AI initiatives is due to "Technology First" implementation. We propose the "Education First" model: Cognitive Shift (Education) → Workflow Redesign (Process) → Model-Agnostic Infrastructure (Technology).
@@ -927,7 +983,7 @@ const WhitepaperPage = () => {
 
 
         {/* Download CTA */}
-        <div style={{ textAlign: "center", padding: "40px 0", borderTop: `1px solid ${C.border}` }}>
+        <div style={{ textAlign: "center", padding: "40px 0", borderTop: `1px solid ${C.border} ` }}>
           <h3 style={{ fontFamily: sans, fontSize: 22, fontWeight: 700, margin: "0 0 8px" }}>Download the Founding Paper</h3>
           <p style={{ fontSize: 13, color: C.textMuted, marginBottom: 20, maxWidth: 500, margin: "0 auto 24px" }}>
             44 pages of research, methodology, and evidence. The intellectual foundation behind the SVRN ALPHA framework.
@@ -987,7 +1043,7 @@ const PressPage = () => {
           </p>
         </div>
 
-        <div style={{ margin: "0 0 40px", paddingTop: 40, borderTop: `1px solid ${C.border}` }}>
+        <div style={{ margin: "0 0 40px", paddingTop: 40, borderTop: `1px solid ${C.border} ` }}>
           <h3 style={{ fontFamily: sans, fontSize: 18, fontWeight: 700, margin: "0 0 16px" }}>About SVRN ALPHA</h3>
           <p style={{ fontSize: 14, color: C.textMuted, lineHeight: 1.6 }}>
             SVRN ALPHA is a sovereign AI enablement company for investment banking, headquartered in Hamburg, Germany. Founded by Prof. Dr. Tobias Blask (Professor, Founder & Chairman) and backed by MP Capital Markets, SVRN ALPHA transforms how financial institutions adopt AI through the Three-Pillar Model — a research-grounded framework addressing Education, Process, and Technology in that sequence. The company deploys model-agnostic, sovereign infrastructure that gives institutions full independence over their AI stack — evaluating US, Chinese, and European models per use case with zero vendor lock-in and Human-in-the-Loop architecture. Learn more at svrn-alpha.ai.
@@ -1035,7 +1091,7 @@ const AboutPage = () => {
         <div style={{ marginBottom: 60, display: "flex", flexDirection: isMobile ? "column" : "row", gap: 32, alignItems: isMobile ? "center" : "flex-start", textAlign: isMobile ? "center" : "left" }}>
           <div style={{
             width: 80, height: 80, borderRadius: "50%",
-            background: `linear-gradient(135deg, ${C.primary}, ${C.primaryDim})`,
+            background: `linear - gradient(135deg, ${C.primary}, ${C.primaryDim})`,
             display: "flex", alignItems: "center", justifyContent: "center",
             fontFamily: mono, fontWeight: 800, fontSize: 24, color: C.black,
             flexShrink: 0
@@ -1069,10 +1125,10 @@ const AboutPage = () => {
           ))}
         </div>
 
-        <div style={{ paddingTop: 40, borderTop: `1px solid ${C.border}` }}>
+        <div style={{ paddingTop: 40, borderTop: `1px solid ${C.border} ` }}>
           <h2 style={{ ...TYPO.h2, fontSize: isMobile ? 24 : 32 }}>Backed By</h2>
           <div style={{
-            padding: 24, background: C.card, borderRadius: 8, border: `1px solid ${C.border}`,
+            padding: 24, background: C.card, borderRadius: 8, border: `1px solid ${C.border} `,
             display: "flex", flexDirection: isMobile ? "column" : "row", gap: 24, alignItems: "center"
           }}>
             <div style={{
@@ -1120,7 +1176,7 @@ export default function SVRNAlpha() {
 
         {/* FOOTER */}
         <footer style={{
-          padding: isMobile ? "40px 20px" : "40px 60px", borderTop: `1px solid ${C.border}`,
+          padding: isMobile ? "40px 20px" : "40px 60px", borderTop: `1px solid ${C.border} `,
           display: "flex", flexDirection: isMobile ? "column" : "row", gap: isMobile ? 24 : 0, justifyContent: "space-between", alignItems: "center",
           fontSize: 12, color: C.textDim, fontFamily: mono, textAlign: isMobile ? "center" : "left"
         }}>
