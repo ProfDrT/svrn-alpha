@@ -17,6 +17,18 @@ const C = {
   success: "#10B981", warning: "#F59E0B",
 };
 
+const useMedia = (query) => {
+  const [matches, setMatches] = useState(false);
+  useEffect(() => {
+    const media = window.matchMedia(query);
+    if (media.matches !== matches) setMatches(media.matches);
+    const listener = () => setMatches(media.matches);
+    media.addEventListener("change", listener);
+    return () => media.removeEventListener("change", listener);
+  }, [query, matches]);
+  return matches;
+};
+
 // ═══════════════════════════════════════════════════════
 // SHARED COMPONENTS
 // ═══════════════════════════════════════════════════════
@@ -35,6 +47,9 @@ const Badge = ({ children, variant = "primary" }) => {
 
 const Nav = ({ current, onNavigate }) => {
   const [hover, setHover] = useState(null);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const isMobile = useMedia("(max-width: 768px)");
+
   const items = [
     { id: "home", label: "Home" },
     { id: "blog", label: "Research" },
@@ -43,35 +58,40 @@ const Nav = ({ current, onNavigate }) => {
     { id: "press", label: "Press" },
     { id: "about", label: "About" },
   ];
+
   return (
     <>
-      {/* Ticker */}
-      <div style={{
-        background: C.surface, borderBottom: `1px solid ${C.border}`,
-        padding: "5px 0", fontFamily: mono, fontSize: 10, letterSpacing: "0.05em",
-        display: "flex", justifyContent: "center", gap: 32,
-      }}>
-        {[
-          { l: "STATUS", v: "OPERATIONAL", c: C.primary },
-          { l: "ALPHA", v: "+340 BPS", c: C.accent },
-          { l: "MOAT", v: "SOVEREIGN", c: C.primary },
-          { l: "COMPLIANCE", v: "EU ✓", c: C.primary },
-        ].map((t, i) => (
-          <span key={i}>
-            <span style={{ color: C.textDim }}>{t.l} </span>
-            <span style={{ color: t.c, fontWeight: 600 }}>{t.v}</span>
-          </span>
-        ))}
-      </div>
+      {/* Ticker - Hide on Mobile to save space */}
+      {!isMobile && (
+        <div style={{
+          background: C.surface, borderBottom: `1px solid ${C.border}`,
+          padding: "5px 0", fontFamily: mono, fontSize: 10, letterSpacing: "0.05em",
+          display: "flex", justifyContent: "center", gap: 32,
+        }}>
+          {[
+            { l: "STATUS", v: "OPERATIONAL", c: C.primary },
+            { l: "ALPHA", v: "+340 BPS", c: C.accent },
+            { l: "MOAT", v: "SOVEREIGN", c: C.primary },
+            { l: "COMPLIANCE", v: "EU ✓", c: C.primary },
+          ].map((t, i) => (
+            <span key={i}>
+              <span style={{ color: C.textDim }}>{t.l} </span>
+              <span style={{ color: t.c, fontWeight: 600 }}>{t.v}</span>
+            </span>
+          ))}
+        </div>
+      )}
+
       {/* Nav bar */}
       <nav style={{
         display: "flex", justifyContent: "space-between", alignItems: "center",
-        padding: "16px 40px", borderBottom: `1px solid ${C.border}`,
+        padding: isMobile ? "16px 20px" : "16px 40px",
+        borderBottom: `1px solid ${C.border}`,
         position: "sticky", top: 0, zIndex: 100,
         background: `${C.black}E8`, backdropFilter: "blur(12px)",
       }}>
         <div
-          onClick={() => onNavigate("home")}
+          onClick={() => { onNavigate("home"); setMobileMenuOpen(false); }}
           style={{ display: "flex", alignItems: "center", gap: 12, cursor: "pointer" }}
         >
           <div style={{
@@ -86,63 +106,112 @@ const Nav = ({ current, onNavigate }) => {
             <span style={{ color: C.accent }}>ALPHA</span>
           </span>
         </div>
-        <div style={{ display: "flex", gap: 24, alignItems: "center" }}>
-          {items.map((item, i) => (
-            <span
+
+        {/* Desktop Nav */}
+        {!isMobile && (
+          <div style={{ display: "flex", gap: 24, alignItems: "center" }}>
+            {items.map((item, i) => (
+              <span
+                key={item.id}
+                onClick={() => onNavigate(item.id)}
+                onMouseEnter={() => setHover(i)}
+                onMouseLeave={() => setHover(null)}
+                style={{
+                  fontFamily: mono, fontSize: 12, letterSpacing: "0.05em",
+                  color: current === item.id ? C.primary : hover === i ? C.text : C.textMuted,
+                  cursor: "pointer", transition: "color 0.2s",
+                  borderBottom: current === item.id ? `1px solid ${C.primary}` : "1px solid transparent",
+                  paddingBottom: 2,
+                }}
+              >{item.label}</span>
+            ))}
+            <div style={{
+              padding: "8px 20px", borderRadius: 6,
+              background: C.primary, color: C.black,
+              fontFamily: mono, fontSize: 12, fontWeight: 700,
+              letterSpacing: "0.05em", cursor: "pointer",
+            }} onClick={() => onNavigate("about")}>INITIALIZE_BRIEFING</div>
+          </div>
+        )}
+
+        {/* Mobile Hamburger */}
+        {isMobile && (
+          <div onClick={() => setMobileMenuOpen(!mobileMenuOpen)} style={{ cursor: "pointer", padding: 8 }}>
+            <div style={{ width: 24, height: 2, background: C.text, marginBottom: 6 }} />
+            <div style={{ width: 24, height: 2, background: C.text, marginBottom: 6 }} />
+            <div style={{ width: 24, height: 2, background: C.text }} />
+          </div>
+        )}
+      </nav>
+
+      {/* Mobile Menu Overlay */}
+      {isMobile && mobileMenuOpen && (
+        <div style={{
+          position: "fixed", top: 68, left: 0, right: 0, bottom: 0,
+          background: C.black, zIndex: 99, padding: "20px",
+          display: "flex", flexDirection: "column", gap: 20
+        }}>
+          {items.map((item) => (
+            <div
               key={item.id}
-              onClick={() => onNavigate(item.id)}
-              onMouseEnter={() => setHover(i)}
-              onMouseLeave={() => setHover(null)}
+              onClick={() => { onNavigate(item.id); setMobileMenuOpen(false); }}
               style={{
-                fontFamily: mono, fontSize: 12, letterSpacing: "0.05em",
-                color: current === item.id ? C.primary : hover === i ? C.text : C.textMuted,
-                cursor: "pointer", transition: "color 0.2s",
-                borderBottom: current === item.id ? `1px solid ${C.primary}` : "1px solid transparent",
-                paddingBottom: 2,
+                fontFamily: mono, fontSize: 16, color: current === item.id ? C.primary : C.text,
+                padding: "10px 0", borderBottom: `1px solid ${C.border}`
               }}
-            >{item.label}</span>
+            >
+              {item.label}
+            </div>
           ))}
           <div style={{
-            padding: "8px 20px", borderRadius: 6,
+            padding: "12px", borderRadius: 6,
             background: C.primary, color: C.black,
-            fontFamily: mono, fontSize: 12, fontWeight: 700,
-            letterSpacing: "0.05em", cursor: "pointer",
-          }}>INITIALIZE_BRIEFING</div>
+            fontFamily: mono, fontSize: 14, fontWeight: 700,
+            textAlign: "center", marginTop: 20
+          }} onClick={() => { onNavigate("about"); setMobileMenuOpen(false); }}>
+            INITIALIZE_BRIEFING
+          </div>
         </div>
-      </nav>
+      )}
     </>
   );
 };
 
-const Footer = () => (
-  <footer style={{
-    padding: "32px 40px", borderTop: `1px solid ${C.border}`,
-    display: "flex", justifyContent: "space-between", alignItems: "center",
-  }}>
-    <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
-      <div style={{
-        width: 28, height: 28, borderRadius: 6,
-        background: `linear-gradient(135deg, ${C.primary}, ${C.primaryDim})`,
-        display: "flex", alignItems: "center", justifyContent: "center",
-        fontFamily: mono, fontWeight: 800, fontSize: 10, color: C.black,
-      }}>SA</div>
-      <span style={{ fontFamily: mono, fontWeight: 800, letterSpacing: "0.12em", fontSize: 12 }}>
-        <span style={{ color: C.primary }}>SVRN</span>
-        <span style={{ color: C.textDim, margin: "0 1px", fontWeight: 400, fontSize: 10 }}>·</span>
-        <span style={{ color: C.accent }}>ALPHA</span>
-      </span>
-    </div>
-    <div style={{ fontFamily: mono, fontSize: 10, color: C.textDim, letterSpacing: "0.05em" }}>
-      Hamburg, Germany · Sovereign AI Enablement · Backed by{" "}
-      <span style={{ color: C.textMuted }}>MP Capital Markets</span>
-    </div>
-    <div style={{ fontFamily: mono, fontSize: 10, color: C.textDim }}>svrn-alpha.ai · v2.0.4</div>
-  </footer>
-);
+const Footer = () => {
+  const isMobile = useMedia("(max-width: 768px)");
+  return (
+    <footer style={{
+      padding: isMobile ? "32px 20px" : "32px 40px", borderTop: `1px solid ${C.border}`,
+      display: "flex", flexDirection: isMobile ? "column" : "row", gap: isMobile ? 24 : 0, justifyContent: "space-between", alignItems: "center",
+    }}>
+      <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
+        <div style={{
+          width: 28, height: 28, borderRadius: 6,
+          background: `linear-gradient(135deg, ${C.primary}, ${C.primaryDim})`,
+          display: "flex", alignItems: "center", justifyContent: "center",
+          fontFamily: mono, fontWeight: 800, fontSize: 10, color: C.black,
+        }}>SA</div>
+        <span style={{ fontFamily: mono, fontWeight: 800, letterSpacing: "0.12em", fontSize: 12 }}>
+          <span style={{ color: C.primary }}>SVRN</span>
+          <span style={{ color: C.textDim, margin: "0 1px", fontWeight: 400, fontSize: 10 }}>·</span>
+          <span style={{ color: C.accent }}>ALPHA</span>
+        </span>
+      </div>
+      <div style={{ fontFamily: mono, fontSize: 10, color: C.textDim, letterSpacing: "0.05em", textAlign: isMobile ? "center" : "left" }}>
+        Hamburg, Germany · Sovereign AI Enablement · Backed by{" "}
+        <span style={{ color: C.textMuted }}>MP Capital Markets</span>
+      </div>
+      <div style={{ fontFamily: mono, fontSize: 10, color: C.textDim }}>svrn-alpha.ai · v2.0.4</div>
+    </footer>
+  );
+};
 
-const ArticleLayout = ({ children, maxWidth = 720 }) => (
-  <div style={{ maxWidth, margin: "0 auto", padding: "0 40px" }}>{children}</div>
-);
+const ArticleLayout = ({ children, maxWidth = 720 }) => {
+  const isMobile = useMedia("(max-width: 768px)");
+  return (
+    <div style={{ maxWidth, margin: "0 auto", padding: isMobile ? "0 20px" : "0 40px" }}>{children}</div>
+  );
+};
 
 const ReadingTime = ({ minutes }) => (
   <span style={{ fontFamily: mono, fontSize: 10, color: C.textDim, letterSpacing: "0.08em" }}>
@@ -157,21 +226,22 @@ const ReadingTime = ({ minutes }) => (
 const HomePage = ({ onNavigate }) => {
   const [hoverCard, setHoverCard] = useState(null);
   const [hoverPillar, setHoverPillar] = useState(null);
+  const isMobile = useMedia("(max-width: 768px)");
 
   const featured = [
-    { id: "blog-1", type: "RESEARCH", title: "Why 70% of AI Initiatives in Banking Fail — and It's Not the Technology", date: "February 2026", color: C.primary, nav: "blog", sub: "The organizational transformation most banks ignore." },
-    { id: "case-study", type: "PROOF CASE", title: "MP Capital Markets: +340bps Alpha in 90 Days", date: "January 2026", color: C.accent, nav: "case-study", sub: "From framework to measurable results." },
-    { id: "blog-2", type: "RESEARCH", title: "From Creator to Curator: The Capacity Flip That Changes Everything", date: "February 2026", color: C.primary, nav: "blog", sub: "70% routine → 70% strategic. Here's how." },
-    { id: "whitepaper", type: "WHITEPAPER", title: "The Three-Pillar Model: A Framework for Sovereign AI Transformation", date: "January 2026", color: C.blue, nav: "whitepaper", sub: "The founding paper. Education. Processes. Technology." },
-    { id: "blog-3", type: "RESEARCH", title: "Your Data Moat Is the Only Alpha Left", date: "February 2026", color: C.primary, nav: "blog", sub: "Why data sovereignty is the new competitive edge." },
-    { id: "press", type: "PRESS", title: "SVRN ALPHA Launches Sovereign AI Enablement for European Investment Banking", date: "January 2026", color: C.cyan, nav: "press", sub: "Hamburg-based firm introduces three-pillar framework." },
+    { id: "blog-1", type: "RESEARCH", title: "Why 70% of AI Initiatives in Banking Fail — and It's Not the Technology", date: "Feb 2026", color: C.primary, nav: "blog", sub: "The organizational transformation most banks ignore." },
+    { id: "case-study", type: "PROOF CASE", title: "MP Capital Markets: +340bps Alpha in 90 Days", date: "Jan 2026", color: C.accent, nav: "case-study", sub: "From framework to measurable results." },
+    { id: "blog-2", type: "RESEARCH", title: "From Creator to Curator: The Capacity Flip That Changes Everything", date: "Feb 2026", color: C.primary, nav: "blog", sub: "70% routine → 70% strategic. Here's how." },
+    { id: "whitepaper", type: "WHITEPAPER", title: "The Three-Pillar Model: A Framework for Sovereign AI Transformation", date: "Jan 2026", color: C.blue, nav: "whitepaper", sub: "The founding paper. Education. Processes. Technology." },
+    { id: "blog-3", type: "RESEARCH", title: "Your Data Moat Is the Only Alpha Left", date: "Feb 2026", color: C.primary, nav: "blog", sub: "Why data sovereignty is the new competitive edge." },
+    { id: "press", type: "PRESS", title: "SVRN ALPHA Launches Sovereign AI Enablement for European Investment Banking", date: "Jan 2026", color: C.cyan, nav: "press", sub: "Hamburg-based firm introduces three-pillar framework." },
   ];
 
   return (
     <div>
       {/* ═══ HERO ═══ */}
       <section style={{
-        padding: "120px 40px 100px",
+        padding: isMobile ? "80px 20px 60px" : "120px 40px 100px",
         textAlign: "center", position: "relative",
         background: `radial-gradient(circle at 50% 10%, ${C.surface} 0%, ${C.black} 70%)`
       }}>
@@ -183,13 +253,13 @@ const HomePage = ({ onNavigate }) => {
         }} />
 
         <div style={{ maxWidth: 1200, margin: "0 auto", position: "relative", zIndex: 1 }}>
-          <div style={{ display: "flex", gap: 12, justifyContent: "center", marginBottom: 32 }}>
+          <div style={{ display: "flex", gap: 12, justifyContent: "center", marginBottom: 32, flexWrap: "wrap" }}>
             <Badge>HIERARCHY: SOVEREIGN</Badge>
             <Badge variant="accent">SECTOR: BANKING</Badge>
           </div>
 
           <h1 style={{
-            fontFamily: mono, fontSize: 64, fontWeight: 800,
+            fontFamily: mono, fontSize: isMobile ? 36 : 64, fontWeight: 800,
             lineHeight: 1.05, letterSpacing: "-0.04em",
             margin: "0 auto 32px", color: C.text, maxWidth: 960
           }}>
@@ -198,7 +268,7 @@ const HomePage = ({ onNavigate }) => {
           </h1>
 
           <p style={{
-            fontSize: 20, color: C.textSoft, maxWidth: 640,
+            fontSize: isMobile ? 16 : 20, color: C.textSoft, maxWidth: 640,
             margin: "0 auto 48px", lineHeight: 1.6, fontWeight: 400, fontFamily: sans
           }}>
             Every bank has access to the same AI models. The edge isn't the technology —
@@ -206,18 +276,19 @@ const HomePage = ({ onNavigate }) => {
             proprietary knowledge into <span style={{ color: C.text, fontWeight: 500 }}>sovereign infrastructure</span>.
           </p>
 
-          <div style={{ display: "flex", gap: 16, justifyContent: "center" }}>
+          <div style={{ display: "flex", gap: 16, justifyContent: "center", flexDirection: isMobile ? "column" : "row" }}>
             <div style={{
               padding: "16px 40px", borderRadius: 4,
               background: C.primary, color: C.black,
               fontSize: 14, fontWeight: 700, fontFamily: mono,
-              cursor: "pointer",
+              cursor: "pointer", textAlign: "center"
             }} onClick={() => onNavigate("about")}>&gt; EXECUTE_BRIEFING</div>
             <div style={{
               padding: "16px 40px", borderRadius: 4,
               border: `1px solid ${C.border}`,
               background: C.card,
               color: C.textSoft, fontSize: 14, fontWeight: 500, fontFamily: mono, cursor: "pointer",
+              textAlign: "center"
             }} onClick={() => onNavigate("whitepaper")}>READ_WHITEPAPER</div>
           </div>
         </div>
@@ -225,16 +296,20 @@ const HomePage = ({ onNavigate }) => {
 
       {/* ═══ SYSTEM LOG: LEADERSHIP & SUCCESS ═══ */}
       <section style={{
-        padding: "80px 40px",
+        padding: isMobile ? "40px 20px" : "80px 40px",
         background: C.surface, borderTop: `1px solid ${C.border}`, borderBottom: `1px solid ${C.border}`,
       }}>
-        <div style={{ maxWidth: 1200, margin: "0 auto", display: "grid", gridTemplateColumns: "1fr 1.2fr", gap: 80, alignItems: "center" }}>
+        <div style={{
+          maxWidth: 1200, margin: "0 auto",
+          display: "grid", gridTemplateColumns: isMobile ? "1fr" : "1fr 1.2fr",
+          gap: isMobile ? 48 : 80, alignItems: "center"
+        }}>
 
           {/* Founder */}
           <div>
             <Badge variant="accent">ROOT_USER</Badge>
             <h2 style={{
-              fontFamily: mono, fontSize: 36, fontWeight: 700, color: C.text,
+              fontFamily: mono, fontSize: isMobile ? 28 : 36, fontWeight: 700, color: C.text,
               margin: "24px 0 24px", letterSpacing: "-0.03em", lineHeight: 1.1
             }}>
               Founded on Academic Rigor.<br />Engineered for Reality.
@@ -280,7 +355,7 @@ const HomePage = ({ onNavigate }) => {
             </div>
 
             {/* Window Content */}
-            <div style={{ padding: "24px 32px", fontFamily: mono, fontSize: 13, lineHeight: 1.6 }}>
+            <div style={{ padding: isMobile ? "20px" : "24px 32px", fontFamily: mono, fontSize: 13, lineHeight: 1.6 }}>
               <div style={{ color: C.textMuted, marginBottom: 12 }}># EXECUTION REPORT: MÜNCHMEIER PETERSEN CAPITAL MARKETS</div>
 
               <div style={{ marginBottom: 4 }}>
@@ -317,20 +392,22 @@ const HomePage = ({ onNavigate }) => {
 
       {/* ═══ THREE PILLARS ═══ */}
       <section style={{
-        padding: "100px 40px",
+        padding: isMobile ? "60px 20px" : "100px 40px",
       }}>
         <div style={{ maxWidth: 1200, margin: "0 auto" }}>
           <div style={{ textAlign: "center", marginBottom: 64 }}>
             <Badge>SYSTEM ARCHITECTURE</Badge>
             <h2 style={{
-              fontFamily: mono, fontSize: 36, fontWeight: 700, color: C.text,
+              fontFamily: mono, fontSize: isMobile ? 28 : 36, fontWeight: 700, color: C.text,
               margin: "24px 0 16px", letterSpacing: "-0.02em"
             }}>The Three-Pillar Model</h2>
             <p style={{ fontSize: 16, color: C.textMuted, fontFamily: sans }}>
               Education. Processes. Technology. <span style={{ fontFamily: mono, color: C.primary }}>[SEQUENCE_CRITICAL]</span>
             </p>
           </div>
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 32 }}>
+          <div style={{
+            display: "grid", gridTemplateColumns: isMobile ? "1fr" : "1fr 1fr 1fr", gap: 32
+          }}>
             {[
               {
                 num: "01", title: "EDUCATION", sub: "Human_Layer",
@@ -391,15 +468,17 @@ const HomePage = ({ onNavigate }) => {
       </section>
 
       {/* Content Grid (Research) */}
-      <section style={{ padding: "0 40px 80px", maxWidth: 1080, margin: "0 auto" }}>
+      <section style={{ padding: isMobile ? "0 20px 60px" : "0 40px 80px", maxWidth: 1080, margin: "0 auto" }}>
         <div style={{ textAlign: "center", marginBottom: 48 }}>
           <Badge>LATEST INTELLIGENCE</Badge>
           <h2 style={{
-            fontFamily: mono, fontSize: 32, fontWeight: 700,
+            fontFamily: mono, fontSize: isMobile ? 28 : 32, fontWeight: 700,
             color: C.text, margin: "24px 0 16px", letterSpacing: "-0.02em"
           }}>Research & Proof Cases</h2>
         </div>
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 16 }}>
+        <div style={{
+          display: "grid", gridTemplateColumns: isMobile ? "1fr" : "1fr 1fr 1fr", gap: 16
+        }}>
           {featured.map((item, i) => (
             <div
               key={item.id}
@@ -434,12 +513,15 @@ const HomePage = ({ onNavigate }) => {
 
 
       {/* ═══ DATA FORTRESS TERMINAL ═══ */}
-      <section style={{ padding: "100px 40px", background: C.card, borderTop: `1px solid ${C.border}` }}>
+      <section style={{
+        padding: isMobile ? "60px 20px" : "100px 40px",
+        background: C.card, borderTop: `1px solid ${C.border}`
+      }}>
         <div style={{ maxWidth: 1000, margin: "0 auto" }}>
           <div style={{ textAlign: "center", marginBottom: 64 }}>
             <Badge variant="accent">SECURITY_PROTOCOL</Badge>
             <h2 style={{
-              fontFamily: mono, fontSize: 36, fontWeight: 700, color: C.text,
+              fontFamily: mono, fontSize: isMobile ? 28 : 36, fontWeight: 700, color: C.text,
               margin: "24px 0 16px", letterSpacing: "-0.02em"
             }}>Your Moat. Your Fortress.</h2>
             <p style={{ fontSize: 16, color: C.textMuted, fontFamily: sans }}>
@@ -448,7 +530,7 @@ const HomePage = ({ onNavigate }) => {
           </div>
 
           <div style={{
-            display: "grid", gridTemplateColumns: "1fr 1fr", gap: 1,
+            display: "grid", gridTemplateColumns: isMobile ? "1fr" : "1fr 1fr", gap: 1,
             background: C.border, border: `1px solid ${C.border}`, borderRadius: 8, overflow: "hidden"
           }}>
             {[
@@ -476,14 +558,14 @@ const HomePage = ({ onNavigate }) => {
 
       {/* ═══ CTA ═══ */}
       <section style={{
-        padding: "120px 40px",
+        padding: isMobile ? "80px 20px" : "120px 40px",
         borderTop: `1px solid ${C.border}`,
         textAlign: "center",
         background: `radial-gradient(circle at 50% 100%, ${C.primaryDim}10 0%, ${C.black} 50%)`
       }}>
         <div style={{ maxWidth: 800, margin: "0 auto" }}>
           <h2 style={{
-            fontFamily: mono, fontSize: 42, fontWeight: 700,
+            fontFamily: mono, fontSize: isMobile ? 32 : 42, fontWeight: 700,
             color: C.text, margin: "0 0 24px", letterSpacing: "-0.03em",
           }}>Ready to secure your alpha?</h2>
           <p style={{
@@ -706,12 +788,13 @@ Technology is interchangeable. Your proprietary knowledge is not.`
 
 const BlogPage = ({ onNavigate }) => {
   const [activeArticle, setActiveArticle] = useState(null);
+  const isMobile = useMedia("(max-width: 768px)");
 
   if (activeArticle !== null) {
     const article = blogArticles[activeArticle];
     return (
       <div>
-        <div style={{ padding: "48px 40px 0" }}>
+        <div style={{ padding: isMobile ? "24px 20px 0" : "48px 40px 0" }}>
           <ArticleLayout>
             <div
               onClick={() => setActiveArticle(null)}
