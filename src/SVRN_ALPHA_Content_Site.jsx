@@ -70,7 +70,7 @@ const Nav = ({ current, onNavigate }) => {
         }}>
           {[
             { l: "STATUS", v: "OPERATIONAL", c: C.primary },
-            { l: "ALPHA", v: "+340 BPS", c: C.accent },
+            { l: "ALPHA", v: "TARGETED", c: C.accent },
             { l: "MOAT", v: "SOVEREIGN", c: C.primary },
             { l: "COMPLIANCE", v: "EU ✓", c: C.primary },
           ].map((t, i) => (
@@ -229,9 +229,9 @@ const HomePage = ({ onNavigate }) => {
   const isMobile = useMedia("(max-width: 768px)");
 
   const featured = [
-    { id: "blog-1", type: "RESEARCH", title: "Why 70% of AI Initiatives in Banking Fail — and It's Not the Technology", date: "Feb 2026", color: C.primary, nav: "blog", sub: "The organizational transformation most banks ignore." },
-    { id: "case-study", type: "PROOF CASE", title: "MP Capital Markets: +340bps Alpha in 90 Days", date: "Jan 2026", color: C.accent, nav: "case-study", sub: "From framework to measurable results." },
-    { id: "blog-2", type: "RESEARCH", title: "From Creator to Curator: The Capacity Flip That Changes Everything", date: "Feb 2026", color: C.primary, nav: "blog", sub: "70% routine → 70% strategic. Here's how." },
+    { id: "blog-1", type: "RESEARCH", title: "Why Most AI Initiatives in Banking Fail — and It's Not the Technology", date: "Feb 2026", color: C.primary, nav: "blog", sub: "The organizational transformation most banks ignore." },
+    { id: "case-study", type: "PROOF CASE", title: "MP Capital Markets: Alpha Generation via Sovereign Infrastructure", date: "Jan 2026", color: C.accent, nav: "case-study", sub: "From framework to measurable results." },
+    { id: "blog-2", type: "RESEARCH", title: "From Creator to Curator: The Capacity Flip That Changes Everything", date: "Feb 2026", color: C.primary, nav: "blog", sub: "Inverting the workflow ratio. Here's how." },
     { id: "whitepaper", type: "WHITEPAPER", title: "The Three-Pillar Model: A Framework for Sovereign AI Transformation", date: "Jan 2026", color: C.blue, nav: "whitepaper", sub: "The founding paper. Education. Processes. Technology." },
     { id: "blog-3", type: "RESEARCH", title: "Your Data Moat Is the Only Alpha Left", date: "Feb 2026", color: C.primary, nav: "blog", sub: "Why data sovereignty is the new competitive edge." },
     { id: "press", type: "PRESS", title: "SVRN ALPHA Launches Sovereign AI Enablement for European Investment Banking", date: "Jan 2026", color: C.cyan, nav: "press", sub: "Hamburg-based firm introduces three-pillar framework." },
@@ -369,8 +369,8 @@ const HomePage = ({ onNavigate }) => {
                 <span style={{ color: C.primary }}>➜</span> <span style={{ color: C.accent }}>CALCULATE_YIELD</span>
               </div>
               <div style={{ paddingLeft: 20, color: C.textSoft, marginBottom: 16 }}>
-                Alpha Generated: <span style={{ color: C.primary, fontWeight: 700 }}>+340bps (3.4%)</span> vs. Benchmark<br />
-                Capacity Reallocated: <span style={{ color: C.text }}>70% Routine → Strategic</span>
+                Alpha Generated: <span style={{ color: C.primary, fontWeight: 700 }}>Measurable Outperformance</span><br />
+                Capacity Reallocated: <span style={{ color: C.text }}>Majority Routine → Strategic</span>
               </div>
 
               <div style={{ marginBottom: 4 }}>
@@ -412,7 +412,7 @@ const HomePage = ({ onNavigate }) => {
               {
                 num: "01", title: "EDUCATION", sub: "Human_Layer",
                 desc: "Creator to Curator. We build AI fluency at every level, from the trading floor to the boardroom.",
-                detail: "DEPENDENCY: PEOPLE (70%)",
+                detail: "DEPENDENCY: PEOPLE",
               },
               {
                 num: "02", title: "PROCESSES", sub: "Logic_Layer",
@@ -596,13 +596,13 @@ const blogArticles = [
   {
     id: "70-percent",
     badge: "// M_01 · HUMAN_LAYER",
-    title: "Why 70% of AI Initiatives in Banking Fail — and It's Not the Technology",
+    title: "Why Most AI Initiatives in Banking Fail — and It's Not the Technology",
     subtitle: "The organizational transformation most banks refuse to fund.",
     date: "February 7, 2026",
     author: "Prof. Dr. Tobias Blask",
     readTime: 8,
     keyword: "AI transformation banking",
-    metaDesc: "70% of AI initiatives in investment banking fail because banks invest in technology while ignoring organizational change. Here's the framework that works.",
+    metaDesc: "Most AI initiatives in investment banking fail because banks invest in technology while ignoring organizational change. Here's the framework that works.",
     sections: [
       {
         heading: "The Pattern Nobody Wants to Acknowledge",
@@ -612,7 +612,7 @@ And then, quietly, most of these initiatives fail.
 
 Not dramatically. Not with a single catastrophic event. They fail the way most organizational projects fail — through slow attrition. The models don't get adopted. The workflows don't change. The analysts keep doing things the way they always have, with a shiny new tool sitting unused in the corner.
 
-The industry-wide failure rate for AI transformation in financial services sits somewhere around 70%, depending on which research you trust. McKinsey, BCG, Gartner — they all arrive at roughly the same number, though they disagree on the causes.
+The industry-wide failure rate for AI transformation in financial services is alarmingly high, depending on which research you trust. McKinsey, BCG, Gartner — they all arrive at roughly the same number, though they disagree on the causes.
 
 Here's what a decade of academic research and practical implementation has taught me: the cause is almost never the technology.`
       },
@@ -622,7 +622,7 @@ Here's what a decade of academic research and practical implementation has taugh
 
 This allocation is precisely backwards.
 
-Our research — and more importantly, our implementation experience — shows that the real split should be closer to 70/30 in the other direction. 70% of transformation success depends on organizational factors: how people think about AI, how workflows restructure, how leadership commits to the change. The technology is the enabler. It's necessary. But it's the minority of the equation.
+Our research — and more importantly, our implementation experience — shows that the real split should be inverted. The majority of transformation success depends on organizational factors: how people think about AI, how workflows restructure, how leadership commits to the change. The technology is the enabler. It's necessary. But it's the minority of the equation.
 
 Banks spend 90% of their budget on 30% of the problem. Then they wonder why nothing changes.`
       },
@@ -630,7 +630,7 @@ Banks spend 90% of their budget on 30% of the problem. Then they wonder why noth
         heading: "The Three Failures",
         body: `Failure One: Education Deficit. Most AI initiatives skip straight to deployment. They hand analysts a new tool and expect adoption. But the fundamental question isn't "can your people use the tool?" — it's "do your people understand how AI changes what they do?" The shift from Creator to Curator is cognitive, not technical. An analyst who has spent fifteen years building models from scratch needs to understand why curating AI-generated outputs is not a demotion — it's an evolution that lets them focus on what actually generates alpha.
 
-Failure Two: Process Rigidity. Dropping AI into existing workflows is like putting a jet engine on a bicycle. The workflows themselves need to restructure. Today's typical analyst spends 70% of their time on routine tasks — gathering data, formatting reports, updating models. AI can invert that ratio: 70% strategic, 30% routine. But this requires redesigning workflows from the ground up, not layering technology on top of broken processes.
+Failure Two: Process Rigidity. Dropping AI into existing workflows is like putting a jet engine on a bicycle. The workflows themselves need to restructure. Today's typical analyst spends the vast majority of their time on routine tasks — gathering data, formatting reports, updating models. AI can invert that ratio. But this requires redesigning workflows from the ground up, not layering technology on top of broken processes.
 
 Failure Three: Abdicated Leadership. AI transformation is not an IT project. It is an organizational transformation. When the C-suite delegates this to the technology department, it sends a clear signal: this isn't a strategic priority, it's a tooling upgrade. The transformation dies there. Every successful AI deployment we've studied or executed has one thing in common: the CEO or Managing Director personally owned it.`
       },
@@ -640,23 +640,23 @@ Failure Three: Abdicated Leadership. AI transformation is not an IT project. It 
 
 Pillar 1 — Education. Before touching a single workflow or deploying any technology, we build AI fluency across the organization. Not coding skills — strategic fluency. Helping every level, from the trading floor to the boardroom, understand how AI changes their role, their decisions, and their output. This is where Creator-to-Curator happens.
 
-Pillar 2 — Processes. With the right mental model in place, we restructure workflows. The capacity flip — from 70% routine to 70% strategic — happens here. We map every analyst workflow, identify where AI creates genuine leverage, and redesign the process around human-AI collaboration. Human-in-the-Loop isn't a feature we add; it's the architecture we design around.
+Pillar 2 — Processes. With the right mental model in place, we restructure workflows. The capacity flip — from majority routine to majority strategic — happens here. We map every analyst workflow, identify where AI creates genuine leverage, and redesign the process around human-AI collaboration. Human-in-the-Loop isn't a feature we add; it's the architecture we design around.
 
 Pillar 3 — Technology. Only after Education and Processes are in place do we deploy infrastructure. And when we do, it's sovereign: private cloud, EU-hosted, vendor-agnostic, fully auditable. The technology serves the transformation, not the other way around.
 
 Skip Pillar 1, and Pillars 2 and 3 collapse. We've seen it happen repeatedly. The order is the methodology.`
       },
       {
-        heading: "What +340bps Looks Like",
-        body: `When we deployed this framework at MP Capital Markets, the timeline was 90 days. Not 90 days to pilot. Not 90 days to prototype. 90 days to measurable results.
+        heading: "What Measurable Success Looks Like",
+        body: `When we deploy this framework, we target accelerated timelines. Not indefinite pilots. Not vague prototypes. But a clear path to measurable results.
 
-The capacity flip completed within the first quarter. Research analysts who had been spending 70% of their time on routine data gathering and report formatting were now spending 70% on strategic analysis — the work that actually generates alpha for clients.
+The capacity flip typically completes within the first quarter. Research analysts who had been spending the bulk of their time on routine data gathering and report formatting shift to strategic analysis — the work that actually generates alpha for clients.
 
-The alpha generation number — +340 basis points above benchmark — came from exactly this reallocation. When your best people spend their time on the work they were hired to do, the results compound.
+The alpha generation follows this reallocation. When your best people spend their time on the work they were hired to do, the results compound.
 
-But none of this happened because of a technology deployment. It happened because education came first, process redesign came second, and sovereign infrastructure came third.
+But none of this happens because of a technology deployment. It happens because education comes first, process redesign comes second, and sovereign infrastructure comes third.
 
-The 70% of banks that fail at AI transformation aren't failing at technology. They're failing at the part they refuse to fund.`
+The majority of banks that fail at AI transformation aren't failing at technology. They're failing at the part they refuse to fund.`
       },
     ],
   },
@@ -669,11 +669,11 @@ The 70% of banks that fail at AI transformation aren't failing at technology. Th
     author: "Prof. Dr. Tobias Blask",
     readTime: 7,
     keyword: "creator curator AI banking",
-    metaDesc: "The Creator-to-Curator shift inverts the analyst capacity ratio from 70% routine to 70% strategic. Here's the methodology behind the capacity flip.",
+    metaDesc: "The Creator-to-Curator shift inverts the analyst capacity ratio from majority routine to majority strategic. Here's the methodology behind the capacity flip.",
     sections: [
       {
         heading: "What a Research Analyst Actually Does All Day",
-        body: `If you shadow a research analyst at a mid-tier European investment bank for a week, the breakdown looks remarkably consistent. About 70% of their time goes to tasks that are necessary but fundamentally routine: pulling data from terminals, populating spreadsheet models, formatting reports to house style, cross-referencing regulatory filings, updating pitch books.
+        body: `If you shadow a research analyst at a mid-tier European investment bank for a week, the breakdown looks remarkably consistent. The vast majority of their time goes to tasks that are necessary but fundamentally routine: pulling data from terminals, populating spreadsheet models, formatting reports to house style, cross-referencing regulatory filings, updating pitch books.
 
 The remaining 30% — the analysis, the insight generation, the pattern recognition that draws on years of domain expertise — is the work that actually generates value. It's the work clients pay for. It's the work that differentiates one bank from another.
 
@@ -695,7 +695,7 @@ This is why Education must come before Process. The cognitive shift has to prece
       },
       {
         heading: "The Capacity Flip in Practice",
-        body: `The capacity flip is what happens when the Creator-to-Curator shift succeeds. The ratio inverts: 70% routine becomes 70% strategic.
+        body: `The capacity flip is what happens when the Creator-to-Curator shift succeeds. The ratio inverts: majority routine becomes majority strategic.
 
 In practical terms, this means an analyst who currently spends Monday through Wednesday afternoon on data gathering and report formatting now completes that work by Monday lunchtime — with AI handling the routine extraction, population, and formatting. From Monday afternoon onward, they're doing the work that generates alpha: deep analysis, client conversations, strategic thinking, creative problem-solving.
 
@@ -947,7 +947,7 @@ const CaseStudyPage = () => (
         fontFamily: sans, fontSize: 36, fontWeight: 800,
         letterSpacing: "-0.025em", lineHeight: 1.15, margin: "16px 0 12px",
       }}>
-        MP Capital Markets: +340bps (3.4%) Alpha Generation in 90 Days
+        MP Capital Markets: Alpha Generation via Sovereign Infrastructure
       </h1>
       <p style={{ fontSize: 17, color: C.accent, margin: "0 0 32px", fontStyle: "italic" }}>
         How a sovereign AI deployment transformed research operations at a European investment bank.
@@ -1086,8 +1086,8 @@ const CaseStudyPage = () => (
           <div><span style={{ color: C.textDim }}>status:</span> <span style={{ color: C.primary }}>OPERATIONAL · COMPOUNDING</span></div>
         </div>
 
-        <p style={{ fontSize: 15, color: C.textSoft, lineHeight: 1.8, margin: 0 }}>
-          The +340 basis points (3.4%) of alpha generation above benchmark didn't come from a superior algorithm. They came from freeing highly skilled analysts to do the work they were hired to do. When 70% of your best people's time shifts from data gathering to strategic analysis, the compounding effect is significant — and it accelerates over time as institutional knowledge feeds back into the sovereign AI infrastructure.
+        <p style={{ fontSize: 15, color: C.textSoft, lineHeight: 1.8, margin: "0 0 16px" }}>
+          The alpha generation potential above benchmark doesn't come from a superior algorithm. It comes from freeing highly skilled analysts to do the work they were hired to do. When the majority of your best people's time shifts from data gathering to strategic analysis, the compounding effect is significant — and it accelerates over time as institutional knowledge feeds back into the sovereign AI infrastructure.
         </p>
       </div>
 
