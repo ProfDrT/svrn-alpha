@@ -1084,7 +1084,7 @@ const AboutPage = () => {
             The academic literature was unambiguous: the primary determinant of transformation success wasn't technological capability. It was organizational readiness — how people think about AI, how workflows adapted, how leadership committed to the change. Yet the industry continued to allocate 90% of its AI budget to technology and 10% to the organizational factors that actually determined success.
           </p>
           <p style={{ ...TYPO.body, fontSize: isMobile ? 16 : 18 }}>
-            In 2025, Prof. Dr. Blask stopped writing papers about the problem and founded SVRN ALPHA to fix it. The company bridges the gap between what research proves and what practice requires — bringing academic rigor to the messy, political, deeply human work of organizational transformation.
+            In 2025, Prof. Dr. Blask operationalized his research by founding SVRN ALPHA. He didn't leave academia; he bridged it with practice. As a dual-role Tenured Professor and Founder, he brings academic rigor directly to the messy, political work of organizational transformation.
           </p>
         </div>
 
