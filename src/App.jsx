@@ -32,6 +32,17 @@ const sans = "Inter, -apple-system, system-ui, sans-serif";
 
 const C = THEME;
 
+// ─── HOOKS ───
+const useMobile = () => {
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth < 768);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+  return isMobile;
+};
+
 // ═══════════════════════════════════════════════════════
 // SHARED COMPONENTS
 // ═══════════════════════════════════════════════════════
@@ -297,6 +308,7 @@ const Nav = () => {
   const location = useLocation();
   const [scrolled, setScrolled] = useState(false);
   const [hover, setHover] = useState(null);
+  const isMobile = useMobile();
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20);
@@ -307,7 +319,7 @@ const Nav = () => {
   const items = [
     { id: "/", label: "HOME" },
     { id: "/research", label: "RESEARCH" },
-    { id: "/reference-case", label: "REFERENCE_CASE" },
+    { id: "/reference-case", label: "REF_CASE" }, // Shortened for mobile
     { id: "/whitepaper", label: "WHITEPAPER" },
     { id: "/press", label: "PRESS" },
     { id: "/about", label: "ABOUT" },
@@ -316,7 +328,7 @@ const Nav = () => {
   return (
     <nav style={{
       position: "fixed", top: 0, left: 0, right: 0, zIndex: 100,
-      padding: "20px 60px",
+      padding: isMobile ? "16px 20px" : "20px 60px",
       background: scrolled ? "rgba(5, 5, 5, 0.9)" : "transparent",
       backdropFilter: scrolled ? "blur(10px)" : "none",
       borderBottom: scrolled ? `1px solid ${C.border}` : "none",
@@ -335,7 +347,7 @@ const Nav = () => {
         </div>
       </Link>
 
-      <div style={{ display: "flex", gap: 32 }}>
+      <div style={{ display: isMobile ? "none" : "flex", gap: 32 }}>
         {items.map((item, i) => {
           const isActive = location.pathname === item.id || (item.id !== "/" && location.pathname.startsWith(item.id));
           return (
@@ -368,12 +380,13 @@ const Nav = () => {
 const HomePage = () => {
   const navigate = useNavigate();
   const [hoverPillar, setHoverPillar] = useState(null);
+  const isMobile = useMobile();
 
   return (
     <div>
       {/* ═══ HERO ═══ */}
       <section style={{
-        padding: "120px 60px 100px",
+        padding: isMobile ? "100px 20px 60px" : "120px 60px 100px",
         textAlign: "center", position: "relative",
         background: `radial-gradient(circle at 50% 10%, ${C.surface} 0%, ${C.black} 70%)`
       }}>
@@ -391,7 +404,7 @@ const HomePage = () => {
           </div>
 
           <h1 style={{
-            fontFamily: mono, fontSize: 64, fontWeight: 800,
+            fontFamily: mono, fontSize: isMobile ? 36 : 64, fontWeight: 800,
             lineHeight: 1.05, letterSpacing: "-0.04em",
             margin: "0 auto 32px", color: C.text, maxWidth: 960
           }}>
@@ -400,14 +413,14 @@ const HomePage = () => {
           </h1>
 
           <p style={{
-            fontSize: 20, color: C.textSoft, maxWidth: 640,
+            fontSize: isMobile ? 18 : 20, color: C.textSoft, maxWidth: 640,
             margin: "0 auto 48px", lineHeight: 1.6, fontWeight: 400
           }}>
             True sovereignty means full control: over your <span style={{ color: C.text, fontWeight: 500 }}>Processes, Roles, and Technology</span>.
             SVRN ALPHA turns your proprietary knowledge into <span style={{ color: C.primary }}>model-agnostic infrastructure</span>.
           </p>
 
-          <div style={{ display: "flex", gap: 16, justifyContent: "center" }}>
+          <div style={{ display: "flex", flexDirection: isMobile ? "column" : "row", gap: 16, justifyContent: "center" }}>
             <div style={{
               padding: "16px 40px", borderRadius: 4,
               background: C.primary, color: C.black,
@@ -426,10 +439,10 @@ const HomePage = () => {
 
       {/* ═══ SYSTEM LOG: LEADERSHIP & SUCCESS ═══ */}
       <section style={{
-        padding: "80px 60px",
+        padding: isMobile ? "60px 20px" : "80px 60px",
         background: C.surface, borderTop: `1px solid ${C.border}`, borderBottom: `1px solid ${C.border}`,
       }}>
-        <div style={{ maxWidth: 1200, margin: "0 auto", display: "grid", gridTemplateColumns: "1fr 1.2fr", gap: 80, alignItems: "center" }}>
+        <div style={{ maxWidth: 1200, margin: "0 auto", display: "grid", gridTemplateColumns: isMobile ? "1fr" : "1fr 1.2fr", gap: isMobile ? 40 : 80, alignItems: "center" }}>
 
           {/* Founder */}
           <div>
@@ -518,7 +531,7 @@ const HomePage = () => {
 
       {/* ═══ THREE PILLARS ═══ */}
       < section style={{
-        padding: "100px 60px",
+        padding: isMobile ? "60px 20px" : "100px 60px",
       }}>
         <div style={{ maxWidth: 1200, margin: "0 auto" }}>
           <div style={{ textAlign: "center", marginBottom: 64 }}>
@@ -531,7 +544,7 @@ const HomePage = () => {
               Education. Processes. Technology. <span style={{ fontFamily: mono, color: C.primary }}>[SEQUENCE_CRITICAL]</span>
             </p>
           </div>
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 32 }}>
+          <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : "1fr 1fr 1fr", gap: 32 }}>
             {[
               {
                 num: "01", title: "EDUCATION", sub: "Human_Layer",
@@ -592,7 +605,7 @@ const HomePage = () => {
       </section >
 
       {/* ═══ DATA FORTRESS TERMINAL ═══ */}
-      < section style={{ padding: "100px 60px", background: C.card, borderTop: `1px solid ${C.border}` }}>
+      < section style={{ padding: isMobile ? "60px 20px" : "100px 60px", background: C.card, borderTop: `1px solid ${C.border}` }}>
         <div style={{ maxWidth: 1000, margin: "0 auto" }}>
           <div style={{ textAlign: "center", marginBottom: 64 }}>
             <Badge variant="accent">SECURITY_PROTOCOL</Badge>
@@ -606,7 +619,7 @@ const HomePage = () => {
           </div>
 
           <div style={{
-            display: "grid", gridTemplateColumns: "1fr 1fr", gap: 1,
+            display: "grid", gridTemplateColumns: isMobile ? "1fr" : "1fr 1fr", gap: 1,
             background: C.border, border: `1px solid ${C.border}`, borderRadius: 8, overflow: "hidden"
           }}>
             {[
@@ -634,14 +647,14 @@ const HomePage = () => {
 
       {/* ═══ CTA ═══ */}
       < section style={{
-        padding: "120px 60px",
+        padding: isMobile ? "80px 20px" : "120px 60px",
         borderTop: `1px solid ${C.border}`,
         textAlign: "center",
         background: `radial-gradient(circle at 50% 100%, ${C.primaryDim}10 0%, ${C.black} 50%)`
       }}>
         <div style={{ maxWidth: 800, margin: "0 auto" }}>
           <h2 style={{
-            fontFamily: mono, fontSize: 42, fontWeight: 700,
+            fontFamily: mono, fontSize: isMobile ? 32 : 42, fontWeight: 700,
             color: C.text, margin: "0 0 24px", letterSpacing: "-0.03em",
           }}>Ready to secure your alpha?</h2>
           <p style={{
@@ -667,13 +680,14 @@ const HomePage = () => {
 const BlogPage = () => {
   const { id } = useParams();
   const navigate = useNavigate();
+  const isMobile = useMobile();
   // If id is present, find the article
   const activeArticle = id ? blogArticles.findIndex(a => a.id === id) : null;
 
   if (activeArticle !== null && activeArticle !== -1) {
     const article = blogArticles[activeArticle];
     return (
-      <div style={{ padding: "60px 60px 100px" }}>
+      <div style={{ padding: isMobile ? "40px 20px 80px" : "60px 60px 100px" }}>
         <ArticleLayout>
           <div
             onClick={() => navigate("/research")}
@@ -684,10 +698,10 @@ const BlogPage = () => {
           >← Back to Research</div>
 
           <Badge>{article.badge}</Badge>
-          <h1 style={TYPO.h1}>{article.title}</h1>
-          <p style={{ ...TYPO.bodyLarge, color: C.textMuted }}>{article.subtitle}</p>
+          <h1 style={{ ...TYPO.h1, fontSize: isMobile ? 32 : 48 }}>{article.title}</h1>
+          <p style={{ ...TYPO.bodyLarge, color: C.textMuted, fontSize: isMobile ? 18 : 20 }}>{article.subtitle}</p>
 
-          <div style={{ display: "flex", gap: 24, marginBottom: 64, fontFamily: mono, fontSize: 12, color: C.textDim }}>
+          <div style={{ display: "flex", flexDirection: isMobile ? "column" : "row", gap: isMobile ? 12 : 24, marginBottom: 64, fontFamily: mono, fontSize: 12, color: C.textDim }}>
             <span>{article.date}</span>
             <span>{article.readTime} MIN READ</span>
             <span>{article.author}</span>
@@ -696,7 +710,7 @@ const BlogPage = () => {
           <div style={{ borderTop: `1px solid ${C.border}`, paddingTop: 40 }}>
             {article.sections.map((section, i) => (
               <div key={i} style={{ marginBottom: 48 }}>
-                <h2 style={TYPO.h2}>{section.heading}</h2>
+                <h2 style={{ ...TYPO.h2, fontSize: isMobile ? 24 : 32 }}>{section.heading}</h2>
                 <div style={{ whiteSpace: "pre-line", ...TYPO.body }}>
                   {section.body}
                 </div>
@@ -733,17 +747,17 @@ const BlogPage = () => {
   }
 
   return (
-    <div style={{ padding: "80px 60px 100px" }}>
+    <div style={{ padding: isMobile ? "60px 20px 80px" : "80px 60px 100px" }}>
       <ArticleLayout maxWidth={1000}>
         <div style={{ marginBottom: 48, textAlign: "center" }}>
           <Badge>RESEARCH & INSIGHTS</Badge>
-          <h1 style={TYPO.h1}>Sovereign AI Frameworks</h1>
+          <h1 style={{ ...TYPO.h1, fontSize: isMobile ? 36 : 48 }}>Sovereign AI Frameworks</h1>
           <p style={{ ...TYPO.bodyLarge, margin: "0 auto", maxWidth: 600 }}>
             Frameworks, methodology, and evidence from the intersection of AI and investment banking.
           </p>
         </div>
 
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 24 }}>
+        <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : "1fr 1fr 1fr", gap: 24 }}>
           {blogArticles.map((article, i) => (
             <div
               key={i}
@@ -776,15 +790,16 @@ const BlogPage = () => {
 };
 
 const ReferenceCasePage = () => {
+  const isMobile = useMobile();
   const ulStyle = { margin: "0 0 24px", paddingLeft: 20, color: C.textSoft };
   const liStyle = { marginBottom: 12, lineHeight: 1.6 };
 
   return (
-    <div style={{ padding: "80px 60px 100px" }}>
+    <div style={{ padding: isMobile ? "60px 20px 80px" : "80px 60px 100px" }}>
       <ArticleLayout>
         <Badge variant="accent">REFERENCE CASE</Badge>
         <h1 style={{
-          fontFamily: sans, fontSize: 36, fontWeight: 800,
+          fontFamily: sans, fontSize: isMobile ? 28 : 36, fontWeight: 800,
           letterSpacing: "-0.025em", lineHeight: 1.15, margin: "16px 0 12px",
         }}>
           MP Capital Markets: Sovereign AI Enablement — Validated in Practice
@@ -794,22 +809,22 @@ const ReferenceCasePage = () => {
         </p>
 
         <div style={{ margin: "0 0 40px" }}>
-          <h2 style={TYPO.h2}>Context</h2>
-          <p style={TYPO.body}>
+          <h2 style={{ ...TYPO.h2, fontSize: isMobile ? 24 : 32 }}>Context</h2>
+          <p style={{ ...TYPO.body, fontSize: isMobile ? 16 : 18 }}>
             MP Capital Markets (MPCM), a Hamburg-based investment bank backed by Münchmeier Petersen, is SVRN ALPHA's founding investor and backer. The SVRN ALPHA framework was developed and validated in close collaboration with MPCM — making them both the first reference and the institutional proof that the three-pillar approach works in practice.
           </p>
-          <p style={TYPO.body}>
+          <p style={{ ...TYPO.body, fontSize: isMobile ? 16 : 18 }}>
             MPCM operates a research team of experienced analysts whose deep sector expertise is their primary differentiator. Like most investment banks, their analysts were spending the majority of their working hours on routine tasks: data extraction from financial terminals, report formatting to house style, model updates with new quarterly figures, cross-referencing regulatory filings. Only a fraction of their capacity went toward the strategic analysis, client advisory, and insight generation that actually drives revenue.
           </p>
-          <p style={TYPO.body}>
+          <p style={{ ...TYPO.body, fontSize: isMobile ? 16 : 18 }}>
             Previous attempts to address this had followed the standard playbook: license an AI platform, hire a data scientist, build some automations. The tools worked. Adoption didn't. Multiple initiative cycles had stalled, each time because the organizational side — the people, the processes, the mindset — hadn't been addressed.
           </p>
         </div>
 
         <div style={{ margin: "0 0 40px" }}>
-          <h2 style={TYPO.h2}>The Approach: Three Pillars, Deployed Sequentially</h2>
+          <h2 style={{ ...TYPO.h2, fontSize: isMobile ? 24 : 32 }}>The Approach: Three Pillars, Deployed Sequentially</h2>
 
-          <h3 style={TYPO.h3}>Phase 1 — Education</h3>
+          <h3 style={{ ...TYPO.h3, fontSize: isMobile ? 20 : 24 }}>Phase 1 — Education</h3>
           <ul style={ulStyle}>
             <li style={liStyle}>Structured AI fluency workshops for all levels — from junior analysts to the board</li>
             <li style={liStyle}>Creator-to-Curator mindset sessions: redefining the analyst role around judgment and curation rather than manual construction</li>
@@ -817,7 +832,7 @@ const ReferenceCasePage = () => {
             <li style={liStyle}>Leadership alignment: the Managing Director personally sponsored and attended every session</li>
           </ul>
 
-          <h3 style={TYPO.h3}>Phase 2 — Processes</h3>
+          <h3 style={{ ...TYPO.h3, fontSize: isMobile ? 20 : 24 }}>Phase 2 — Processes</h3>
           <ul style={ulStyle}>
             <li style={liStyle}>Granular workflow mapping: every analyst task catalogued with time allocation data</li>
             <li style={liStyle}>Identification of the routine tasks consuming the majority of analyst capacity</li>
@@ -825,7 +840,7 @@ const ReferenceCasePage = () => {
             <li style={liStyle}>Human-in-the-Loop checkpoint design: defining exactly where human judgment is required in every workflow</li>
           </ul>
 
-          <h3 style={TYPO.h3}>Phase 3 — Technology</h3>
+          <h3 style={{ ...TYPO.h3, fontSize: isMobile ? 20 : 24 }}>Phase 3 — Technology</h3>
           <ul style={ulStyle}>
             <li style={liStyle}>Sovereign infrastructure deployment: model-agnostic, EU-hosted, zero external data transfer</li>
             <li style={liStyle}>AI pipeline activation for data extraction, report formatting, and model population</li>
@@ -835,8 +850,8 @@ const ReferenceCasePage = () => {
         </div>
 
         <div style={{ margin: "0 0 60px" }}>
-          <h2 style={TYPO.h2}>Validated Results</h2>
-          <p style={TYPO.body}>The framework has been validated at MPCM and the results speak for themselves:</p>
+          <h2 style={{ ...TYPO.h2, fontSize: isMobile ? 24 : 32 }}>Validated Results</h2>
+          <p style={{ ...TYPO.body, fontSize: isMobile ? 16 : 18 }}>The framework has been validated at MPCM and the results speak for themselves:</p>
           <ul style={ulStyle}>
             <li style={liStyle}><b>Capacity Flip achieved:</b> The analyst capacity ratio inverted from majority-routine to majority-strategic — freeing experienced professionals to focus on the work that generates alpha</li>
             <li style={liStyle}><b>Measurable alpha generation:</b> The reallocation of analyst time to strategic work has produced demonstrable outperformance</li>
@@ -846,7 +861,7 @@ const ReferenceCasePage = () => {
             <li style={liStyle}><b>Human-in-the-Loop enforced:</b> Every critical decision point includes a human checkpoint</li>
             <li style={liStyle}><b>Operational and compounding:</b> The system is live, running, and the returns compound as institutional knowledge feeds back into the sovereign AI infrastructure</li>
           </ul>
-          <p style={TYPO.body}>
+          <p style={{ ...TYPO.body, fontSize: isMobile ? 16 : 18 }}>
             The results didn't come from a superior algorithm. They came from freeing highly skilled analysts to do the work they were hired to do. When the majority of your best people's time shifts from data gathering to strategic analysis, the compounding effect is significant — and it accelerates over time as institutional knowledge feeds back into the sovereign AI infrastructure.
           </p>
         </div>
@@ -883,18 +898,19 @@ const ReferenceCasePage = () => {
 
 // ─── WHITEPAPER PAGE ───
 const WhitepaperPage = () => {
+  const isMobile = useMobile();
   return (
-    <div style={{ padding: "80px 60px 100px" }}>
+    <div style={{ padding: isMobile ? "60px 20px 80px" : "80px 60px 100px" }}>
       <ArticleLayout>
 
         <div style={{ padding: "32px", background: C.card, borderRadius: 8, border: `1px solid ${C.border}`, marginBottom: 64 }}>
           <div style={{ fontFamily: mono, fontSize: 14, color: C.primary, marginBottom: 16 }}>// ABSTRACT</div>
-          <p style={{ ...TYPO.body, fontSize: 16, marginBottom: 0 }}>
+          <p style={{ ...TYPO.body, fontSize: isMobile ? 16 : 18, marginBottom: 0 }}>
             This whitepaper details the proprietary methodology SVRN ALPHA uses to transform financial institutions. It argues that the failure of most AI initiatives is due to "Technology First" implementation. We propose the "Education First" model: Cognitive Shift (Education) → Workflow Redesign (Process) → Model-Agnostic Infrastructure (Technology).
           </p>
         </div>
 
-        <h2 style={TYPO.h2}>Table of Contents</h2>
+        <h2 style={{ ...TYPO.h2, fontSize: isMobile ? 24 : 32 }}>Table of Contents</h2>
         <div style={{ fontFamily: mono, fontSize: 14, color: C.textSoft, display: "flex", flexDirection: "column", gap: 12 }}>
           <div>1. Introduction: The AI Transformation Paradox — p. 3</div>
           <div>2. Literature Review: Why Transformation Fails — p. 6</div>
@@ -932,18 +948,19 @@ const WhitepaperPage = () => {
 };
 
 const PressPage = () => {
+  const isMobile = useMobile();
   return (
-    <div style={{ padding: "80px 60px 100px" }}>
+    <div style={{ padding: isMobile ? "60px 20px 80px" : "80px 60px 100px" }}>
       <ArticleLayout>
         <Badge variant="primary">PRESS RELEASE</Badge>
-        <h1 style={TYPO.h1}>
+        <h1 style={{ ...TYPO.h1, fontSize: isMobile ? 32 : 48 }}>
           SVRN ALPHA Launches Sovereign AI Enablement Platform for European Investment Banking
         </h1>
-        <p style={{ ...TYPO.bodyLarge, color: C.text, fontWeight: 600 }}>
+        <p style={{ ...TYPO.bodyLarge, color: C.text, fontWeight: 600, fontSize: isMobile ? 18 : 20 }}>
           Hamburg-based firm introduces three-pillar framework backed by academic research and validated deployment
         </p>
 
-        <div style={{ margin: "0 0 40px", ...TYPO.body }}>
+        <div style={{ margin: "0 0 40px", ...TYPO.body, fontSize: isMobile ? 16 : 18 }}>
           <p style={{ margin: "0 0 16px" }}>
             <span style={{ fontWeight: 700, color: C.text }}>HAMBURG, GERMANY — January 15, 2026</span>
           </p>
@@ -990,11 +1007,12 @@ const PressPage = () => {
 };
 
 const AboutPage = () => {
+  const isMobile = useMobile();
   return (
-    <div style={{ padding: "80px 60px 100px" }}>
+    <div style={{ padding: isMobile ? "60px 20px 80px" : "80px 60px 100px" }}>
       <ArticleLayout>
         <Badge variant="accent">ABOUT</Badge>
-        <h1 style={TYPO.h1}>
+        <h1 style={{ ...TYPO.h1, fontSize: isMobile ? 36 : 48 }}>
           Founded on Academic Rigor.<br />Engineered for Reality.
         </h1>
         <p style={TYPO.bodyLarge}>
@@ -1002,19 +1020,19 @@ const AboutPage = () => {
         </p>
 
         <div style={{ marginBottom: 60 }}>
-          <h2 style={TYPO.h2}>The Origin</h2>
-          <p style={TYPO.body}>
+          <h2 style={{ ...TYPO.h2, fontSize: isMobile ? 24 : 32 }}>The Origin</h2>
+          <p style={{ ...TYPO.body, fontSize: isMobile ? 16 : 18 }}>
             For over a decade, Prof. Dr. Tobias Blask researched digital transformation in financial institutions. The patterns were consistent and frustrating: banks invested billions in AI technology, hired data scientists, licensed platforms — and achieved almost nothing. The failure rate hovered around 70%, year after year.
           </p>
-          <p style={TYPO.body}>
-            The academic literature was unambiguous: the primary determinant of transformation success wasn't technological capability. It was organizational readiness — how people thought about AI, how workflows adapted, how leadership committed to the change. Yet the industry continued to allocate 90% of its AI budget to technology and 10% to the organizational factors that actually determined success.
+          <p style={{ ...TYPO.body, fontSize: isMobile ? 16 : 18 }}>
+            The academic literature was unambiguous: the primary determinant of transformation success wasn't technological capability. It was organizational readiness — how people think about AI, how workflows adapted, how leadership committed to the change. Yet the industry continued to allocate 90% of its AI budget to technology and 10% to the organizational factors that actually determined success.
           </p>
-          <p style={TYPO.body}>
+          <p style={{ ...TYPO.body, fontSize: isMobile ? 16 : 18 }}>
             In 2025, Prof. Dr. Blask stopped writing papers about the problem and founded SVRN ALPHA to fix it. The company bridges the gap between what research proves and what practice requires — bringing academic rigor to the messy, political, deeply human work of organizational transformation.
           </p>
         </div>
 
-        <div style={{ marginBottom: 60, display: "flex", gap: 32, alignItems: "flex-start" }}>
+        <div style={{ marginBottom: 60, display: "flex", flexDirection: isMobile ? "column" : "row", gap: 32, alignItems: isMobile ? "center" : "flex-start", textAlign: isMobile ? "center" : "left" }}>
           <div style={{
             width: 80, height: 80, borderRadius: "50%",
             background: `linear-gradient(135deg, ${C.primary}, ${C.primaryDim})`,
@@ -1023,20 +1041,20 @@ const AboutPage = () => {
             flexShrink: 0
           }}>TB</div>
           <div>
-            <h2 style={{ ...TYPO.h2, margin: "0 0 8px" }}>Founder</h2>
+            <h2 style={{ ...TYPO.h2, margin: "0 0 8px", fontSize: isMobile ? 24 : 32 }}>Founder</h2>
             <div style={{ fontFamily: sans, fontSize: 18, fontWeight: 700, color: C.text }}>Prof. Dr. Tobias Blask</div>
             <div style={{ fontFamily: mono, fontSize: 13, color: C.accent, marginBottom: 16 }}>Professor, Founder & Chairman</div>
-            <p style={TYPO.body}>
+            <p style={{ ...TYPO.body, fontSize: isMobile ? 16 : 18 }}>
               Academic researcher turned practitioner. Over a decade of published research on digital transformation in financial institutions, combined with hands-on implementation experience inside European investment banks.
             </p>
-            <p style={TYPO.body}>
+            <p style={{ ...TYPO.body, fontSize: isMobile ? 16 : 18 }}>
               The SVRN ALPHA framework was built from real transformation work — not from slide decks. The industry needs a partner who understands both the science of AI and the organizational politics of making it stick.
             </p>
           </div>
         </div>
 
         <div style={{ marginBottom: 60 }}>
-          <h2 style={TYPO.h2}>Principles</h2>
+          <h2 style={{ ...TYPO.h2, fontSize: isMobile ? 24 : 32 }}>Principles</h2>
           {[
             { t: "01 — Education Before Technology", d: "We never deploy technology until the organizational readiness is in place. The order is the methodology." },
             { t: "02 — Sovereign Means You Decide", d: "Model-agnostic architecture. Per use case, we evaluate US closed-source, Chinese open-source, or European models. You choose. You switch. You're never locked in. EU compliance is a byproduct, not the pitch." },
@@ -1052,10 +1070,10 @@ const AboutPage = () => {
         </div>
 
         <div style={{ paddingTop: 40, borderTop: `1px solid ${C.border}` }}>
-          <h2 style={TYPO.h2}>Backed By</h2>
+          <h2 style={{ ...TYPO.h2, fontSize: isMobile ? 24 : 32 }}>Backed By</h2>
           <div style={{
             padding: 24, background: C.card, borderRadius: 8, border: `1px solid ${C.border}`,
-            display: "flex", gap: 24, alignItems: "center"
+            display: "flex", flexDirection: isMobile ? "column" : "row", gap: 24, alignItems: "center"
           }}>
             <div style={{
               width: 48, height: 48, background: C.text, borderRadius: 4,
@@ -1083,6 +1101,7 @@ const AboutPage = () => {
 // ═══════════════════════════════════════════════════════
 
 export default function SVRNAlpha() {
+  const isMobile = useMobile();
   return (
     <BrowserRouter>
       <div style={{ minHeight: "100vh", background: C.black, color: C.text, fontFamily: sans }}>
@@ -1101,9 +1120,9 @@ export default function SVRNAlpha() {
 
         {/* FOOTER */}
         <footer style={{
-          padding: "40px 60px", borderTop: `1px solid ${C.border}`,
-          display: "flex", justifyContent: "space-between", alignItems: "center",
-          fontSize: 12, color: C.textDim, fontFamily: mono
+          padding: isMobile ? "40px 20px" : "40px 60px", borderTop: `1px solid ${C.border}`,
+          display: "flex", flexDirection: isMobile ? "column" : "row", gap: isMobile ? 24 : 0, justifyContent: "space-between", alignItems: "center",
+          fontSize: 12, color: C.textDim, fontFamily: mono, textAlign: isMobile ? "center" : "left"
         }}>
           <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
             <div style={{
