@@ -1,4 +1,6 @@
 import { useState, useEffect } from "react";
+import { BrowserRouter, Routes, Route, Link, useLocation, useNavigate, useParams, Navigate } from "react-router-dom";
+
 
 // ─── SVRN ALPHA ─── Sovereign Intelligence.
 // DESIGN: "Sovereign Terminal" (Black, Signal Green, Alpha Gold, JetBrains Mono)
@@ -282,94 +284,89 @@ Models are interchangeable. Your proprietary knowledge — and your freedom to c
 // PAGE COMPONENTS
 // ═══════════════════════════════════════════════════════
 
-const Nav = ({ current, onNavigate }) => {
+// ─── HELPER COMPONENTS ───
+const TickerItem = ({ label }) => (
+  <span style={{
+    fontFamily: mono, fontSize: 11, fontWeight: 600,
+    color: C.primary, letterSpacing: "0.05em",
+  }}>{label}</span>
+);
+
+// ─── NAVIGATION ───
+const Nav = () => {
+  const location = useLocation();
+  const [scrolled, setScrolled] = useState(false);
   const [hover, setHover] = useState(null);
 
+  useEffect(() => {
+    const handleScroll = () => setScrolled(window.scrollY > 20);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   const items = [
-    { id: "home", label: "Home" },
-    { id: "blog", label: "Research" },
-    { id: "reference-case", label: "Reference Case" },
-    { id: "whitepaper", label: "Whitepaper" },
-    { id: "press", label: "Press" },
-    { id: "about", label: "About" },
+    { id: "/", label: "HOME" },
+    { id: "/research", label: "RESEARCH" },
+    { id: "/reference-case", label: "REFERENCE_CASE" },
+    { id: "/whitepaper", label: "WHITEPAPER" },
+    { id: "/press", label: "PRESS" },
+    { id: "/about", label: "ABOUT" },
   ];
 
   return (
-    <>
-      {/* Ticker */}
-      <div style={{
-        background: C.surface, borderBottom: `1px solid ${C.border}`,
-        padding: "5px 0", fontFamily: mono, fontSize: 10, letterSpacing: "0.05em",
-        display: "flex", justifyContent: "center", gap: 32,
-      }}>
-        {[
-          { l: "STATUS", v: "OPERATIONAL", c: C.primary },
-          { l: "ARCHITECTURE", v: "MODEL-AGNOSTIC", c: C.primary }, // Updated per markdown
-          { l: "MOAT", v: "SOVEREIGN", c: C.primary },
-          { l: "COMPLIANCE", v: "EU ✓", c: C.primary },
-        ].map((t, i) => (
-          <span key={i}>
-            <span style={{ color: C.textDim }}>{t.l}: </span>
-            <span style={{ color: t.c, fontWeight: 600 }}>{t.v}</span>
-          </span>
-        ))}
-      </div>
-
-      {/* Main Nav */}
-      <nav style={{
-        display: "flex", justifyContent: "space-between", alignItems: "center",
-        padding: "16px 40px", borderBottom: `1px solid ${C.border}`,
-        position: "sticky", top: 0, zIndex: 100,
-        background: `${C.black}E8`, backdropFilter: "blur(12px)",
-      }}>
-        <div
-          onClick={() => onNavigate("home")}
-          style={{ display: "flex", alignItems: "center", gap: 12, cursor: "pointer" }}
-        >
-          <div style={{
-            width: 32, height: 32, borderRadius: 6,
-            background: `linear-gradient(135deg, ${C.primaryDim}, ${C.primary} 120%)`,
-            display: "flex", alignItems: "center", justifyContent: "center",
-            fontFamily: mono, fontWeight: 800, fontSize: 14, color: C.black
-          }}>_</div>
-          <span style={{ fontFamily: mono, fontWeight: 700, letterSpacing: "-0.02em", fontSize: 18 }}>
-            SVRN<span style={{ color: C.primary }}>_ALPHA</span>
-          </span>
+    <nav style={{
+      position: "fixed", top: 0, left: 0, right: 0, zIndex: 100,
+      padding: "20px 60px",
+      background: scrolled ? "rgba(5, 5, 5, 0.9)" : "transparent",
+      backdropFilter: scrolled ? "blur(10px)" : "none",
+      borderBottom: scrolled ? `1px solid ${C.border}` : "none",
+      display: "flex", justifyContent: "space-between", alignItems: "center",
+      transition: "all 0.3s"
+    }}>
+      <Link to="/" style={{ textDecoration: "none", display: "flex", alignItems: "center", gap: 12 }}>
+        <div style={{
+          width: 32, height: 32, borderRadius: 4,
+          background: C.primary,
+          display: "flex", alignItems: "center", justifyContent: "center",
+          fontFamily: mono, fontWeight: 800, fontSize: 18, color: C.black
+        }}>S</div>
+        <div style={{ fontFamily: sans, fontWeight: 800, fontSize: 18, letterSpacing: "-0.02em", color: C.text }}>
+          SVRN_ALPHA
         </div>
+      </Link>
 
-        <div style={{ display: "flex", gap: 28, alignItems: "center" }}>
-          {items.map((item, i) => (
-            <span
+      <div style={{ display: "flex", gap: 32 }}>
+        {items.map((item, i) => {
+          const isActive = location.pathname === item.id || (item.id !== "/" && location.pathname.startsWith(item.id));
+          return (
+            <Link
               key={item.id}
-              onClick={() => onNavigate(item.id)}
+              to={item.id}
               onMouseEnter={() => setHover(i)}
               onMouseLeave={() => setHover(null)}
               style={{
                 fontSize: 13, fontWeight: 500, fontFamily: mono,
-                color: current === item.id ? C.primary : hover === i ? C.text : C.textMuted,
+                color: isActive ? C.primary : hover === i ? C.text : C.textMuted,
                 cursor: "pointer", transition: "color 0.2s",
+                textDecoration: "none"
               }}
-            >{item.label}</span>
-          ))}
-          <div style={{
-            padding: "8px 20px", borderRadius: 4,
-            border: `1px solid ${C.primary}`,
-            background: `${C.primary}10`, color: C.primary,
-            fontSize: 11, fontWeight: 600, fontFamily: mono,
-            cursor: "pointer",
-            transition: "all 0.2s"
-          }}
-            onClick={() => onNavigate("about")}
-            onMouseEnter={(e) => { e.currentTarget.style.background = C.primary; e.currentTarget.style.color = C.black; }}
-            onMouseLeave={(e) => { e.currentTarget.style.background = `${C.primary}10`; e.currentTarget.style.color = C.primary; }}
-          >INITIALIZE_BRIEFING</div>
-        </div>
-      </nav>
-    </>
+            >{item.label}</Link>
+          );
+        })}
+      </div>
+
+      <div style={{ display: "flex", gap: 16, alignItems: "center" }}>
+        <TickerItem label="MODEL-AGNOSTIC" />
+        <div style={{ width: 1, height: 12, background: C.border }} />
+        <TickerItem label="EU COMPLIANCE" />
+      </div>
+    </nav>
   );
 };
 
-const HomePage = ({ onNavigate }) => {
+// ─── HOME PAGE ───
+const HomePage = () => {
+  const navigate = useNavigate();
   const [hoverPillar, setHoverPillar] = useState(null);
 
   return (
@@ -416,13 +413,13 @@ const HomePage = ({ onNavigate }) => {
               background: C.primary, color: C.black,
               fontSize: 14, fontWeight: 700, fontFamily: mono,
               cursor: "pointer",
-            }} onClick={() => onNavigate("about")}>{`> EXECUTE_BRIEFING`}</div>
+            }} onClick={() => navigate("/about")}>{`> EXECUTE_BRIEFING`}</div>
             <div style={{
               padding: "16px 40px", borderRadius: 4,
               border: `1px solid ${C.border}`,
               background: C.card,
               color: C.textSoft, fontSize: 14, fontWeight: 500, fontFamily: mono, cursor: "pointer",
-            }} onClick={() => onNavigate("whitepaper")}>READ_WHITEPAPER</div>
+            }} onClick={() => navigate("/whitepaper")}>READ_WHITEPAPER</div>
           </div>
         </div>
       </section>
@@ -449,7 +446,7 @@ const HomePage = ({ onNavigate }) => {
               The world changes fast; your infrastructure must remain fully flexible."
             </p>
 
-            <div style={{ display: "flex", alignItems: "center", gap: 20, cursor: "pointer" }} onClick={() => onNavigate("about")}>
+            <div style={{ display: "flex", alignItems: "center", gap: 20, cursor: "pointer" }} onClick={() => navigate("/about")}>
               <div style={{
                 width: 56, height: 56, borderRadius: 4,
                 background: C.card, border: `1px solid ${C.primaryDim}`,
@@ -469,8 +466,7 @@ const HomePage = ({ onNavigate }) => {
             background: C.black, border: `1px solid ${C.border}`,
             boxShadow: `0 20px 40px -10px rgba(0,0,0,0.5)`,
             overflow: "hidden",
-            cursor: "pointer"
-          }} onClick={() => onNavigate("reference-case")}>
+          }} onClick={() => navigate("/reference-case")}>
             {/* Window Header */}
             <div style={{
               background: C.card, borderBottom: `1px solid ${C.border}`,
@@ -518,10 +514,10 @@ const HomePage = ({ onNavigate }) => {
           </div>
 
         </div>
-      </section>
+      </section >
 
       {/* ═══ THREE PILLARS ═══ */}
-      <section style={{
+      < section style={{
         padding: "100px 60px",
       }}>
         <div style={{ maxWidth: 1200, margin: "0 auto" }}>
@@ -593,10 +589,10 @@ const HomePage = ({ onNavigate }) => {
             ))}
           </div>
         </div>
-      </section>
+      </section >
 
       {/* ═══ DATA FORTRESS TERMINAL ═══ */}
-      <section style={{ padding: "100px 60px", background: C.card, borderTop: `1px solid ${C.border}` }}>
+      < section style={{ padding: "100px 60px", background: C.card, borderTop: `1px solid ${C.border}` }}>
         <div style={{ maxWidth: 1000, margin: "0 auto" }}>
           <div style={{ textAlign: "center", marginBottom: 64 }}>
             <Badge variant="accent">SECURITY_PROTOCOL</Badge>
@@ -634,10 +630,10 @@ const HomePage = ({ onNavigate }) => {
             ))}
           </div>
         </div>
-      </section>
+      </section >
 
       {/* ═══ CTA ═══ */}
-      <section style={{
+      < section style={{
         padding: "120px 60px",
         borderTop: `1px solid ${C.border}`,
         textAlign: "center",
@@ -660,24 +656,27 @@ const HomePage = ({ onNavigate }) => {
               background: C.primary, color: C.black,
               fontSize: 14, fontWeight: 700, fontFamily: mono,
               cursor: "pointer",
-            }} onClick={() => onNavigate("about")}>{`> SCHEDULE_BRIEFING`}</div>
+            }} onClick={() => navigate("/about")}>{`> SCHEDULE_BRIEFING`}</div>
           </div>
         </div>
-      </section>
-    </div>
+      </section >
+    </div >
   );
 };
 
-const BlogPage = ({ onNavigate }) => {
-  const [activeArticle, setActiveArticle] = useState(null);
+const BlogPage = () => {
+  const { id } = useParams();
+  const navigate = useNavigate();
+  // If id is present, find the article
+  const activeArticle = id ? blogArticles.findIndex(a => a.id === id) : null;
 
-  if (activeArticle !== null) {
+  if (activeArticle !== null && activeArticle !== -1) {
     const article = blogArticles[activeArticle];
     return (
       <div style={{ padding: "60px 60px 100px" }}>
         <ArticleLayout>
           <div
-            onClick={() => setActiveArticle(null)}
+            onClick={() => navigate("/research")}
             style={{
               fontFamily: mono, fontSize: 11, color: C.textMuted,
               cursor: "pointer", marginBottom: 32, display: "inline-block",
@@ -704,6 +703,30 @@ const BlogPage = ({ onNavigate }) => {
               </div>
             ))}
           </div>
+
+          {/* Article CTA */}
+          <div style={{
+            padding: 32, borderRadius: 12, background: C.card,
+            border: `1px solid ${C.border}`, textAlign: "center",
+            margin: "48px 0 64px",
+          }}>
+            <div style={{ fontFamily: mono, fontSize: 10, color: C.textDim, letterSpacing: "0.1em", marginBottom: 8 }}>
+              root@svrn-alpha:~/briefing
+            </div>
+            <h3 style={{ fontFamily: sans, fontSize: 22, fontWeight: 700, margin: "0 0 8px" }}>
+              Ready to build your moat?
+            </h3>
+            <p style={{ fontSize: 13, color: C.textMuted, marginBottom: 20 }}>
+              Confidential briefing with our team in Hamburg.
+            </p>
+            <div style={{
+              display: "inline-block", padding: "12px 32px", borderRadius: 8,
+              background: C.primary, color: C.black,
+              fontFamily: mono, fontSize: 12, fontWeight: 700,
+              letterSpacing: "0.05em", cursor: "pointer",
+            }} onClick={() => navigate("/about")}>&gt; INITIALIZE_BRIEFING</div>
+          </div>
+
         </ArticleLayout>
       </div>
     );
@@ -724,7 +747,7 @@ const BlogPage = ({ onNavigate }) => {
           {blogArticles.map((article, i) => (
             <div
               key={i}
-              onClick={() => setActiveArticle(i)}
+              onClick={() => navigate(`/research/${article.id}`)}
               style={{
                 padding: 24, borderRadius: 8,
                 background: "transparent",
@@ -753,6 +776,9 @@ const BlogPage = ({ onNavigate }) => {
 };
 
 const ReferenceCasePage = () => {
+  const ulStyle = { margin: "0 0 24px", paddingLeft: 20, color: C.textSoft };
+  const liStyle = { marginBottom: 12, lineHeight: 1.6 };
+
   return (
     <div style={{ padding: "80px 60px 100px" }}>
       <ArticleLayout>
@@ -768,22 +794,22 @@ const ReferenceCasePage = () => {
         </p>
 
         <div style={{ margin: "0 0 40px" }}>
-          <h2 style={h2Style}>Context</h2>
-          <p style={pStyle}>
+          <h2 style={TYPO.h2}>Context</h2>
+          <p style={TYPO.body}>
             MP Capital Markets (MPCM), a Hamburg-based investment bank backed by Münchmeier Petersen, is SVRN ALPHA's founding investor and backer. The SVRN ALPHA framework was developed and validated in close collaboration with MPCM — making them both the first reference and the institutional proof that the three-pillar approach works in practice.
           </p>
-          <p style={pStyle}>
+          <p style={TYPO.body}>
             MPCM operates a research team of experienced analysts whose deep sector expertise is their primary differentiator. Like most investment banks, their analysts were spending the majority of their working hours on routine tasks: data extraction from financial terminals, report formatting to house style, model updates with new quarterly figures, cross-referencing regulatory filings. Only a fraction of their capacity went toward the strategic analysis, client advisory, and insight generation that actually drives revenue.
           </p>
-          <p style={pStyle}>
+          <p style={TYPO.body}>
             Previous attempts to address this had followed the standard playbook: license an AI platform, hire a data scientist, build some automations. The tools worked. Adoption didn't. Multiple initiative cycles had stalled, each time because the organizational side — the people, the processes, the mindset — hadn't been addressed.
           </p>
         </div>
 
         <div style={{ margin: "0 0 40px" }}>
-          <h2 style={h2Style}>The Approach: Three Pillars, Deployed Sequentially</h2>
+          <h2 style={TYPO.h2}>The Approach: Three Pillars, Deployed Sequentially</h2>
 
-          <h3 style={h3Style}>Phase 1 — Education</h3>
+          <h3 style={TYPO.h3}>Phase 1 — Education</h3>
           <ul style={ulStyle}>
             <li style={liStyle}>Structured AI fluency workshops for all levels — from junior analysts to the board</li>
             <li style={liStyle}>Creator-to-Curator mindset sessions: redefining the analyst role around judgment and curation rather than manual construction</li>
@@ -791,7 +817,7 @@ const ReferenceCasePage = () => {
             <li style={liStyle}>Leadership alignment: the Managing Director personally sponsored and attended every session</li>
           </ul>
 
-          <h3 style={h3Style}>Phase 2 — Processes</h3>
+          <h3 style={TYPO.h3}>Phase 2 — Processes</h3>
           <ul style={ulStyle}>
             <li style={liStyle}>Granular workflow mapping: every analyst task catalogued with time allocation data</li>
             <li style={liStyle}>Identification of the routine tasks consuming the majority of analyst capacity</li>
@@ -799,7 +825,7 @@ const ReferenceCasePage = () => {
             <li style={liStyle}>Human-in-the-Loop checkpoint design: defining exactly where human judgment is required in every workflow</li>
           </ul>
 
-          <h3 style={h3Style}>Phase 3 — Technology</h3>
+          <h3 style={TYPO.h3}>Phase 3 — Technology</h3>
           <ul style={ulStyle}>
             <li style={liStyle}>Sovereign infrastructure deployment: model-agnostic, EU-hosted, zero external data transfer</li>
             <li style={liStyle}>AI pipeline activation for data extraction, report formatting, and model population</li>
@@ -809,8 +835,8 @@ const ReferenceCasePage = () => {
         </div>
 
         <div style={{ margin: "0 0 60px" }}>
-          <h2 style={h2Style}>Validated Results</h2>
-          <p style={pStyle}>The framework has been validated at MPCM and the results speak for themselves:</p>
+          <h2 style={TYPO.h2}>Validated Results</h2>
+          <p style={TYPO.body}>The framework has been validated at MPCM and the results speak for themselves:</p>
           <ul style={ulStyle}>
             <li style={liStyle}><b>Capacity Flip achieved:</b> The analyst capacity ratio inverted from majority-routine to majority-strategic — freeing experienced professionals to focus on the work that generates alpha</li>
             <li style={liStyle}><b>Measurable alpha generation:</b> The reallocation of analyst time to strategic work has produced demonstrable outperformance</li>
@@ -820,7 +846,7 @@ const ReferenceCasePage = () => {
             <li style={liStyle}><b>Human-in-the-Loop enforced:</b> Every critical decision point includes a human checkpoint</li>
             <li style={liStyle}><b>Operational and compounding:</b> The system is live, running, and the returns compound as institutional knowledge feeds back into the sovereign AI infrastructure</li>
           </ul>
-          <p style={pStyle}>
+          <p style={TYPO.body}>
             The results didn't come from a superior algorithm. They came from freeing highly skilled analysts to do the work they were hired to do. When the majority of your best people's time shifts from data gathering to strategic analysis, the compounding effect is significant — and it accelerates over time as institutional knowledge feeds back into the sovereign AI infrastructure.
           </p>
         </div>
@@ -861,25 +887,28 @@ const WhitepaperPage = () => {
     <div style={{ padding: "80px 60px 100px" }}>
       <ArticleLayout>
 
-        <div style={{
-          padding: 32, background: C.card, borderRadius: 8, border: `1px solid ${C.border}`,
-          marginBottom: 60
-        }}>
-          <h2 style={{ ...h2Style, marginBottom: 24 }}>Table of Contents</h2>
-          <div style={{ fontFamily: mono, fontSize: 14, color: C.textSoft, display: "flex", flexDirection: "column", gap: 12 }}>
-            <div>1. Introduction: The AI Transformation Paradox — p. 3</div>
-            <div>2. Literature Review: Why Transformation Fails — p. 6</div>
-            <div>3. The Three-Pillar Model — p. 12</div>
-            <div style={{ paddingLeft: 20, color: C.textMuted }}>3.1 Pillar 1: Education and the Creator-to-Curator Shift — p. 14</div>
-            <div style={{ paddingLeft: 20, color: C.textMuted }}>3.2 Pillar 2: Process Redesign and the Capacity Flip — p. 19</div>
-            <div style={{ paddingLeft: 20, color: C.textMuted }}>3.3 Pillar 3: Sovereign Technology Architecture — p. 24</div>
-            <div>4. Data Sovereignty as Competitive Moat — p. 29</div>
-            <div>5. Human-in-the-Loop: Architecture, Not Feature — p. 33</div>
-            <div>6. Case Application: European Investment Bank — p. 36</div>
-            <div>7. Implications and Future Research — p. 41</div>
-            <div style={{ color: C.textDim }}>- References — p. 44</div>
-          </div>
+        <div style={{ padding: "32px", background: C.card, borderRadius: 8, border: `1px solid ${C.border}`, marginBottom: 64 }}>
+          <div style={{ fontFamily: mono, fontSize: 14, color: C.primary, marginBottom: 16 }}>// ABSTRACT</div>
+          <p style={{ ...TYPO.body, fontSize: 16, marginBottom: 0 }}>
+            This whitepaper details the proprietary methodology SVRN ALPHA uses to transform financial institutions. It argues that the failure of most AI initiatives is due to "Technology First" implementation. We propose the "Education First" model: Cognitive Shift (Education) → Workflow Redesign (Process) → Model-Agnostic Infrastructure (Technology).
+          </p>
         </div>
+
+        <h2 style={TYPO.h2}>Table of Contents</h2>
+        <div style={{ fontFamily: mono, fontSize: 14, color: C.textSoft, display: "flex", flexDirection: "column", gap: 12 }}>
+          <div>1. Introduction: The AI Transformation Paradox — p. 3</div>
+          <div>2. Literature Review: Why Transformation Fails — p. 6</div>
+          <div>3. The Three-Pillar Model — p. 12</div>
+          <div style={{ paddingLeft: 20, color: C.textMuted }}>3.1 Pillar 1: Education and the Creator-to-Curator Shift — p. 14</div>
+          <div style={{ paddingLeft: 20, color: C.textMuted }}>3.2 Pillar 2: Process Redesign and the Capacity Flip — p. 19</div>
+          <div style={{ paddingLeft: 20, color: C.textMuted }}>3.3 Pillar 3: Sovereign Technology Architecture — p. 24</div>
+          <div>4. Data Sovereignty as Competitive Moat — p. 29</div>
+          <div>5. Human-in-the-Loop: Architecture, Not Feature — p. 33</div>
+          <div>6. Case Application: European Investment Bank — p. 36</div>
+          <div>7. Implications and Future Research — p. 41</div>
+          <div style={{ color: C.textDim }}>- References — p. 44</div>
+        </div>
+
 
         {/* Download CTA */}
         <div style={{ textAlign: "center", padding: "40px 0", borderTop: `1px solid ${C.border}` }}>
@@ -897,8 +926,8 @@ const WhitepaperPage = () => {
           </div>
         </div>
 
-      </ArticleLayout>
-    </div>
+      </ArticleLayout >
+    </div >
   );
 };
 
@@ -1054,50 +1083,55 @@ const AboutPage = () => {
 // ═══════════════════════════════════════════════════════
 
 export default function SVRNAlpha() {
-  const [page, setPage] = useState("home");
-
-  const navigate = (p) => {
-    setPage(p);
-    window.scrollTo(0, 0);
-  };
-
-  const pages = {
-    home: <HomePage onNavigate={navigate} />,
-    blog: <BlogPage onNavigate={navigate} />,
-    "reference-case": <ReferenceCasePage />,
-    whitepaper: <WhitepaperPage />,
-    press: <PressPage />,
-    about: <AboutPage />,
-  };
-
   return (
-    <div style={{ minHeight: "100vh", background: C.black, color: C.text, fontFamily: sans }}>
-      <Nav current={page} onNavigate={navigate} />
-      {pages[page] || pages.home}
+    <BrowserRouter>
+      <div style={{ minHeight: "100vh", background: C.black, color: C.text, fontFamily: sans }}>
+        <Nav />
+        <ScrollToTop />
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/research" element={<BlogPage />} />
+          <Route path="/research/:id" element={<BlogPage />} />
+          <Route path="/reference-case" element={<ReferenceCasePage />} />
+          <Route path="/whitepaper" element={<WhitepaperPage />} />
+          <Route path="/press" element={<PressPage />} />
+          <Route path="/about" element={<AboutPage />} />
+          <Route path="*" element={<Navigate to="/" replace />} />
+        </Routes>
 
-      {/* FOOTER */}
-      <footer style={{
-        padding: "40px 60px", borderTop: `1px solid ${C.border}`,
-        display: "flex", justifyContent: "space-between", alignItems: "center",
-        fontSize: 12, color: C.textDim, fontFamily: mono
-      }}>
-        <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
-          <div style={{
-            width: 24, height: 24, borderRadius: 4,
-            background: C.primaryDim,
-            display: "flex", alignItems: "center", justifyContent: "center",
-            fontWeight: 800, fontSize: 10, color: C.black,
-          }}>_</div>
-          <span style={{ fontWeight: 700, color: C.textSoft }}>
-            SVRN_ALPHA
-          </span>
-        </div>
-        <div>
-          Hamburg, Germany · Sovereign AI Enablement · Backed by{" "}
-          <span style={{ color: C.textMuted, fontWeight: 500 }}>MP Capital Markets</span>
-        </div>
-        <div>svrn-alpha.ai</div>
-      </footer>
-    </div>
+        {/* FOOTER */}
+        <footer style={{
+          padding: "40px 60px", borderTop: `1px solid ${C.border}`,
+          display: "flex", justifyContent: "space-between", alignItems: "center",
+          fontSize: 12, color: C.textDim, fontFamily: mono
+        }}>
+          <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
+            <div style={{
+              width: 24, height: 24, borderRadius: 4,
+              background: C.primaryDim,
+              display: "flex", alignItems: "center", justifyContent: "center",
+              fontWeight: 800, fontSize: 10, color: C.black,
+            }}>_</div>
+            <span style={{ fontWeight: 700, color: C.textSoft }}>
+              SVRN_ALPHA
+            </span>
+          </div>
+          <div>
+            Hamburg, Germany · Sovereign AI Enablement · Backed by{" "}
+            <span style={{ color: C.textMuted, fontWeight: 500 }}>MP Capital Markets</span>
+          </div>
+          <div>svrn-alpha.ai</div>
+        </footer>
+      </div>
+    </BrowserRouter>
   );
 }
+
+// Helper to scroll to top on route change
+const ScrollToTop = () => {
+  const { pathname } = useLocation();
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+  return null;
+};
