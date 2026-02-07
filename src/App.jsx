@@ -387,8 +387,8 @@ const HomePage = ({ onNavigate }) => {
             fontSize: 20, color: C.textSoft, maxWidth: 640,
             margin: "0 auto 48px", lineHeight: 1.6, fontWeight: 400
           }}>
-            Research, frameworks, and reference cases from SVRN ALPHA.<br />
-            How AI transformation actually works in investment banking.
+            True sovereignty means full control: over your <span style={{ color: C.text, fontWeight: 500 }}>Processes, Roles, and Technology</span>.
+            SVRN ALPHA turns your proprietary knowledge into <span style={{ color: C.primary }}>model-agnostic infrastructure</span>.
           </p>
         </div>
       </section>
