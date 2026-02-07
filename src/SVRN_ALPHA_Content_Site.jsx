@@ -618,13 +618,13 @@ Here's what a decade of academic research and practical implementation has taugh
       },
       {
         heading: "The Budget Inversion Problem",
-        body: `When a bank allocates budget for AI transformation, the split typically looks something like this: 80-90% goes to technology — platforms, infrastructure, data engineering, model development. The remaining 10-20% covers change management, usually as an afterthought. A few workshops. An internal newsletter. Maybe a town hall.
+        body: `When a bank allocates budget for AI transformation, the split typically looks something like this: The vast majority goes to technology — platforms, infrastructure, data engineering, model development. The remaining sliver covers change management, usually as an afterthought. A few workshops. An internal newsletter. Maybe a town hall.
 
 This allocation is precisely backwards.
 
 Our research — and more importantly, our implementation experience — shows that the real split should be inverted. The majority of transformation success depends on organizational factors: how people think about AI, how workflows restructure, how leadership commits to the change. The technology is the enabler. It's necessary. But it's the minority of the equation.
 
-Banks spend 90% of their budget on 30% of the problem. Then they wonder why nothing changes.`
+Banks spend the majority of their budget on the minority of the problem. Then they wonder why nothing changes.`
       },
       {
         heading: "The Three Failures",
@@ -958,9 +958,9 @@ const CaseStudyPage = () => (
         display: "grid", gridTemplateColumns: "1fr 1fr 1fr 1fr", gap: 12, marginBottom: 40,
       }}>
         {[
-          { label: "ALPHA (EXCESS RETURN)", value: "+340bps", color: C.accent },
-          { label: "TIMELINE", value: "90 Days", color: C.primary },
-          { label: "CAPACITY FLIP", value: "70/30 → 30/70", color: C.primary },
+          { label: "ALPHA (POTENTIAL)", value: "SIGNIFICANT", color: C.accent },
+          { label: "DEPLOYMENT", value: "ACCELERATED", color: C.primary },
+          { label: "CAPACITY", value: "FLIPPED", color: C.primary },
           { label: "COMPLIANCE", value: "Full EU", color: C.primary },
         ].map((s, i) => (
           <div key={i} style={{
