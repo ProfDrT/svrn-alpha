@@ -60,6 +60,32 @@ const ArticleLayout = ({ children, maxWidth = 780 }) => (
 // DATA & CONTENT
 // ═══════════════════════════════════════════════════════
 
+const TYPO = {
+  h1: {
+    fontFamily: mono, fontSize: 48, fontWeight: 800,
+    letterSpacing: "-0.03em", lineHeight: 1.1,
+    color: C.text, margin: "0 0 32px"
+  },
+  h2: {
+    fontFamily: mono, fontSize: 32, fontWeight: 700,
+    letterSpacing: "-0.02em", lineHeight: 1.2,
+    color: C.text, margin: "48px 0 24px"
+  },
+  h3: {
+    fontFamily: mono, fontSize: 24, fontWeight: 700,
+    letterSpacing: "-0.01em", lineHeight: 1.3,
+    color: C.text, margin: "32px 0 16px"
+  },
+  body: {
+    fontFamily: sans, fontSize: 18, color: C.textSoft,
+    lineHeight: 1.7, marginBottom: 24
+  },
+  bodyLarge: {
+    fontFamily: sans, fontSize: 20, color: C.textSoft,
+    lineHeight: 1.6, marginBottom: 32
+  }
+};
+
 const blogArticles = [
   {
     id: "70-percent",
@@ -659,69 +685,24 @@ const BlogPage = ({ onNavigate }) => {
           >← Back to Research</div>
 
           <Badge>{article.badge}</Badge>
-          <h1 style={{
-            fontFamily: sans, fontSize: 36, fontWeight: 800,
-            letterSpacing: "-0.025em", lineHeight: 1.15, margin: "16px 0 12px",
-          }}>{article.title}</h1>
-          <p style={{ fontSize: 17, color: C.accent, margin: "0 0 20px", fontStyle: "italic" }}>{article.subtitle}</p>
+          <h1 style={TYPO.h1}>{article.title}</h1>
+          <p style={{ ...TYPO.bodyLarge, color: C.textMuted }}>{article.subtitle}</p>
 
-          <div style={{
-            display: "flex", gap: 20, alignItems: "center",
-            padding: "16px 0", borderTop: `1px solid ${C.border}`, borderBottom: `1px solid ${C.border}`,
-            marginBottom: 40,
-          }}>
-            <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
-              <div style={{
-                width: 36, height: 36, borderRadius: "50%",
-                background: `linear-gradient(135deg, ${C.primary}, ${C.primaryDim})`,
-                display: "flex", alignItems: "center", justifyContent: "center",
-                fontFamily: mono, fontWeight: 800, fontSize: 12, color: C.black,
-              }}>TB</div>
-              <div>
-                <div style={{ fontSize: 13, fontWeight: 600, color: C.text }}>{article.author}</div>
-                <div style={{ fontSize: 11, color: C.textMuted }}>{article.date}</div>
-              </div>
-            </div>
-            <ReadingTime minutes={article.readTime} />
+          <div style={{ display: "flex", gap: 24, marginBottom: 64, fontFamily: mono, fontSize: 12, color: C.textDim }}>
+            <span>{article.date}</span>
+            <span>{article.readTime} MIN READ</span>
+            <span>{article.author}</span>
           </div>
 
-          {/* Article body */}
-          {article.sections.map((section, i) => (
-            <div key={i} style={{ marginBottom: 40 }}>
-              <h2 style={{
-                fontFamily: sans, fontSize: 22, fontWeight: 700,
-                letterSpacing: "-0.01em", margin: "0 0 16px", color: C.text,
-              }}>{section.heading}</h2>
-              {section.body.split("\n\n").map((para, j) => (
-                <p key={j} style={{
-                  fontSize: 16, color: C.textSoft, lineHeight: 1.8,
-                  margin: "0 0 16px",
-                }}>{para}</p>
-              ))}
-            </div>
-          ))}
-
-          {/* Article CTA */}
-          <div style={{
-            padding: 32, borderRadius: 12, background: C.card,
-            border: `1px solid ${C.border}`, textAlign: "center",
-            margin: "48px 0 64px",
-          }}>
-            <div style={{ fontFamily: mono, fontSize: 10, color: C.textDim, letterSpacing: "0.1em", marginBottom: 8 }}>
-              root@svrn-alpha:~/briefing
-            </div>
-            <h3 style={{ fontFamily: sans, fontSize: 22, fontWeight: 700, margin: "0 0 8px" }}>
-              Ready to build your moat?
-            </h3>
-            <p style={{ fontSize: 13, color: C.textMuted, marginBottom: 20 }}>
-              Confidential briefing with our team in Hamburg.
-            </p>
-            <div style={{
-              display: "inline-block", padding: "12px 32px", borderRadius: 8,
-              background: C.primary, color: C.black,
-              fontFamily: mono, fontSize: 12, fontWeight: 700,
-              letterSpacing: "0.05em", cursor: "pointer",
-            }} onClick={() => onNavigate("about")}>&gt; INITIALIZE_BRIEFING</div>
+          <div style={{ borderTop: `1px solid ${C.border}`, paddingTop: 40 }}>
+            {article.sections.map((section, i) => (
+              <div key={i} style={{ marginBottom: 48 }}>
+                <h2 style={TYPO.h2}>{section.heading}</h2>
+                <div style={{ whiteSpace: "pre-line", ...TYPO.body }}>
+                  {section.body}
+                </div>
+              </div>
+            ))}
           </div>
         </ArticleLayout>
       </div>
@@ -733,11 +714,8 @@ const BlogPage = ({ onNavigate }) => {
       <ArticleLayout maxWidth={1000}>
         <div style={{ marginBottom: 48, textAlign: "center" }}>
           <Badge>RESEARCH & INSIGHTS</Badge>
-          <h1 style={{
-            fontFamily: sans, fontSize: 42, fontWeight: 800,
-            letterSpacing: "-0.02em", margin: "16px 0 8px",
-          }}>Sovereign AI Frameworks</h1>
-          <p style={{ fontSize: 16, color: C.textMuted, maxWidth: 600, margin: "0 auto" }}>
+          <h1 style={TYPO.h1}>Sovereign AI Frameworks</h1>
+          <p style={{ ...TYPO.bodyLarge, margin: "0 auto", maxWidth: 600 }}>
             Frameworks, methodology, and evidence from the intersection of AI and investment banking.
           </p>
         </div>
@@ -760,11 +738,8 @@ const BlogPage = ({ onNavigate }) => {
                 <Badge variant="primary">RESEARCH</Badge>
                 <span style={{ fontFamily: mono, fontSize: 10, color: C.textDim }}>{article.date}</span>
               </div>
-              <h3 style={{
-                fontFamily: sans, fontSize: 18, fontWeight: 700, color: C.text,
-                lineHeight: 1.3, margin: "0 0 12px", flex: 1
-              }}>{article.title}</h3>
-              <p style={{ fontSize: 13, color: C.textMuted, margin: "0 0 24px", flex: 1 }}>{article.subtitle}</p>
+              <h3 style={{ ...TYPO.h3, fontSize: 22, margin: "0 0 12px", flex: 1 }}>{article.title}</h3>
+              <p style={{ ...TYPO.body, fontSize: 16, margin: "0 0 24px", flex: 1 }}>{article.subtitle}</p>
               <div style={{
                 fontFamily: mono, fontSize: 11, color: C.primary,
                 display: "flex", alignItems: "center", gap: 8
@@ -878,41 +853,13 @@ const ReferenceCasePage = () => {
   );
 };
 
-// Styles for ReferencePage
-const h2Style = { fontFamily: sans, fontSize: 22, fontWeight: 700, color: C.text, margin: "0 0 16px" };
-const h3Style = { fontFamily: mono, fontSize: 14, fontWeight: 700, color: C.primary, margin: "24px 0 12px", textTransform: "uppercase" };
-const pStyle = { fontSize: 16, color: C.textSoft, lineHeight: 1.8, margin: "0 0 16px" };
-const ulStyle = { margin: "0 0 16px", paddingLeft: 20 };
-const liStyle = { fontSize: 16, color: C.textSoft, lineHeight: 1.6, marginBottom: 8 };
+// Local styles removed in favor of TYPO constant
 
+// ─── WHITEPAPER PAGE ───
 const WhitepaperPage = () => {
   return (
     <div style={{ padding: "80px 60px 100px" }}>
       <ArticleLayout>
-        <Badge variant="primary">FOUNDING PAPER</Badge>
-        <h1 style={{
-          fontFamily: sans, fontSize: 36, fontWeight: 800,
-          letterSpacing: "-0.025em", lineHeight: 1.15, margin: "16px 0 12px",
-        }}>
-          The Three-Pillar Model: A Framework for Sovereign AI Transformation in Investment Banking
-        </h1>
-        <p style={{ fontSize: 16, color: C.textMuted, margin: "0 0 40px", fontFamily: mono }}>
-          Prof. Dr. Tobias Blask · SVRN ALPHA Research · January 2026<br />
-          <span style={{ color: C.textDim }}>25 min read</span>
-        </p>
-
-        <div style={{ margin: "0 0 48px" }}>
-          <h2 style={h2Style}>Abstract</h2>
-          <p style={pStyle}>
-            Artificial intelligence adoption in European investment banking has followed a technology-first pattern that produces consistently poor outcomes. Analysis of over fifty transformation initiatives across DACH, Nordic, and UK institutions reveals a critical insight: organizational factors account for approximately 70% of implementation success, while technology accounts for 30%. Yet budget allocation typically inverts this ratio.
-          </p>
-          <p style={pStyle}>
-            This paper introduces the Three-Pillar Model — a sequential framework that addresses Education, Process, and Technology in that order. The model is grounded in the Creator-to-Curator hypothesis: that the primary value shift in AI-enabled banking is not automation of tasks but the cognitive reorientation of professionals from content creation to insight curation.
-          </p>
-          <p style={pStyle}>
-            The framework has been validated in practice at a European investment bank, producing measurable results: a capacity reallocation from majority-routine work to majority-strategic analysis, demonstrable alpha generation above benchmark, and full regulatory compliance including EU AI Act readiness. The paper concludes with implications for data sovereignty as a competitive moat and the role of Human-in-the-Loop architecture as a non-negotiable design principle.
-          </p>
-        </div>
 
         <div style={{
           padding: 32, background: C.card, borderRadius: 8, border: `1px solid ${C.border}`,
@@ -960,17 +907,14 @@ const PressPage = () => {
     <div style={{ padding: "80px 60px 100px" }}>
       <ArticleLayout>
         <Badge variant="primary">PRESS RELEASE</Badge>
-        <h1 style={{
-          fontFamily: sans, fontSize: 36, fontWeight: 800,
-          letterSpacing: "-0.025em", lineHeight: 1.15, margin: "16px 0 12px",
-        }}>
+        <h1 style={TYPO.h1}>
           SVRN ALPHA Launches Sovereign AI Enablement Platform for European Investment Banking
         </h1>
-        <p style={{ fontSize: 18, color: C.text, margin: "0 0 40px", fontWeight: 600 }}>
+        <p style={{ ...TYPO.bodyLarge, color: C.text, fontWeight: 600 }}>
           Hamburg-based firm introduces three-pillar framework backed by academic research and validated deployment
         </p>
 
-        <div style={{ margin: "0 0 40px", fontFamily: sans, fontSize: 16, color: C.textSoft, lineHeight: 1.6 }}>
+        <div style={{ margin: "0 0 40px", ...TYPO.body }}>
           <p style={{ margin: "0 0 16px" }}>
             <span style={{ fontWeight: 700, color: C.text }}>HAMBURG, GERMANY — January 15, 2026</span>
           </p>
@@ -1021,25 +965,22 @@ const AboutPage = () => {
     <div style={{ padding: "80px 60px 100px" }}>
       <ArticleLayout>
         <Badge variant="accent">ABOUT</Badge>
-        <h1 style={{
-          fontFamily: sans, fontSize: 36, fontWeight: 800,
-          letterSpacing: "-0.025em", lineHeight: 1.15, margin: "16px 0 12px",
-        }}>
+        <h1 style={TYPO.h1}>
           Founded on Academic Rigor.<br />Engineered for Reality.
         </h1>
-        <p style={{ fontSize: 18, color: C.textSoft, margin: "0 0 60px", lineHeight: 1.6 }}>
+        <p style={TYPO.bodyLarge}>
           SVRN ALPHA exists because the gap between what research says about AI transformation and what the industry does about it is too wide to accept.
         </p>
 
         <div style={{ marginBottom: 60 }}>
-          <h2 style={h2Style}>The Origin</h2>
-          <p style={pStyle}>
+          <h2 style={TYPO.h2}>The Origin</h2>
+          <p style={TYPO.body}>
             For over a decade, Prof. Dr. Tobias Blask researched digital transformation in financial institutions. The patterns were consistent and frustrating: banks invested billions in AI technology, hired data scientists, licensed platforms — and achieved almost nothing. The failure rate hovered around 70%, year after year.
           </p>
-          <p style={pStyle}>
+          <p style={TYPO.body}>
             The academic literature was unambiguous: the primary determinant of transformation success wasn't technological capability. It was organizational readiness — how people thought about AI, how workflows adapted, how leadership committed to the change. Yet the industry continued to allocate 90% of its AI budget to technology and 10% to the organizational factors that actually determined success.
           </p>
-          <p style={pStyle}>
+          <p style={TYPO.body}>
             In 2025, Prof. Dr. Blask stopped writing papers about the problem and founded SVRN ALPHA to fix it. The company bridges the gap between what research proves and what practice requires — bringing academic rigor to the messy, political, deeply human work of organizational transformation.
           </p>
         </div>
@@ -1053,20 +994,20 @@ const AboutPage = () => {
             flexShrink: 0
           }}>TB</div>
           <div>
-            <h2 style={{ ...h2Style, marginBottom: 8 }}>Founder</h2>
+            <h2 style={{ ...TYPO.h2, margin: "0 0 8px" }}>Founder</h2>
             <div style={{ fontFamily: sans, fontSize: 18, fontWeight: 700, color: C.text }}>Prof. Dr. Tobias Blask</div>
             <div style={{ fontFamily: mono, fontSize: 13, color: C.accent, marginBottom: 16 }}>Professor, Founder & Chairman</div>
-            <p style={pStyle}>
+            <p style={TYPO.body}>
               Academic researcher turned practitioner. Over a decade of published research on digital transformation in financial institutions, combined with hands-on implementation experience inside European investment banks.
             </p>
-            <p style={pStyle}>
+            <p style={TYPO.body}>
               The SVRN ALPHA framework was built from real transformation work — not from slide decks. The industry needs a partner who understands both the science of AI and the organizational politics of making it stick.
             </p>
           </div>
         </div>
 
         <div style={{ marginBottom: 60 }}>
-          <h2 style={h2Style}>Principles</h2>
+          <h2 style={TYPO.h2}>Principles</h2>
           {[
             { t: "01 — Education Before Technology", d: "We never deploy technology until the organizational readiness is in place. The order is the methodology." },
             { t: "02 — Sovereign Means You Decide", d: "Model-agnostic architecture. Per use case, we evaluate US closed-source, Chinese open-source, or European models. You choose. You switch. You're never locked in. EU compliance is a byproduct, not the pitch." },
@@ -1082,7 +1023,7 @@ const AboutPage = () => {
         </div>
 
         <div style={{ paddingTop: 40, borderTop: `1px solid ${C.border}` }}>
-          <h2 style={h2Style}>Backed By</h2>
+          <h2 style={TYPO.h2}>Backed By</h2>
           <div style={{
             padding: 24, background: C.card, borderRadius: 8, border: `1px solid ${C.border}`,
             display: "flex", gap: 24, alignItems: "center"
