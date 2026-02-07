@@ -369,7 +369,7 @@ const HomePage = ({ onNavigate }) => {
                 <span style={{ color: C.primary }}>➜</span> <span style={{ color: C.accent }}>CALCULATE_YIELD</span>
               </div>
               <div style={{ paddingLeft: 20, color: C.textSoft, marginBottom: 16 }}>
-                Alpha Generated: <span style={{ color: C.primary, fontWeight: 700 }}>+340bps</span> vs. Benchmark<br />
+                Alpha Generated: <span style={{ color: C.primary, fontWeight: 700 }}>+340bps (3.4%)</span> vs. Benchmark<br />
                 Capacity Reallocated: <span style={{ color: C.text }}>70% Routine → Strategic</span>
               </div>
 
@@ -947,7 +947,7 @@ const CaseStudyPage = () => (
         fontFamily: sans, fontSize: 36, fontWeight: 800,
         letterSpacing: "-0.025em", lineHeight: 1.15, margin: "16px 0 12px",
       }}>
-        MP Capital Markets: +340bps Alpha Generation in 90 Days
+        MP Capital Markets: +340bps (3.4%) Alpha Generation in 90 Days
       </h1>
       <p style={{ fontSize: 17, color: C.accent, margin: "0 0 32px", fontStyle: "italic" }}>
         How a sovereign AI deployment transformed research operations at a European investment bank.
@@ -958,7 +958,7 @@ const CaseStudyPage = () => (
         display: "grid", gridTemplateColumns: "1fr 1fr 1fr 1fr", gap: 12, marginBottom: 40,
       }}>
         {[
-          { label: "ALPHA", value: "+340bps", color: C.accent },
+          { label: "ALPHA (EXCESS RETURN)", value: "+340bps", color: C.accent },
           { label: "TIMELINE", value: "90 Days", color: C.primary },
           { label: "CAPACITY FLIP", value: "70/30 → 30/70", color: C.primary },
           { label: "COMPLIANCE", value: "Full EU", color: C.primary },
@@ -1087,7 +1087,7 @@ const CaseStudyPage = () => (
         </div>
 
         <p style={{ fontSize: 15, color: C.textSoft, lineHeight: 1.8, margin: 0 }}>
-          The +340 basis points of alpha generation above benchmark didn't come from a superior algorithm. They came from freeing highly skilled analysts to do the work they were hired to do. When 70% of your best people's time shifts from data gathering to strategic analysis, the compounding effect is significant — and it accelerates over time as institutional knowledge feeds back into the sovereign AI infrastructure.
+          The +340 basis points (3.4%) of alpha generation above benchmark didn't come from a superior algorithm. They came from freeing highly skilled analysts to do the work they were hired to do. When 70% of your best people's time shifts from data gathering to strategic analysis, the compounding effect is significant — and it accelerates over time as institutional knowledge feeds back into the sovereign AI infrastructure.
         </p>
       </div>
 
