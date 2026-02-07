@@ -346,15 +346,6 @@ const Nav = ({ current, onNavigate }) => {
 const HomePage = ({ onNavigate }) => {
   const [hoverPillar, setHoverPillar] = useState(null);
 
-  const gridItems = [
-    { type: "RESEARCH", title: "Why 70% of AI Initiatives in Banking Fail — and It's Not the Technology", date: "Feb 2026", link: "blog" },
-    { type: "REFERENCE CASE", title: "MP Capital Markets: Sovereign AI Deployment in Practice", date: "Jan 2026", link: "reference-case" },
-    { type: "RESEARCH", title: "From Creator to Curator: The Capacity Flip That Changes Everything", date: "Feb 2026", link: "blog" },
-    { type: "WHITEPAPER", title: "The Three-Pillar Model: A Framework for Sovereign AI Transformation", date: "Jan 2026", link: "whitepaper" },
-    { type: "RESEARCH", title: "Your Data Moat Is the Only Alpha Left", date: "Feb 2026", link: "blog" },
-    { type: "PRESS", title: "SVRN ALPHA Launches Sovereign AI Enablement for European Investment Banking", date: "Jan 2026", link: "press" },
-  ];
-
   return (
     <div>
       {/* ═══ HERO ═══ */}
@@ -363,6 +354,7 @@ const HomePage = ({ onNavigate }) => {
         textAlign: "center", position: "relative",
         background: `radial-gradient(circle at 50% 10%, ${C.surface} 0%, ${C.black} 70%)`
       }}>
+        {/* Grid overlay */}
         <div style={{
           position: "absolute", inset: 0, opacity: 0.1, pointerEvents: "none",
           backgroundImage: `linear-gradient(${C.border} 1px, transparent 1px), linear-gradient(90deg, ${C.border} 1px, transparent 1px)`,
@@ -370,8 +362,9 @@ const HomePage = ({ onNavigate }) => {
         }} />
 
         <div style={{ maxWidth: 1200, margin: "0 auto", position: "relative", zIndex: 1 }}>
-          <div style={{ marginBottom: 32 }}>
-            <Badge>RESEARCH & INSIGHTS</Badge>
+          <div style={{ display: "flex", gap: 12, justifyContent: "center", marginBottom: 32 }}>
+            <Badge>HIERARCHY: SOVEREIGN</Badge>
+            <Badge variant="accent">SECTOR: BANKING</Badge>
           </div>
 
           <h1 style={{
@@ -390,72 +383,260 @@ const HomePage = ({ onNavigate }) => {
             True sovereignty means full control: over your <span style={{ color: C.text, fontWeight: 500 }}>Processes, Roles, and Technology</span>.
             SVRN ALPHA turns your proprietary knowledge into <span style={{ color: C.primary }}>model-agnostic infrastructure</span>.
           </p>
+
+          <div style={{ display: "flex", gap: 16, justifyContent: "center" }}>
+            <div style={{
+              padding: "16px 40px", borderRadius: 4,
+              background: C.primary, color: C.black,
+              fontSize: 14, fontWeight: 700, fontFamily: mono,
+              cursor: "pointer",
+            }} onClick={() => onNavigate("about")}>{`> EXECUTE_BRIEFING`}</div>
+            <div style={{
+              padding: "16px 40px", borderRadius: 4,
+              border: `1px solid ${C.border}`,
+              background: C.card,
+              color: C.textSoft, fontSize: 14, fontWeight: 500, fontFamily: mono, cursor: "pointer",
+            }} onClick={() => onNavigate("whitepaper")}>READ_WHITEPAPER</div>
+          </div>
         </div>
       </section>
 
-      {/* ═══ FEATURED CONTENT GRID ═══ */}
-      <section style={{ padding: "80px 60px", background: C.surface, borderTop: `1px solid ${C.border}` }}>
+      {/* ═══ SYSTEM LOG: LEADERSHIP & SUCCESS ═══ */}
+      <section style={{
+        padding: "80px 60px",
+        background: C.surface, borderTop: `1px solid ${C.border}`, borderBottom: `1px solid ${C.border}`,
+      }}>
+        <div style={{ maxWidth: 1200, margin: "0 auto", display: "grid", gridTemplateColumns: "1fr 1.2fr", gap: 80, alignItems: "center" }}>
+
+          {/* Founder */}
+          <div>
+            <Badge variant="accent">ROOT_USER</Badge>
+            <h2 style={{
+              fontFamily: mono, fontSize: 36, fontWeight: 700, color: C.text,
+              margin: "24px 0 24px", letterSpacing: "-0.03em", lineHeight: 1.1
+            }}>
+              Founded on Academic Rigor.<br />Engineered for Reality.
+            </h2>
+            <p style={{ fontSize: 16, color: C.textMuted, lineHeight: 1.7, marginBottom: 32 }}>
+              "Sovereignty isn't just data residency. It's the ability to switch models instantly.
+              US Top Tier, Chinese Open Source, or EU Sovereign – we utilize what wins.
+              The world changes fast; your infrastructure must remain fully flexible."
+            </p>
+
+            <div style={{ display: "flex", alignItems: "center", gap: 20, cursor: "pointer" }} onClick={() => onNavigate("about")}>
+              <div style={{
+                width: 56, height: 56, borderRadius: 4,
+                background: C.card, border: `1px solid ${C.primaryDim}`,
+                display: "flex", alignItems: "center", justifyContent: "center",
+                fontSize: 20, fontWeight: 700, color: C.primary, fontFamily: mono
+              }}>TB</div>
+              <div>
+                <div style={{ fontSize: 16, fontWeight: 700, color: C.text, fontFamily: mono }}>Prof. Dr. Tobias Blask</div>
+                <div style={{ fontSize: 13, color: C.textMuted, fontFamily: mono }}>Founder & Chairman | Professor</div>
+              </div>
+            </div>
+          </div>
+
+          {/* Terminal Window: Success Log */}
+          <div style={{
+            borderRadius: 8,
+            background: C.black, border: `1px solid ${C.border}`,
+            boxShadow: `0 20px 40px -10px rgba(0,0,0,0.5)`,
+            overflow: "hidden",
+            cursor: "pointer"
+          }} onClick={() => onNavigate("reference-case")}>
+            {/* Window Header */}
+            <div style={{
+              background: C.card, borderBottom: `1px solid ${C.border}`,
+              padding: "8px 16px", display: "flex", justifyContent: "space-between", alignItems: "center"
+            }}>
+              <div style={{ fontFamily: mono, fontSize: 11, color: C.textMuted }}>root@mpcm-server:~/logs</div>
+              <div style={{ display: "flex", gap: 6 }}>
+                <div style={{ width: 10, height: 10, borderRadius: "50%", background: "#EF4444" }} />
+                <div style={{ width: 10, height: 10, borderRadius: "50%", background: "#F59E0B" }} />
+                <div style={{ width: 10, height: 10, borderRadius: "50%", background: "#10B981" }} />
+              </div>
+            </div>
+
+            {/* Window Content */}
+            <div style={{ padding: "24px 32px", fontFamily: mono, fontSize: 13, lineHeight: 1.6 }}>
+              <div style={{ color: C.textMuted, marginBottom: 12 }}># EXECUTION REPORT: STRATEGIC BLUEPRINT</div>
+
+              <div style={{ marginBottom: 4 }}>
+                <span style={{ color: C.primary }}>➜</span> <span style={{ color: C.accent }}>INIT_TRANSFORMATION</span>
+              </div>
+              <div style={{ paddingLeft: 20, color: C.textSoft, marginBottom: 16 }}>
+                Converting analysts from Creators to Curators... <span style={{ color: C.success }}>[DONE]</span>
+              </div>
+
+              <div style={{ marginBottom: 4 }}>
+                <span style={{ color: C.primary }}>➜</span> <span style={{ color: C.accent }}>CALCULATE_YIELD</span>
+              </div>
+              <div style={{ paddingLeft: 20, color: C.textSoft, marginBottom: 16 }}>
+                Alpha Generated: <span style={{ color: C.primary, fontWeight: 700 }}>Measurable Uplift</span> vs. Benchmark<br />
+                Capacity Reallocated: <span style={{ color: C.text }}>Majority Routine → Strategic</span>
+              </div>
+
+              <div style={{ marginBottom: 4 }}>
+                <span style={{ color: C.primary }}>➜</span> <span style={{ color: C.accent }}>VERIFY_COMPLIANCE</span>
+              </div>
+              <div style={{ paddingLeft: 20, color: C.textSoft }}>
+                EU AI Act: <span style={{ color: C.success }}>[COMPLIANT]</span><br />
+                Model Dependency: <span style={{ color: C.success }}>[AGNOSTIC]</span>
+              </div>
+
+              <div style={{ marginTop: 20, padding: "12px", background: `${C.primary}10`, borderLeft: `2px solid ${C.primary}` }}>
+                "SVRN ALPHA didn't just give us tools. They gave us a sovereign capability."
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      {/* ═══ THREE PILLARS ═══ */}
+      <section style={{
+        padding: "100px 60px",
+      }}>
         <div style={{ maxWidth: 1200, margin: "0 auto" }}>
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 24 }}>
-            {gridItems.map((item, i) => (
+          <div style={{ textAlign: "center", marginBottom: 64 }}>
+            <Badge>SYSTEM ARCHITECTURE</Badge>
+            <h2 style={{
+              fontFamily: mono, fontSize: 36, fontWeight: 700, color: C.text,
+              margin: "24px 0 16px", letterSpacing: "-0.02em"
+            }}>The Three-Pillar Model</h2>
+            <p style={{ fontSize: 16, color: C.textMuted }}>
+              Education. Processes. Technology. <span style={{ fontFamily: mono, color: C.primary }}>[SEQUENCE_CRITICAL]</span>
+            </p>
+          </div>
+          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 32 }}>
+            {[
+              {
+                num: "01", title: "EDUCATION", sub: "Human_Layer",
+                desc: "Creator to Curator. We build AI fluency at every level, from the trading floor to the boardroom.",
+                detail: "DEPENDENCY: PEOPLE",
+              },
+              {
+                num: "02", title: "PROCESSES", sub: "Logic_Layer",
+                desc: "The Capacity Flip. Inverting the workflow. Sovereign workflows that reallocate human capital to alpha generation.",
+                detail: "STATUS: OPTIMIZED",
+              },
+              {
+                num: "03", title: "TECHNOLOGY", sub: "Infra_Layer",
+                desc: "Model-Agnostic. Secure. We deploy on your own infrastructure — whether US Closed Source, Chinese Open Source, or EU Models.",
+                detail: "PROTOCOL: FLEXIBLE",
+              },
+            ].map((p, i) => (
               <div
                 key={i}
-                onClick={() => onNavigate(item.link)}
+                onMouseEnter={() => setHoverPillar(i)}
+                onMouseLeave={() => setHoverPillar(null)}
                 style={{
                   padding: 32, borderRadius: 8,
-                  background: C.black, border: `1px solid ${C.border}`,
-                  cursor: "pointer", transition: "all 0.2s",
-                  display: "flex", flexDirection: "column", minHeight: 240
+                  background: hoverPillar === i ? C.card : "transparent",
+                  border: `1px solid ${hoverPillar === i ? C.primaryDim : C.border}`,
+                  transition: "all 0.3s", cursor: "default",
+                  position: "relative"
                 }}
-                onMouseEnter={e => { e.currentTarget.style.borderColor = C.primaryDim; }}
-                onMouseLeave={e => { e.currentTarget.style.borderColor = C.border; }}
               >
-                <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 16 }}>
-                  <Badge variant={item.type === "REFERENCE CASE" ? "accent" : "primary"}>{item.type}</Badge>
-                  <span style={{ fontFamily: mono, fontSize: 11, color: C.textDim }}>{item.date}</span>
-                </div>
-                <h3 style={{
-                  fontFamily: sans, fontSize: 20, fontWeight: 700,
-                  color: C.text, lineHeight: 1.4, flex: 1
-                }}>
-                  {item.title}
-                </h3>
                 <div style={{
-                  marginTop: 24, fontFamily: mono, fontSize: 12,
-                  color: C.primary, display: "flex", alignItems: "center", gap: 8
-                }}>
-                  OPEN_FILE <span style={{ fontSize: 10 }}>→</span>
-                </div>
+                  fontFamily: mono, fontSize: 12, color: C.borderHover,
+                  position: "absolute", top: 16, right: 16
+                }}>// M_0{i + 1}</div>
+
+                <h3 style={{
+                  fontSize: 20, fontWeight: 700, fontFamily: mono,
+                  color: C.text, margin: "0 0 8px",
+                }}><span style={{ color: C.primary }}>0{i + 1}.</span> {p.title}</h3>
+
+                <div style={{
+                  fontSize: 11, fontFamily: mono, color: C.accent,
+                  textTransform: "uppercase", marginBottom: 16,
+                }}>{p.sub}</div>
+
+                <p style={{
+                  fontSize: 14, color: C.textSoft, lineHeight: 1.7, margin: "0 0 24px",
+                }}>{p.desc}</p>
+
+                <div style={{
+                  padding: "6px 10px", display: "inline-block", borderRadius: 4,
+                  background: C.black, border: `1px solid ${C.border}`,
+                  fontSize: 11, fontFamily: mono, color: C.textMuted
+                }}>{p.detail}</div>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* ═══ CTA BAND ═══ */}
-      <section style={{
-        padding: "100px 60px", borderTop: `1px solid ${C.border}`,
-        textAlign: "center", background: C.black
-      }}>
-        <div style={{ fontFamily: mono, fontSize: 12, color: C.textDim, marginBottom: 24 }}>
-          root@svrn-alpha:~/briefing
+      {/* ═══ DATA FORTRESS TERMINAL ═══ */}
+      <section style={{ padding: "100px 60px", background: C.card, borderTop: `1px solid ${C.border}` }}>
+        <div style={{ maxWidth: 1000, margin: "0 auto" }}>
+          <div style={{ textAlign: "center", marginBottom: 64 }}>
+            <Badge variant="accent">SECURITY_PROTOCOL</Badge>
+            <h2 style={{
+              fontFamily: mono, fontSize: 36, fontWeight: 700, color: C.text,
+              margin: "24px 0 16px", letterSpacing: "-0.02em"
+            }}>Your Moat. Your Fortress.</h2>
+            <p style={{ fontSize: 16, color: C.textMuted }}>
+              Tools are commodities. Knowledge is sovereign.
+            </p>
+          </div>
+
+          <div style={{
+            display: "grid", gridTemplateColumns: "1fr 1fr", gap: 1,
+            background: C.border, border: `1px solid ${C.border}`, borderRadius: 8, overflow: "hidden"
+          }}>
+            {[
+              { label: "EU AI Act", status: "COMPLIANT" },
+              { label: "MiFID II", status: "VERIFIED" },
+              { label: "Market Abuse Reg (MAR)", status: "ACTIVE" },
+              { label: "Model Architecture", status: "AGNOSTIC" },
+              { label: "Infrastructure Control", status: "SOVEREIGN" },
+              { label: "Vendor Lock-in", status: "NONE" },
+            ].map((item, i) => (
+              <div key={i} style={{
+                display: "flex", justifyContent: "space-between", alignItems: "center",
+                padding: "20px 24px", background: C.black,
+              }}>
+                <span style={{ fontSize: 14, fontWeight: 500, color: C.textSoft, fontFamily: mono }}>{item.label}</span>
+                <span style={{
+                  fontFamily: mono, fontSize: 12, fontWeight: 700,
+                  color: item.status === "NONE" || item.status === "SOVEREIGN" || item.status === "AGNOSTIC" ? C.accent : C.primary,
+                }}>[{item.status}]</span>
+              </div>
+            ))}
+          </div>
         </div>
-        <h2 style={{
-          fontFamily: mono, fontSize: 32, fontWeight: 700,
-          color: C.text, margin: "0 0 16px", letterSpacing: "-0.03em",
-        }}>Your moat won't build itself.</h2>
-        <p style={{
-          fontSize: 16, color: C.textMuted, maxWidth: 500,
-          margin: "0 auto 40px", lineHeight: 1.6,
-        }}>
-          Confidential briefing with our team in Hamburg. No pitch deck theater.
-        </p>
-        <div style={{
-          display: "inline-block", padding: "16px 48px", borderRadius: 4,
-          background: C.primary, color: C.black,
-          fontSize: 14, fontWeight: 700, fontFamily: mono,
-          cursor: "pointer",
-        }} onClick={() => onNavigate("about")}>{`> EXECUTE_BRIEFING`}</div>
+      </section>
+
+      {/* ═══ CTA ═══ */}
+      <section style={{
+        padding: "120px 60px",
+        borderTop: `1px solid ${C.border}`,
+        textAlign: "center",
+        background: `radial-gradient(circle at 50% 100%, ${C.primaryDim}10 0%, ${C.black} 50%)`
+      }}>
+        <div style={{ maxWidth: 800, margin: "0 auto" }}>
+          <h2 style={{
+            fontFamily: mono, fontSize: 42, fontWeight: 700,
+            color: C.text, margin: "0 0 24px", letterSpacing: "-0.03em",
+          }}>Ready to secure your alpha?</h2>
+          <p style={{
+            fontSize: 16, color: C.textMuted, maxWidth: 500,
+            margin: "0 auto 48px", lineHeight: 1.6,
+          }}>
+            Schedule a confidential briefing with our team in Hamburg.
+          </p>
+          <div style={{ display: "flex", gap: 16, justifyContent: "center" }}>
+            <div style={{
+              padding: "16px 48px", borderRadius: 4,
+              background: C.primary, color: C.black,
+              fontSize: 14, fontWeight: 700, fontFamily: mono,
+              cursor: "pointer",
+            }} onClick={() => onNavigate("about")}>{`> SCHEDULE_BRIEFING`}</div>
+          </div>
+        </div>
       </section>
     </div>
   );
