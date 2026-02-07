@@ -1091,7 +1091,7 @@ const AboutPage = () => {
         <div style={{ marginBottom: 60, display: "flex", flexDirection: isMobile ? "column" : "row", gap: 32, alignItems: isMobile ? "center" : "flex-start", textAlign: isMobile ? "center" : "left" }}>
           <div style={{
             width: 80, height: 80, borderRadius: "50%",
-            background: `linear - gradient(135deg, ${C.primary}, ${C.primaryDim})`,
+            background: `linear-gradient(135deg, ${C.primary}, ${C.primaryDim})`,
             display: "flex", alignItems: "center", justifyContent: "center",
             fontFamily: mono, fontWeight: 800, fontSize: 24, color: C.black,
             flexShrink: 0
