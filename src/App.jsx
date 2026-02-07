@@ -199,7 +199,7 @@ const Nav = ({ current, onNavigate }) => {
   const items = [
     { id: "home", label: "Vision" },
     { id: "blog", label: "Research" },
-    { id: "case-study", label: "Proof Case" },
+    { id: "case-study", label: "Reference" },
     { id: "whitepaper", label: "Framework" },
     { id: "about", label: "Founder" },
   ];
@@ -345,7 +345,7 @@ const HomePage = ({ onNavigate }) => {
               }}>TB</div>
               <div>
                 <div style={{ fontSize: 16, fontWeight: 700, color: C.text, fontFamily: mono }}>Prof. Dr. Tobias Blask</div>
-                <div style={{ fontSize: 13, color: C.textMuted, fontFamily: mono }}>Founder & Chairman</div>
+                <div style={{ fontSize: 13, color: C.textMuted, fontFamily: mono }}>Founder & Chairman | Professor</div>
               </div>
             </div>
           </div>
@@ -373,7 +373,7 @@ const HomePage = ({ onNavigate }) => {
 
             {/* Window Content */}
             <div style={{ padding: "24px 32px", fontFamily: mono, fontSize: 13, lineHeight: 1.6 }}>
-              <div style={{ color: C.textMuted, marginBottom: 12 }}># EXECUTION REPORT: MÜNCHMEIER PETERSEN CAPITAL MARKETS</div>
+              <div style={{ color: C.textMuted, marginBottom: 12 }}># EXECUTION REPORT: STRATEGIC BLUEPRINT</div>
 
               <div style={{ marginBottom: 4 }}>
                 <span style={{ color: C.primary }}>➜</span> <span style={{ color: C.accent }}>INIT_TRANSFORMATION</span>
@@ -386,8 +386,8 @@ const HomePage = ({ onNavigate }) => {
                 <span style={{ color: C.primary }}>➜</span> <span style={{ color: C.accent }}>CALCULATE_YIELD</span>
               </div>
               <div style={{ paddingLeft: 20, color: C.textSoft, marginBottom: 16 }}>
-                Alpha Generated: <span style={{ color: C.primary, fontWeight: 700 }}>+340bps</span> vs. Benchmark<br />
-                Capacity Reallocated: <span style={{ color: C.text }}>70% Routine → Strategic</span>
+                Alpha Generated: <span style={{ color: C.primary, fontWeight: 700 }}>Measurable Uplift</span> vs. Benchmark<br />
+                Capacity Reallocated: <span style={{ color: C.text }}>Majority Routine → Strategic</span>
               </div>
 
               <div style={{ marginBottom: 4 }}>
@@ -427,11 +427,11 @@ const HomePage = ({ onNavigate }) => {
               {
                 num: "01", title: "EDUCATION", sub: "Human_Layer",
                 desc: "Creator to Curator. We build AI fluency at every level, from the trading floor to the boardroom.",
-                detail: "DEPENDENCY: PEOPLE (70%)",
+                detail: "DEPENDENCY: PEOPLE",
               },
               {
                 num: "02", title: "PROCESSES", sub: "Logic_Layer",
-                desc: "The 70/30 Flip. Inverting the workflow. Sovereign workflows that reallocate human capital to alpha generation.",
+                desc: "The Capacity Flip. Inverting the workflow. Sovereign workflows that reallocate human capital to alpha generation.",
                 detail: "STATUS: OPTIMIZED",
               },
               {
@@ -695,15 +695,15 @@ const BlogPage = ({ onNavigate }) => {
 const CaseStudyPage = () => (
   <div style={{ padding: "80px 60px 100px" }}>
     <ArticleLayout maxWidth={800}>
-      <Badge variant="accent">PROOF CASE</Badge>
+      <Badge variant="accent">REFERENCE ARCHITECTURE</Badge>
       <h1 style={{
         fontFamily: sans, fontSize: 36, fontWeight: 800,
         letterSpacing: "-0.025em", lineHeight: 1.15, margin: "16px 0 12px",
       }}>
-        MP Capital Markets: +340bps Alpha Generation in 90 Days
+        MP Capital Markets: Sovereign Alpha Generation
       </h1>
       <p style={{ fontSize: 18, color: C.accent, margin: "0 0 40px", fontStyle: "italic" }}>
-        How a sovereign AI deployment transformed research operations at a European investment bank.
+        How a sovereign AI deployment transforms research operations at a European investment bank.
       </p>
 
       {/* Snapshot */}
@@ -711,9 +711,9 @@ const CaseStudyPage = () => (
         display: "grid", gridTemplateColumns: "1fr 1fr 1fr 1fr", gap: 12, marginBottom: 48,
       }}>
         {[
-          { label: "ALPHA", value: "+340bps", color: C.accent },
-          { label: "TIMELINE", value: "90 Days", color: C.primary },
-          { label: "CAPACITY FLIP", value: "70/30 → 30/70", color: C.primary },
+          { label: "ALPHA", value: "Uplift", color: C.accent },
+          { label: "DEPLOYMENT", value: "Rapid", color: C.primary },
+          { label: "MODEL", value: "Agnostic", color: C.primary },
           { label: "COMPLIANCE", value: "Full EU", color: C.primary },
         ].map((s, i) => (
           <div key={i} style={{
@@ -721,7 +721,7 @@ const CaseStudyPage = () => (
             border: `1px solid ${C.border}`, textAlign: "center",
           }}>
             <div style={{ fontFamily: mono, fontSize: 10, color: C.textDim, letterSpacing: "0.1em", marginBottom: 8 }}>{s.label}</div>
-            <div style={{ fontFamily: mono, fontSize: 20, fontWeight: 800, color: s.color }}>{s.value}</div>
+            <div style={{ fontFamily: mono, fontSize: 18, fontWeight: 800, color: s.color }}>{s.value}</div>
           </div>
         ))}
       </div>
@@ -731,7 +731,7 @@ const CaseStudyPage = () => (
           <span style={{ color: C.red }}>// THE CHALLENGE:</span> Talent Trapped
         </h2>
         <p style={{ fontSize: 16, color: C.textSoft, lineHeight: 1.7, marginBottom: 16 }}>
-          MP Capital Markets (MPCM), a Hamburg-based investment bank, operated a research team of experienced analysts. Yet an internal audit revealed they were spending 70% of their working hours on routine data extraction and formatting. Only 30% went toward strategic analysis.
+          MP Capital Markets (MPCM), a Hamburg-based investment bank, operates a research team of experienced analysts. Yet like many institutions, they faced the industry-wide inefficiency: analysts spending a majority of their working hours on routine data extraction and formatting. Only a fraction of their capacity went toward separate strategic analysis.
         </p>
       </div>
 
@@ -741,13 +741,13 @@ const CaseStudyPage = () => (
         </h2>
         <div style={{ borderLeft: `2px solid ${C.primary}`, paddingLeft: 24 }}>
           <p style={{ fontSize: 16, color: C.textSoft, lineHeight: 1.7, marginBottom: 12 }}>
-            <strong style={{ color: C.text }}>1. Education:</strong> "Creator to Curator" workshops shifted the mindset before any tool was deployed.
+            <strong style={{ color: C.text }}>1. Education:</strong> "Creator to Curator" workshops shift the mindset before any tool is deployed.
           </p>
           <p style={{ fontSize: 16, color: C.textSoft, lineHeight: 1.7, marginBottom: 12 }}>
-            <strong style={{ color: C.text }}>2. Processes:</strong> Workflow mapping identified the "70%" routine block and re-routed it to AI pipelines.
+            <strong style={{ color: C.text }}>2. Processes:</strong> Workflow mapping identifies routine blocks and re-routes them to AI pipelines.
           </p>
           <p style={{ fontSize: 16, color: C.textSoft, lineHeight: 1.7, marginBottom: 0 }}>
-            <strong style={{ color: C.text }}>3. Technology:</strong> Sovereign, EU-hosted infrastructure ensured zero data leakage and full compliance.
+            <strong style={{ color: C.text }}>3. Technology:</strong> Sovereign, EU-hosted infrastructure ensures zero data leakage and full compliance.
           </p>
         </div>
       </div>
@@ -760,7 +760,7 @@ const CaseStudyPage = () => (
           fontSize: 17, color: C.text, lineHeight: 1.7, margin: "0 0 16px",
           fontStyle: "italic",
         }}>
-          "SVRN ALPHA didn't just give us tools. They gave us a sovereign capability. Our analysts think differently, our workflows are fundamentally restructured, and our proprietary knowledge compounds in infrastructure we own."
+          "SVRN ALPHA provides a sovereign capability. Analysts think differently, workflows are fundamentally restructured, and proprietary knowledge compounds in infrastructure we own."
         </p>
         <div style={{ fontFamily: mono, fontSize: 12, color: C.accent }}>
           — Senior Managing Director, MP Capital Markets
@@ -861,7 +861,7 @@ const PressPage = () => (
         </p>
 
         <p style={{ margin: "0 0 16px" }}>
-          SVRN ALPHA's initial deployment produced measurable results within 90 days: a capacity reallocation from 70% routine work to 70% strategic analysis among research analysts, alpha generation of +340 basis points above benchmark, and full compliance with EU AI Act, MiFID II, MAR, and GDPR requirements.
+          SVRN ALPHA's initial deployment demonstrated clear results: a significant capacity reallocation from routine work to strategic analysis among research analysts, measurable alpha generation uplift, and full compliance with EU AI Act, MiFID II, MAR, and GDPR requirements.
         </p>
 
         <p style={{ margin: "0 0 16px" }}>
@@ -932,10 +932,10 @@ const AboutPage = () => (
         <div>
           <h3 style={{ fontFamily: sans, fontSize: 22, fontWeight: 700, margin: "0 0 4px" }}>Prof. Dr. Tobias Blask</h3>
           <div style={{ fontFamily: mono, fontSize: 12, color: C.accent, letterSpacing: "0.05em", marginBottom: 16 }}>
-            Founder & Chairman
+            Founder & Chairman | Professor
           </div>
           <p style={{ fontSize: 14, color: C.textSoft, lineHeight: 1.7, margin: "0 0 12px" }}>
-            Academic researcher turned practitioner. Over a decade of published research on digital transformation in financial institutions, combined with hands-on implementation experience inside European investment banks.
+            Academic researcher turned practitioner. Years of published research on digital transformation in financial institutions, combined with hands-on implementation experience inside European investment banks.
           </p>
         </div>
       </div>
