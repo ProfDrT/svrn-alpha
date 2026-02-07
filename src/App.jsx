@@ -817,7 +817,7 @@ const BlogPage = () => {
           {blogArticles.map((article, i) => (
             <div
               key={i}
-              onClick={() => navigate(`/ research / ${article.id} `)}
+              onClick={() => navigate(`/research/${article.id}`)}
               style={{
                 padding: 24, borderRadius: 8,
                 background: "transparent",
