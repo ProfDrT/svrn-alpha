@@ -447,7 +447,7 @@ const HomePage = () => {
         {/* Grid overlay */}
         <div style={{
           position: "absolute", inset: 0, opacity: 0.1, pointerEvents: "none",
-          backgroundImage: `linear - gradient(${C.border} 1px, transparent 1px), linear - gradient(90deg, ${C.border} 1px, transparent 1px)`,
+          backgroundImage: `linear-gradient(${C.border} 1px, transparent 1px), linear-gradient(90deg, ${C.border} 1px, transparent 1px)`,
           backgroundSize: "40px 40px"
         }} />
 
@@ -485,7 +485,7 @@ const HomePage = () => {
             }} onClick={() => navigate("/about")}>{`> EXECUTE_BRIEFING`}</div>
             <div style={{
               padding: "16px 40px", borderRadius: 4,
-              border: `1px solid ${C.border} `,
+              border: `1px solid ${C.border}`,
               background: C.card,
               color: C.textSoft, fontSize: 14, fontWeight: 500, fontFamily: mono, cursor: "pointer",
             }} onClick={() => navigate("/whitepaper")}>READ_WHITEPAPER</div>
@@ -496,7 +496,7 @@ const HomePage = () => {
       {/* ═══ SYSTEM LOG: LEADERSHIP & SUCCESS ═══ */}
       <section style={{
         padding: isMobile ? "60px 20px" : "80px 60px",
-        background: C.surface, borderTop: `1px solid ${C.border} `, borderBottom: `1px solid ${C.border} `,
+        background: C.surface, borderTop: `1px solid ${C.border}`, borderBottom: `1px solid ${C.border}`,
       }}>
         <div style={{ maxWidth: 1200, margin: "0 auto", display: "grid", gridTemplateColumns: isMobile ? "1fr" : "1fr 1.2fr", gap: isMobile ? 40 : 80, alignItems: "center" }}>
 
@@ -518,7 +518,7 @@ const HomePage = () => {
             <div style={{ display: "flex", alignItems: "center", gap: 20, cursor: "pointer" }} onClick={() => navigate("/about")}>
               <div style={{
                 width: 56, height: 56, borderRadius: 4,
-                background: C.card, border: `1px solid ${C.primaryDim} `,
+                background: C.card, border: `1px solid ${C.primaryDim}`,
                 display: "flex", alignItems: "center", justifyContent: "center",
                 fontSize: 20, fontWeight: 700, color: C.primary, fontFamily: mono
               }}>TB</div>
@@ -532,13 +532,13 @@ const HomePage = () => {
           {/* Terminal Window: Success Log */}
           <div style={{
             borderRadius: 8,
-            background: C.black, border: `1px solid ${C.border} `,
-            boxShadow: `0 20px 40px - 10px rgba(0, 0, 0, 0.5)`,
+            background: C.black, border: `1px solid ${C.border}`,
+            boxShadow: `0 20px 40px -10px rgba(0, 0, 0, 0.5)`,
             overflow: "hidden",
           }} onClick={() => navigate("/reference-case")}>
             {/* Window Header */}
             <div style={{
-              background: C.card, borderBottom: `1px solid ${C.border} `,
+              background: C.card, borderBottom: `1px solid ${C.border}`,
               padding: "8px 16px", display: "flex", justifyContent: "space-between", alignItems: "center"
             }}>
               <div style={{ fontFamily: mono, fontSize: 11, color: C.textMuted }}>root@mpcm-server:~/logs</div>
@@ -576,7 +576,7 @@ const HomePage = () => {
                 Model Dependency: <span style={{ color: C.success }}>[AGNOSTIC]</span>
               </div>
 
-              <div style={{ marginTop: 20, padding: "12px", background: `${C.primary} 10`, borderLeft: `2px solid ${C.primary} ` }}>
+              <div style={{ marginTop: 20, padding: "12px", background: `${C.primary}10`, borderLeft: `2px solid ${C.primary}` }}>
                 "SVRN ALPHA didn't just give us tools. They gave us a sovereign capability."
               </div>
             </div>
@@ -1099,12 +1099,15 @@ const AboutPage = () => {
           <div>
             <h2 style={{ ...TYPO.h2, margin: "0 0 8px", fontSize: isMobile ? 24 : 32 }}>Founder</h2>
             <div style={{ fontFamily: sans, fontSize: 18, fontWeight: 700, color: C.text }}>Prof. Dr. Tobias Blask</div>
-            <div style={{ fontFamily: mono, fontSize: 13, color: C.accent, marginBottom: 16 }}>Professor, Founder & Chairman</div>
+            <div style={{ fontFamily: mono, fontSize: 13, color: C.accent, marginBottom: 16 }}>Tenured Full Professor and Founder & Chairman</div>
             <p style={{ ...TYPO.body, fontSize: isMobile ? 16 : 18 }}>
-              Academic researcher turned practitioner. Over a decade of published research on digital transformation in financial institutions, combined with hands-on implementation experience inside European investment banks.
+              Academic researcher turned practitioner? No. Both.
             </p>
             <p style={{ ...TYPO.body, fontSize: isMobile ? 16 : 18 }}>
-              The SVRN ALPHA framework was built from real transformation work — not from slide decks. The industry needs a partner who understands both the science of AI and the organizational politics of making it stick.
+              Prof. Dr. Blask is a Tenured Full Professor and Founder & Chairman. His roots are deep in Business Informatics and Data Science, bridging the gap between academic rigor and practical application.
+            </p>
+            <p style={{ ...TYPO.body, fontSize: isMobile ? 16 : 18 }}>
+              He is supported by a team of deep domain experts, including certified equity analysts and finance-specialized AI engineers. The SVRN ALPHA framework was built from real transformation work — not from slide decks.
             </p>
           </div>
         </div>
