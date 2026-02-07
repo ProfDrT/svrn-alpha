@@ -312,7 +312,7 @@ const HomePage = ({ onNavigate }) => {
               fontFamily: mono, fontSize: isMobile ? 28 : 36, fontWeight: 700, color: C.text,
               margin: "24px 0 24px", letterSpacing: "-0.03em", lineHeight: 1.1
             }}>
-              Founded on Academic Rigor.<br />Engineered for Reality.
+              Rigorous Research.<br />Operational Reality. Integrated.
             </h2>
             <p style={{ fontSize: 16, color: C.textMuted, lineHeight: 1.7, marginBottom: 32, fontFamily: sans }}>
               "We don't sell software. We engineer sovereignty. In an era where AI is a commodity,
@@ -1323,7 +1323,7 @@ const AboutPage = () => (
         fontFamily: sans, fontSize: 36, fontWeight: 800,
         letterSpacing: "-0.025em", lineHeight: 1.15, margin: "16px 0 12px",
       }}>
-        Founded on Academic Rigor.<br />Engineered for Reality.
+        Rigorous Research.<br />Operational Reality. Integrated.
       </h1>
       <p style={{ fontSize: 17, color: C.textMuted, margin: "0 0 48px", maxWidth: 560, lineHeight: 1.7 }}>
         SVRN ALPHA exists because the gap between what research says about AI transformation and what the industry does about it is too wide to accept.
@@ -1339,7 +1339,7 @@ const AboutPage = () => (
           The academic literature was unambiguous: the primary determinant of transformation success wasn't technological capability. It was organizational readiness — how people thought about AI, how workflows adapted, how leadership committed to the change. Yet the industry continued to allocate 90% of its AI budget to technology and 10% to the organizational factors that actually determined success.
         </p>
         <p style={{ fontSize: 15, color: C.textSoft, lineHeight: 1.8, margin: 0 }}>
-          In 2025, Prof. Dr. Blask stopped writing papers about the problem and founded SVRN ALPHA to fix it. The company bridges the gap between what research proves and what practice requires — bringing academic rigor to the messy, political, deeply human work of organizational transformation.
+          Prof. Dr. Blask founded SVRN ALPHA to prove that rigorous research and operational reality are not separate phases, but concurrent necessities. He continues to publish while deploying, ensuring that every framework is battle-tested and every deployment is theoretically sound.
         </p>
       </div>
 
@@ -1363,10 +1363,10 @@ const AboutPage = () => (
             Founder & Chairman
           </div>
           <p style={{ fontSize: 14, color: C.textSoft, lineHeight: 1.7, margin: "0 0 12px" }}>
-            Academic researcher turned practitioner. Over a decade of published research on digital transformation in financial institutions, combined with hands-on implementation experience inside European investment banks.
+            Academic researcher and active practitioner. Simultaneously. Over a decade of published research on digital transformation in financial institutions, combined with hands-on implementation experience inside European investment banks.
           </p>
           <p style={{ fontSize: 14, color: C.textSoft, lineHeight: 1.7, margin: 0 }}>
-            The SVRN ALPHA framework was built from real transformation work — not from slide decks. The industry needs a partner who understands both the science of AI and the organizational politics of making it stick.
+            The SVRN ALPHA framework was built from real transformation work — and rigorous theory. The industry needs a partner who understands both the science of AI and the organizational politics of making it stick.
           </p>
         </div>
       </div>
