@@ -1078,7 +1078,7 @@ const AboutPage = () => {
         <div style={{ marginBottom: 60 }}>
           <h2 style={{ ...TYPO.h2, fontSize: isMobile ? 24 : 32 }}>The Origin</h2>
           <p style={{ ...TYPO.body, fontSize: isMobile ? 16 : 18 }}>
-            For over a decade, Prof. Dr. Tobias Blask researched digital transformation in financial institutions. The patterns were consistent and frustrating: banks invested billions in AI technology, hired data scientists, licensed platforms — and achieved almost nothing. The failure rate hovered around 70%, year after year.
+            For over a decade, Prof. Dr. Tobias Blask researched Business Informatics and Data Science. The patterns were consistent and frustrating: banks invested billions in AI technology, hired data scientists, licensed platforms — and achieved almost nothing. The failure rate hovered around 70%, year after year.
           </p>
           <p style={{ ...TYPO.body, fontSize: isMobile ? 16 : 18 }}>
             The academic literature was unambiguous: the primary determinant of transformation success wasn't technological capability. It was organizational readiness — how people think about AI, how workflows adapted, how leadership committed to the change. Yet the industry continued to allocate 90% of its AI budget to technology and 10% to the organizational factors that actually determined success.
